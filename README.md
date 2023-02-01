@@ -18,6 +18,7 @@ make build
 
 ```bash
 # Source Autoware first
+./env.sh
 ros2 launch autoware_carla_launch autoware_carla.launch.xml
 ```
 

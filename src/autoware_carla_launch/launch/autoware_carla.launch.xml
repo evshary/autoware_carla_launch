@@ -83,4 +83,13 @@
       <arg name="vehicle_info_param_file" value="$(find-pkg-share $(var vehicle_model)_description)/config/vehicle_info.param.yaml"/>
     </include>
   </group>
+
+  <!-- Bridge -->
+  <group>
+      <executable cmd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh-plugin-dds/target/release/zenoh-bridge-dds -s '*'" output="screen" />
+      <executable cmd="$(env AUTOWARE_CARLA_ROOT)/external/carla_autoware_zenoh_bridge/target/release/carla_autoware_zenoh_bridge" output="screen">
+        <env name="RUST_LOG" value="c=info"/>
+      </executable>
+      <executable cmd="poetry run python3 main.py" cwd="$(env AUTOWARE_CARLA_ROOT)/external/carla_autoware_zenoh_bridge/carla_agent" output="screen" />
+  </group>
 </launch>
