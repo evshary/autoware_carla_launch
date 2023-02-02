@@ -1,0 +1,11 @@
+<launch>
+  <group>
+    <push-ros-namespace namespace="imu"/>
+    <include file="$(find-pkg-share imu_corrector)/launch/imu_corrector.launch.xml">
+      <arg name="input_topic" value="tamagawa/imu_raw"/>
+      <arg name="output_topic" value="imu_data"/>
+      <!-- We are using default node values -->
+      <!-- <arg name="param_file" value="$(find-pkg-share individual_params)/config/$(env VEHICLE_ID default)/awsim_sensor_kit/imu_corrector.param.yaml"/> -->
+    </include>
+  </group>
+</launch>
