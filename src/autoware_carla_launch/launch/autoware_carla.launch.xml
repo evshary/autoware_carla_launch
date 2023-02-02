@@ -3,9 +3,18 @@
   <!-- Essential parameters -->
   <arg name="map_path" default="$(find-pkg-share autoware_carla_launch)/map/CarlaTown03" description="point cloud and lanelet2 map directory path"/>
   <arg name="vehicle_model" default="sample_vehicle" description="vehicle model name"/>
-  <arg name="sensor_model" default="sample_sensor_kit" description="sensor model name"/>
+  <arg name="sensor_model" default="carla_sensor_kit" description="sensor model name"/>
 
   <!-- Optional parameters -->
+    <!-- Modules to be launched -->
+  <arg name="vehicle" default="true" description="launch vehicle"/>
+  <arg name="system" default="false" description="launch system"/>
+  <arg name="map" default="false" description="launch map"/>
+  <arg name="sensing" default="true" description="launch sensing"/>
+  <arg name="localization" default="false" description="launch localization"/>
+  <arg name="perception" default="false" description="launch perception"/>
+  <arg name="planning" default="false" description="launch planning"/>
+  <arg name="control" default="false" description="launch control"/>
   <!-- Map -->
   <arg name="lanelet2_map_file" default="lanelet2_map.osm" description="lanelet2 map file name"/>
   <arg name="pointcloud_map_file" default="pointcloud_map.pcd" description="pointcloud map file name"/>
@@ -14,34 +23,27 @@
   <!-- System -->
   <arg name="launch_system_monitor" default="false" description="launch system monitor"/>
   <!-- Tools -->
-  <arg name="rviz" default="true" description="launch rviz"/>
+  <arg name="rviz" default="false" description="launch rviz"/>
   <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/autoware.rviz" description="rviz config"/>
-  <!-- Scenario simulation -->
-  <arg name="initial_engage_state" default="true" description="/vehicle/engage state after starting Autoware"/>
-  <arg name="perception/enable_detection_failure" default="true" description="enable to simulate detection failure when using dummy perception"/>
-  <arg name="perception/enable_object_recognition" default="true" description="enable object recognition when using dummy perception"/>
-  <arg name="sensing/visible_range" default="300.0" description="visible range when using dummy perception"/>
-  <arg name="scenario_simulation" default="false" description="use scenario simulation"/>
-  <!-- Vcu emulation -->
-  <arg name="vehicle_simulation" default="true" description="use vehicle simulation"/>
+  <!-- Vehicle -->
+  <arg name="launch_vehicle_interface" default="false"/>
 
   <group scoped="false">
-    <!-- Vehicle -->
-    <let name="launch_vehicle_interface" value="false" if="$(var vehicle_simulation)"/>
-    <let name="launch_vehicle_interface" value="true" unless="$(var vehicle_simulation)"/>
-    <!-- Tools -->
-    <let name="launch_web_controller" value="false" if="$(var scenario_simulation)"/>
-    <let name="launch_web_controller" value="true" unless="$(var scenario_simulation)"/>
-
     <include file="$(find-pkg-share autoware_launch)/launch/autoware.launch.xml">
       <!-- Common -->
       <arg name="map_path" value="$(var map_path)"/>
       <arg name="vehicle_model" value="$(var vehicle_model)"/>
       <arg name="sensor_model" value="$(var sensor_model)"/>
       <!-- Modules to be launched -->
-      <arg name="launch_sensing" value="false"/>
-      <arg name="launch_localization" value="false"/>
-      <arg name="launch_perception" value="false"/>
+      <arg name="launch_vehicle" value="$(var vehicle)"/>
+      <arg name="launch_map" value="$(var map)"/>
+      <arg name="launch_sensing" value="$(var sensing)"/>
+      <arg name="launch_localization" value="$(var localization)"/>
+      <arg name="launch_perception" value="$(var perception)"/>
+      <arg name="launch_planning" value="$(var planning)"/>
+      <arg name="launch_control" value="$(var control)"/>
+      <!-- Global parameters -->
+      <arg name="use_sim_time" value="true"/>
       <!-- Pointcloud container -->
       <arg name="use_pointcloud_container" value="false"/>
       <!-- Vehicle -->
@@ -54,16 +56,19 @@
       <arg name="pointcloud_map_file" value="$(var pointcloud_map_file)"/>
       <!-- Control -->
       <arg name="enable_obstacle_collision_checker" value="$(var enable_obstacle_collision_checker)"/>
+      <arg name="check_external_emergency_heartbeat" value="false"/>
+      <!-- Sensing -->
+      <arg name="launch_sensing_driver" value="false"/>
+      <!-- Perception-->
+      <arg name="traffic_light_recognition/enable_fine_detection" value="false"/>
       <!-- Tools -->
       <arg name="rviz" value="$(var rviz)"/>
       <arg name="rviz_config" value="$(var rviz_config)"/>
-      <arg name="launch_web_controller" value="$(var launch_web_controller)"/>
-      <!-- Control -->
-      <arg name="check_external_emergency_heartbeat" value="false"/>
     </include>
   </group>
 
   <!-- Simulator -->
+  <!--
   <group>
     <let name="launch_dummy_perception" value="false" if="$(var scenario_simulation)"/>
     <let name="launch_dummy_perception" value="true" unless="$(var scenario_simulation)"/>
@@ -83,6 +88,7 @@
       <arg name="vehicle_info_param_file" value="$(find-pkg-share $(var vehicle_model)_description)/config/vehicle_info.param.yaml"/>
     </include>
   </group>
+  -->
 
   <!-- Bridge -->
   <group>
