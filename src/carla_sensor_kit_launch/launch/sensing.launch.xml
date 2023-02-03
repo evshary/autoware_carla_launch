@@ -26,7 +26,7 @@
     <include file="$(find-pkg-share carla_sensor_kit_launch)/launch/imu.launch.xml"/>
 
     <!-- GNSS Driver -->
-    <!-- GNSS Drives in not needed because the AWSIM already publishes both gnss pose and pose with covariance topics -->
+    <include file="$(find-pkg-share carla_sensor_kit_launch)/launch/gnss.launch.xml"/>
 
     <!-- Vehicle Velocity Converter  -->
     <!--
