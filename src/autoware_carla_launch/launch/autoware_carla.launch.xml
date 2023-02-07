@@ -8,13 +8,13 @@
   <!-- Optional parameters -->
     <!-- Modules to be launched -->
   <arg name="vehicle" default="true" description="launch vehicle"/>
-  <arg name="system" default="false" description="launch system"/>
-  <arg name="map" default="false" description="launch map"/>
+  <arg name="system" default="true" description="launch system"/>
+  <arg name="map" default="true" description="launch map"/>
   <arg name="sensing" default="true" description="launch sensing"/>
-  <arg name="localization" default="false" description="launch localization"/>
-  <arg name="perception" default="false" description="launch perception"/>
-  <arg name="planning" default="false" description="launch planning"/>
-  <arg name="control" default="false" description="launch control"/>
+  <arg name="localization" default="true" description="launch localization"/>
+  <arg name="perception" default="true" description="launch perception"/>
+  <arg name="planning" default="true" description="launch planning"/>
+  <arg name="control" default="true" description="launch control"/>
   <!-- Map -->
   <arg name="lanelet2_map_file" default="lanelet2_map.osm" description="lanelet2 map file name"/>
   <arg name="pointcloud_map_file" default="pointcloud_map.pcd" description="pointcloud map file name"/>
@@ -23,7 +23,7 @@
   <!-- System -->
   <arg name="launch_system_monitor" default="false" description="launch system monitor"/>
   <!-- Tools -->
-  <arg name="rviz" default="false" description="launch rviz"/>
+  <arg name="rviz" default="true" description="launch rviz"/>
   <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/autoware.rviz" description="rviz config"/>
   <!-- Vehicle -->
   <arg name="launch_vehicle_interface" default="false"/>
