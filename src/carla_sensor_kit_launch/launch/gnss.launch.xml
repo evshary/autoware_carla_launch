@@ -1,7 +1,8 @@
 <launch>
   <arg name="launch_driver" default="true"/>
   <arg name="gnss_receiver" default="ublox" description="ublox(default) or septentrio"/>
-  <arg name="coordinate_system" default="1" description="0:UTM, 1:MGRS, 2:PLANE"/>
+  <arg name="coordinate_system" default="2" description="0:UTM, 1:MGRS, 2:PLANE"/>
+  <arg name="plane_zone" default="0"/>
 
   <group>
     <push-ros-namespace namespace="gnss"/>
@@ -37,6 +38,7 @@
       <arg name="use_gnss_ins_orientation" value="false"/>
 
       <arg name="gnss_frame" value="gnss_link"/>
+      <arg name="plane_zone" value="$(var plane_zone)"/>
     </include>
   </group>
 </launch>
