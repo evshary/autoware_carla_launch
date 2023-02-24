@@ -1,7 +1,7 @@
 {
   plugins: {
     dds: { 
-      allow: "/vehicle/status/velocity_status|/vehicle/steering_status|/vehicle/gear_status|/vehicle/control_mode|/control/command/control_cmd|/control/command/gear_cmd|/sensing/camera/.*|/sensing/lidar/.*|/sensing/imu/.*|/sensing/gnss/.*"
+      allow: "/vehicle/status/velocity_status|/vehicle/steering_status|/vehicle/gear_status|/vehicle/control_mode|/control/command/control_cmd|/control/command/gear_cmd|/sensing/camera/.*|/sensing/lidar/.*|/sensing/imu/.*|/sensing/gnss/.*|/carla_pointcloud"
     }
   }
 }

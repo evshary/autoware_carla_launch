@@ -100,9 +100,11 @@
   </group>
   -->
 
+  <node pkg="carla_pointcloud" exec="carla_pointcloud_node" name="carla_pointcloud_interface" output="screen"/>
+
   <!-- Bridge -->
   <group>
-      <executable cmd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh-plugin-dds/target/release/zenoh-bridge-dds -s '*'" output="screen" />
+      <executable cmd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh-plugin-dds/target/release/zenoh-bridge-dds -s '*' -c $(env ZENOH_BRIDGE_DDS_CONFIG)" output="screen" />
       <executable cmd="$(env AUTOWARE_CARLA_ROOT)/external/carla_autoware_zenoh_bridge/target/release/carla_autoware_zenoh_bridge" output="screen">
         <env name="RUST_LOG" value="c=info"/>
       </executable>
