@@ -8,7 +8,9 @@ build:
 	cd external/carla_autoware_zenoh_bridge/carla_agent && poetry install --no-root
 	colcon build --symlink-install
 
-prepare:
+prepare:	
+	git submodule update --init --recursive
+	cd ./src/autoware_carla_launch && ./download_map.sh
 	rosdep install -y --from-paths src --ignore-src --rosdistro galactic
 
 clean:
