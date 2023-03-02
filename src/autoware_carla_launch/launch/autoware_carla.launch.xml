@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
   <!-- Essential parameters -->
-  <arg name="map_path" default="$(find-pkg-share autoware_carla_launch)/map/CarlaTown03" description="point cloud and lanelet2 map directory path"/>
+  <arg name="map_path" default="$(find-pkg-share autoware_carla_launch)/map/CarlaTown01" description="point cloud and lanelet2 map directory path"/>
   <arg name="vehicle_model" default="sample_vehicle" description="vehicle model name"/>
   <arg name="sensor_model" default="carla_sensor_kit" description="sensor model name"/>
 
   <!-- Optional parameters -->
     <!-- Modules to be launched -->
   <arg name="vehicle" default="true" description="launch vehicle"/>
-  <arg name="system" default="true" description="launch system"/>
+  <arg name="system" default="false" description="launch system"/>
   <arg name="map" default="true" description="launch map"/>
-  <arg name="sensing" default="true" description="launch sensing"/>
-  <arg name="localization" default="true" description="launch localization"/>
-  <arg name="perception" default="true" description="launch perception"/>
+  <arg name="sensing" default="false" description="launch sensing"/>
+  <arg name="localization" default="false" description="launch localization"/>
+  <arg name="perception" default="false" description="launch perception"/>
   <arg name="planning" default="true" description="launch planning"/>
   <arg name="control" default="true" description="launch control"/>
   <!-- Map -->
@@ -44,7 +44,7 @@
       <arg name="launch_control" value="$(var control)"/>
       <!-- Global parameters -->
       <!-- Need to disable this while using simulator below -->
-      <arg name="use_sim_time" value="true"/>
+      <arg name="use_sim_time" value="false"/>
       <!-- Pointcloud container -->
       <arg name="use_pointcloud_container" value="false"/>
       <!-- Vehicle -->
@@ -69,11 +69,8 @@
   </group>
 
   <!-- Vcu emulation -->
-  <!--
   <arg name="vehicle_simulation" default="true" description="use vehicle simulation"/>
-  -->
   <!-- Simulator -->
-  <!--
   <arg name="initial_engage_state" default="true" description="/vehicle/engage state after starting Autoware"/>
   <arg name="perception/enable_detection_failure" default="true" description="enable to simulate detection failure when using dummy perception"/>
   <arg name="perception/enable_object_recognition" default="true" description="enable object recognition when using dummy perception"/>
@@ -98,7 +95,6 @@
       <arg name="vehicle_info_param_file" value="$(find-pkg-share $(var vehicle_model)_description)/config/vehicle_info.param.yaml"/>
     </include>
   </group>
-  -->
 
   <node pkg="carla_pointcloud" exec="carla_pointcloud_node" name="carla_pointcloud_interface" output="screen"/>
 
