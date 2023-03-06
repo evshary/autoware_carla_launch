@@ -10,6 +10,12 @@ The package includes launch file to run Autoware, Carla agent, and bridge (zenoh
 make clean
 ```
 
+* Prerequisite
+
+```bash
+make prepare
+```
+
 * Build
 
 ```bash
@@ -24,4 +30,3 @@ make build
 source env.sh
 ros2 launch autoware_carla_launch autoware_carla.launch.xml
 ```
-
