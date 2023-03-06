@@ -13,6 +13,7 @@ make clean
 * Build
 
 ```bash
+# Source Autoware first before build
 make build
 ```
 
@@ -20,8 +21,7 @@ make build
 
 ```bash
 # Run Carla simulator
-# Source Autoware first
-./env.sh
+source env.sh
 ros2 launch autoware_carla_launch autoware_carla.launch.xml
 ```
 
