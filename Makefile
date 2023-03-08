@@ -9,6 +9,7 @@ build:
 	colcon build --symlink-install
 
 prepare:	
+	vcs import src < autoware_carla.repos
 	git submodule update --init --recursive
 	cd ./src/autoware_carla_launch && ./download_map.sh
 	rosdep install -y --from-paths src --ignore-src --rosdistro galactic

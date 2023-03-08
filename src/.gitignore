@@ -1,0 +1,8 @@
+# ignore everything
+*
+# Except
+!.gitignore
+!autoware_carla_launch
+!carla_pointcloud
+!carla_sensor_kit_description
+!carla_sensor_kit_launch
