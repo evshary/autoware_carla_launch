@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
   <!-- Essential parameters -->
-  <arg name="map_path" default="$(find-pkg-share autoware_carla_launch)/map/CarlaTown01" description="point cloud and lanelet2 map directory path"/>
+  <arg name="map_path" default="$(env CARLA_MAP_PATH)" description="point cloud and lanelet2 map directory path"/>
   <arg name="vehicle_model" default="sample_vehicle" description="vehicle model name"/>
   <arg name="sensor_model" default="sample_sensor_kit" description="sensor model name"/>
   <arg name="use_pointcloud_container" default="true" description="launch pointcloud container"/>

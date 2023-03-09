@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MAP_PATH="map/CarlaTown01"
+MAP_PATH="carla_map/Town01"
 
 # If map doesn't exist
 if [ ! -d $MAP_PATH ]; then
