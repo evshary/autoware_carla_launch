@@ -2,7 +2,7 @@
   plugins: {
     dds: { 
       allow: ["/vehicle/status/velocity_status",
-              "/vehicle/steering_status",
+              "/vehicle/status/steering_status",
               "/vehicle/gear_status",
               "/vehicle/control_mode",
               "/control/command/control_cmd",
