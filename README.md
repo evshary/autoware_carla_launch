@@ -2,31 +2,56 @@
 
 The package includes launch file to run Autoware, Carla agent, and bridge (zenoh-bridge-dds + carla_autoware_zenoh_bridge).
 
-# Usage
+# Build
+
+* Prerequisite: Install Autoware & Carla & Rust
 
 * Clean the files
 
-```bash
+```shell
 make clean
 ```
 
-* Prerequisite
+* Download necessary code & data
 
-```bash
+```shell
 make prepare
 ```
 
 * Build
 
-```bash
+```shell
 # Source Autoware first before build
 make build
 ```
 
-* Run
+# Usage
 
-```bash
-# Run Carla simulator
+## Carla with Autoware
+
+1. Run Carla simulator first
+
+2. Run Autoware with Carla
+ 
+```shell
 source env.sh
 ros2 launch autoware_carla_launch autoware_carla.launch.xml
+```
+
+## Manual control vehicle in Carla
+
+1. Run Carla simulator first
+
+2. Run Autoware with Carla
+
+```shell
+source env.sh
+ros2 launch autoware_carla_launch manual_control.launch.xml
+```
+
+3. Run manual control package
+
+```shell
+source env.sh
+ros2 run autoware_manual_control keyboard_control
 ```
