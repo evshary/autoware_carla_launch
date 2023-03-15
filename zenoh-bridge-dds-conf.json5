@@ -11,7 +11,8 @@
               "/sensing/lidar/.*",
               "/sensing/imu/.*",
               "/sensing/gnss/.*",
-              "/carla_pointcloud"]
+              "/carla_pointcloud",
+              "/clock"]
     }
   }
 }
