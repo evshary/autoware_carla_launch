@@ -31,6 +31,10 @@ make build
 
 1. Run Carla simulator first
 
+```shell
+./CarlaUE4.sh -quality-level=Epic -world-port=2000 -RenderOffScreen
+```
+
 2. Run Autoware with Carla
  
 ```shell
@@ -41,6 +45,10 @@ ros2 launch autoware_carla_launch autoware_carla.launch.xml
 ## Manual control vehicle in Carla
 
 1. Run Carla simulator first
+
+```shell
+./CarlaUE4.sh -quality-level=Epic -world-port=2000 -RenderOffScreen
+```
 
 2. Run Autoware with Carla
 
