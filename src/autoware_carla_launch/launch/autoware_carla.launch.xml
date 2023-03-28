@@ -48,7 +48,6 @@
     <group if="$(var launch_carla_interface)">
 		<node pkg="carla_pointcloud" exec="carla_pointcloud_node" name="carla_pointcloud_interface" output="screen"/>
 	</group>
-    
 
   <!-- Pointcloud container -->
   <group if="$(var use_pointcloud_container)">
