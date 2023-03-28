@@ -4,7 +4,7 @@
       allow: ["/vehicle/status/velocity_status",
               "/vehicle/status/steering_status",
               "/vehicle/status/control_mode",
-              "/vehicle/gear_status",
+              "/vehicle/status/gear_status",
               "/control/command/control_cmd",
               "/control/command/gear_cmd",
               "/sensing/camera/.*",
