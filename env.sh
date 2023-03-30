@@ -3,6 +3,12 @@ ENV_PATH=`realpath $0`
 export AUTOWARE_CARLA_ROOT=`dirname ${ENV_PATH}`
 
 
+# Source workspace
+shell=`echo $SHELL | awk -F '/' '{print $NF}'`
+if [ -f ${AUTOWARE_CARLA_ROOT}/install/setup.${shell} ]; then
+    source ${AUTOWARE_CARLA_ROOT}/install/setup.${shell}
+fi
+
 # Export the config of zenoh-bridge-dds
 export ZENOH_BRIDGE_DDS_CONFIG=${AUTOWARE_CARLA_ROOT}/zenoh-bridge-dds-conf.json5
 
