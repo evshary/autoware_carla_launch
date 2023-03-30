@@ -1,6 +1,7 @@
 <launch>
   <arg name="launch_driver" default="true"/>
   <arg name="gnss_receiver" default="ublox" description="ublox(default) or septentrio"/>
+  <!--<arg name="coordinate_system" default="1" description="0:UTM, 1:MGRS, 2:PLANE"/>-->
   <arg name="coordinate_system" default="2" description="0:UTM, 1:MGRS, 2:PLANE"/>
   <arg name="plane_zone" default="0"/>
 
@@ -35,10 +36,9 @@
       <arg name="output_topic_gnss_fixed" value="fixed"/>
 
       <arg name="coordinate_system" value="$(var coordinate_system)"/>
-      <arg name="use_gnss_ins_orientation" value="false"/>
+      <arg name="use_ublox_receiver" value="true"/>
 
       <arg name="gnss_frame" value="gnss_link"/>
-      <arg name="plane_zone" value="$(var plane_zone)"/>
     </include>
   </group>
 </launch>

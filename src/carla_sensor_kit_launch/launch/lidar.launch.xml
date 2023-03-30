@@ -1,10 +1,10 @@
 <launch>
-  <arg name="launch_driver" default="false"/>
+  <arg name="launch_driver" default="true"/>
   <arg name="use_concat_filter" default="true"/>
+  <arg name="vehicle_id" default="$(env VEHICLE_ID default)"/>
   <arg name="vehicle_mirror_param_file"/>
   <arg name="use_pointcloud_container" default="false" description="launch pointcloud container"/>
   <arg name="pointcloud_container_name" default="pointcloud_container"/>
-  <arg name="use_distortion_corrector" default="true"/>
 
   <group>
     <push-ros-namespace namespace="lidar"/>
@@ -16,6 +16,48 @@
         <arg name="device_ip" value="192.168.1.201"/>
         <arg name="port" value="2368"/>
         <arg name="scan_phase" value="300.0"/>
+        <!-- TODO(fred-apex-ai) sensor_timestamp not supported anymore in ros2 driver but default values changed here -->
+        <!-- <arg name="sensor_timestamp" value="false" /> -->
+        <arg name="launch_driver" value="$(var launch_driver)"/>
+        <arg name="vehicle_mirror_param_file" value="$(var vehicle_mirror_param_file)"/>
+      </include>
+    </group>
+
+    <group>
+      <push-ros-namespace namespace="left"/>
+      <include file="$(find-pkg-share common_sensor_launch)/launch/velodyne_VLP16.launch.xml">
+        <arg name="sensor_frame" value="velodyne_left"/>
+        <arg name="device_ip" value="192.168.1.202"/>
+        <arg name="port" value="2369"/>
+        <arg name="scan_phase" value="180.0"/>
+        <!-- TODO(fred-apex-ai) sensor_timestamp not supported anymore in ros2 driver but default values changed here -->
+        <!-- <arg name="sensor_timestamp" value="false" /> -->
+        <arg name="launch_driver" value="$(var launch_driver)"/>
+        <arg name="vehicle_mirror_param_file" value="$(var vehicle_mirror_param_file)"/>
+      </include>
+    </group>
+
+    <group>
+      <push-ros-namespace namespace="right"/>
+      <include file="$(find-pkg-share common_sensor_launch)/launch/velodyne_VLP16.launch.xml">
+        <arg name="sensor_frame" value="velodyne_right"/>
+        <arg name="device_ip" value="192.168.1.203"/>
+        <arg name="port" value="2370"/>
+        <arg name="scan_phase" value="180.0"/>
+        <!-- TODO(fred-apex-ai) sensor_timestamp not supported anymore in ros2 driver but default values changed here -->
+        <!-- <arg name="sensor_timestamp" value="false" /> -->
+        <arg name="launch_driver" value="$(var launch_driver)"/>
+        <arg name="vehicle_mirror_param_file" value="$(var vehicle_mirror_param_file)"/>
+      </include>
+    </group>
+
+    <group>
+      <push-ros-namespace namespace="rear"/>
+      <include file="$(find-pkg-share common_sensor_launch)/launch/velodyne_VLP16.launch.xml">
+        <arg name="sensor_frame" value="velodyne_rear"/>
+        <arg name="device_ip" value="192.168.1.204"/>
+        <arg name="port" value="2371"/>
+        <arg name="scan_phase" value="180.0"/>
         <!-- TODO(fred-apex-ai) sensor_timestamp not supported anymore in ros2 driver but default values changed here -->
         <!-- <arg name="sensor_timestamp" value="false" /> -->
         <arg name="launch_driver" value="$(var launch_driver)"/>
