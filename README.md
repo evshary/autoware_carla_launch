@@ -2,6 +2,12 @@
 
 The package includes launch file to run Autoware, Carla agent, and bridge (zenoh-bridge-dds + carla_autoware_zenoh_bridge).
 
+# System Requirements
+
+* Ubuntu 20.04
+* Autoware.universe galactic version
+* Carla 0.9.13
+
 # Prerequisite
 
 * Install Carla
