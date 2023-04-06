@@ -39,6 +39,7 @@
       <arg name="use_ublox_receiver" value="true"/>
 
       <arg name="gnss_frame" value="gnss_link"/>
+      <arg name="plane_zone" value="$(var plane_zone)"/>
     </include>
   </group>
 </launch>

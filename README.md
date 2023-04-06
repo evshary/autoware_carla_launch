@@ -61,8 +61,8 @@ make build
 source env.sh
 ros2 launch autoware_carla_launch autoware_carla.launch.xml
 # The launch file equals to two commands below
-# ros2 launch autoware_carla_launch autoware_zenoh.launch.xml
 # ros2 launch autoware_carla_launch carla_bridge.launch.xml
+# ros2 launch autoware_carla_launch autoware_zenoh.launch.xml
 ```
 
 ## Manual control vehicle in Carla
