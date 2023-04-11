@@ -14,8 +14,8 @@ prepare:
 	vcs import src < autoware_carla.repos
 	git submodule update --init --recursive
 	./download_map.sh
-	rosdep update
-	rosdep install -y --from-paths src --ignore-src --rosdistro galactic
+	rosdep update --rosdistro=${ROS_DISTRO}
+	rosdep install -y --from-paths src --ignore-src --rosdistro ${ROS_DISTRO}
 
 clean:
 	cd external/zenoh-plugin-dds && cargo clean
