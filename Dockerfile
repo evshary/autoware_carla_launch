@@ -1,4 +1,4 @@
-FROM ghcr.io/autowarefoundation/autoware-universe:galactic-20220901-prebuilt-cuda-amd64
+FROM ghcr.io/autowarefoundation/autoware-universe:galactic-20221201-prebuilt-cuda-amd64
 
 # Download necessary packages
 RUN apt-get update
