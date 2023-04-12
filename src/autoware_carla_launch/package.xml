@@ -3,7 +3,7 @@
 <package format="3">
   <name>autoware_carla_launch</name>
   <version>0.1.0</version>
-  <description>Launch file for Autoware</description>
+  <description>Launch file for Autoware with Carla</description>
   <maintainer email="evshary@gmail.com">ChenYing Kuo</maintainer>
   <license>Apache License 2.0</license>
 
