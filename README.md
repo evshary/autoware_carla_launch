@@ -99,6 +99,12 @@ ros2 run autoware_manual_control keyboard_control
 # FAQ
 
 * [How to change the map](carla_map/README.md)
+* How to run two vehicles in Carla at the same time.
+  - Modify `carla_bridge.launch.xml` and add `<executable cmd="poetry run python3 main.py --host $(env CARLA_SIMULATOR_IP) --rolename 'v2'" cwd="$(env AUTOWARE_CARLA_ROOT)/external/carla_autoware_zenoh_bridge/carla_agent" output="screen" />`
+  - Run Autoware twice:
+    - 1st: `ROS_DOMAIN_ID=1 VEHICLE_NAME="v1" ros2 launch autoware_carla_launch autoware_zenoh.launch.xml`
+    - 2nd: `ROS_DOMAIN_ID=2 VEHICLE_NAME="v2" ros2 launch autoware_carla_launch autoware_zenoh.launch.xml`
+  - There will be two rviz with separated Autoware at the same time.
 
 # Known Issues
 
