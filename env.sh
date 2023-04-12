@@ -22,6 +22,11 @@ export CARLA_MAP_NAME="Town01"
 export CARLA_MAP_PATH=${AUTOWARE_CARLA_ROOT}/carla_map/${CARLA_MAP_NAME}
 
 
+# Set Autoware Settings (Can be overwritten by CLI)
+export ROS_DOMAIN_ID=0
+export VEHICLE_NAME="v1"
+
+
 # Rust & Poetry path (Only needed while using docker)
 if [ -f /.dockerenv ]; then
     RUST_PATH=${AUTOWARE_CARLA_ROOT}/rust
