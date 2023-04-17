@@ -1,6 +1,6 @@
-[submodule "external/carla_autoware_zenoh_bridge"]
-	path = external/carla_autoware_zenoh_bridge
-	url = https://github.com/evshary/carla_autoware_zenoh_bridge.git
+[submodule "external/zenoh_carla_bridge"]
+	path = external/zenoh_carla_bridge
+	url = https://github.com/evshary/zenoh_carla_bridge.git
 [submodule "external/zenoh-plugin-dds"]
 	path = external/zenoh-plugin-dds
 	url = https://github.com/eclipse-zenoh/zenoh-plugin-dds.git

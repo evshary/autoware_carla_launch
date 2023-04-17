@@ -6,9 +6,9 @@
   <!-- Bridge -->
   <group>
     <executable cmd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh-plugin-dds/target/release/zenoh-bridge-dds -s '*' -c $(env ZENOH_BRIDGE_DDS_CONFIG)" output="screen" />
-    <executable cmd="$(env AUTOWARE_CARLA_ROOT)/external/carla_autoware_zenoh_bridge/target/release/carla_autoware_zenoh_bridge" output="screen">
+    <executable cmd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh_carla_bridge/target/release/zenoh_carla_bridge" output="screen">
       <env name="RUST_LOG" value="c=info"/>
     </executable>
-    <executable cmd="poetry run python3 main.py --host $(env CARLA_SIMULATOR_IP) --rolename v1" cwd="$(env AUTOWARE_CARLA_ROOT)/external/carla_autoware_zenoh_bridge/carla_agent" output="screen" />
+    <executable cmd="poetry run python3 main.py --host $(env CARLA_SIMULATOR_IP) --rolename v1" cwd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh_carla_bridge/carla_agent" output="screen" />
   </group>
 </launch>

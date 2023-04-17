@@ -1,6 +1,6 @@
 {
     "rust-analyzer.linkedProjects": [
-        "external/carla_autoware_zenoh_bridge/Cargo.toml",
+        "external/zenoh_carla_bridge/Cargo.toml",
         "external/zenoh-plugin-dds/Cargo.toml",
     ]
 }

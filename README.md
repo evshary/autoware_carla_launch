@@ -1,6 +1,6 @@
 # autoware_carla_launch
 
-The package includes launch file to run Autoware, Carla agent, and bridge (zenoh-bridge-dds + carla_autoware_zenoh_bridge).
+The package includes launch file to run Autoware, Carla agent, and bridge (zenoh-bridge-dds + zenoh_carla_bridge).
 
 # Prerequisites
 
@@ -97,9 +97,9 @@ ros2 launch autoware_carla_launch autoware_zenoh.launch.xml
   - Modify `src/autoware_carla_launch/launch/carla_bridge.launch.xml` (About line 7)
 
 ```diff
--<executable cmd="poetry run python3 main.py --host $(env CARLA_SIMULATOR_IP) --sync --rolename $(env VEHICLE_NAME)" cwd="$(env AUTOWARE_CARLA_ROOT)/external/carla_autoware_zenoh_bridge/carla_agent" output="screen" />
-+<executable cmd="poetry run python3 main.py --host $(env CARLA_SIMULATOR_IP) --sync --rolename $(env VEHICLE_NAME) --position 87.687683,145.671295,0.300000,0.000000,90.000053,0.000000" cwd="$(env AUTOWARE_CARLA_ROOT)/external/carla_autoware_zenoh_bridge/carla_agent" output="screen" />
-+<executable cmd="poetry run python3 main.py --host $(env CARLA_SIMULATOR_IP) --rolename 'v2' --position 92.109985,227.220001,0.300000,0.000000,-90.000298,0.000000" cwd="$(env AUTOWARE_CARLA_ROOT)/external/carla_autoware_zenoh_bridge/carla_agent" output="screen" />
+-<executable cmd="poetry run python3 main.py --host $(env CARLA_SIMULATOR_IP) --sync --rolename $(env VEHICLE_NAME)" cwd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh_carla_bridge/carla_agent" output="screen" />
++<executable cmd="poetry run python3 main.py --host $(env CARLA_SIMULATOR_IP) --sync --rolename $(env VEHICLE_NAME) --position 87.687683,145.671295,0.300000,0.000000,90.000053,0.000000" cwd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh_carla_bridge/carla_agent" output="screen" />
++<executable cmd="poetry run python3 main.py --host $(env CARLA_SIMULATOR_IP) --rolename 'v2' --position 92.109985,227.220001,0.300000,0.000000,-90.000298,0.000000" cwd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh_carla_bridge/carla_agent" output="screen" />
 ```
 
 * Spawn vehicles into Carla
