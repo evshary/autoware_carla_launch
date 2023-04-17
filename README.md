@@ -2,7 +2,13 @@
 
 The package includes launch file to run Autoware, Carla agent, and bridge ([zenoh-bridge-dds](https://github.com/eclipse-zenoh/zenoh-plugin-dds) + [zenoh_carla_bridge](https://github.com/evshary/zenoh_carla_bridge)).
 
-https://youtu.be/UFBRMqJ2r0w
+## Demo
+
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/UFBRMqJ2r0w/0.jpg)](https://youtu.be/UFBRMqJ2r0w "Run multiple vehicles with Autoware in Carla")
+
+# Architecture
+
+![image](https://user-images.githubusercontent.com/456210/232400804-e0e0a755-0f6d-4873-a8ad-f1188011c993.png)
 
 # Prerequisites
 
