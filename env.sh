@@ -31,15 +31,13 @@ export VEHICLE_NAME="v1"
 if [ -f /.dockerenv ]; then
     RUST_PATH=${AUTOWARE_CARLA_ROOT}/rust
     POETRY_PATH=${AUTOWARE_CARLA_ROOT}/poetry
+    PYENV_PATH=${AUTOWARE_CARLA_ROOT}/pyenv
 
     export RUSTUP_HOME=${RUST_PATH}
     export CARGO_HOME=${RUST_PATH}
     export PATH="${RUST_PATH}/bin:$PATH"
     export POETRY_HOME=${POETRY_PATH}	
     export PATH="${POETRY_PATH}/bin:$PATH"
-
-    mkdir -p ${RUST_PATH}
-    touch ${RUST_PATH}/COLCON_IGNORE
-    mkdir -p ${POETRY_PATH}
-    touch ${POETRY_PATH}/COLCON_IGNORE
+    export PYENV_ROOT="${PYENV_PATH}"
+    export PATH="${PYENV_ROOT}/bin:$PATH"
 fi

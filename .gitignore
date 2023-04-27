@@ -6,3 +6,4 @@ log
 # Compile tools
 rust
 poetry
+pyenv

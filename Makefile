@@ -9,8 +9,9 @@ build:
 	colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
 prepare:
-	curl https://sh.rustup.rs -sSf | bash -s -- -y
-	curl -sSL https://install.python-poetry.org | python3 -
+	# Install dependencies
+	./dependency_install.sh
+	# Install necessary ROS package
 	vcs import src < autoware_carla.repos
 	git submodule update --init --recursive
 	./download_map.sh
@@ -21,4 +22,8 @@ clean:
 	cd external/zenoh-plugin-dds && cargo clean
 	cd external/zenoh_carla_bridge && cargo clean
 	rm -rf install log build
+	rm -rf external/zenoh_carla_bridge/carla_agent/.venv
+
+docker_clean: clean
+	rm -rf rust poetry pyenv
 
