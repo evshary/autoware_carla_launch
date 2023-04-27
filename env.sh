@@ -4,7 +4,7 @@ export AUTOWARE_CARLA_ROOT=`dirname ${ENV_PATH}`
 
 
 # Source workspace
-shell=`echo $SHELL | awk -F '/' '{print $NF}'`
+shell=`cat /proc/$$/cmdline | tr -d '\0' | tr -d '-'`
 if [ -f ${AUTOWARE_CARLA_ROOT}/install/setup.${shell} ]; then
     source ${AUTOWARE_CARLA_ROOT}/install/setup.${shell}
 fi
