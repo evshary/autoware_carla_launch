@@ -2,19 +2,27 @@
 		build \
 		clean
 
-build:
-	cd external/zenoh-plugin-dds && cargo build --release -p zenoh-bridge-dds
+build_bridge:
 	cd external/zenoh_carla_bridge && cargo build --release
 	cd external/zenoh_carla_bridge/carla_agent && poetry install --no-root
-	colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
-prepare:
+build_autoware:
+	colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+	cd external/zenoh-plugin-dds && cargo build --release -p zenoh-bridge-dds
+
+prepare_bridge:
 	# Install dependencies
-	./dependency_install.sh
+	./dependency_install.sh rust
+	./dependency_install.sh python
+
+prepare_autoware:
+	# Install dependencies
+	./dependency_install.sh rust
 	# Install necessary ROS package
 	vcs import src < autoware_carla.repos
 	git submodule update --init --recursive
 	./download_map.sh
+	sudo apt update
 	rosdep update --rosdistro=${ROS_DISTRO}
 	rosdep install -y --from-paths src --ignore-src --rosdistro ${ROS_DISTRO}
 
