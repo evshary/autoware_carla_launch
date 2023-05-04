@@ -4,6 +4,6 @@
     <executable cmd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh_carla_bridge/target/release/zenoh_carla_bridge" output="screen">
       <env name="RUST_LOG" value="c=info"/>
     </executable>
-    <executable cmd="poetry run python3 main.py --host $(env CARLA_SIMULATOR_IP) --sync --rolename $(env VEHICLE_NAME)" cwd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh_carla_bridge/carla_agent" output="screen" />
+    <executable cmd="poetry run python3 main.py --host $(env CARLA_SIMULATOR_IP) --rolename $(env VEHICLE_NAME)" cwd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh_carla_bridge/carla_agent" output="screen" />
   </group>
 </launch>
