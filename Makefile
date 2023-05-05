@@ -12,16 +12,16 @@ build_autoware:
 
 prepare_bridge:
 	# Install dependencies
-	./dependency_install.sh rust
-	./dependency_install.sh python
+	./script/dependency_install.sh rust
+	./script/dependency_install.sh python
 
 prepare_autoware:
 	# Install dependencies
-	./dependency_install.sh rust
+	./script/dependency_install.sh rust
 	# Install necessary ROS package
 	vcs import src < autoware_carla.repos
 	git submodule update --init --recursive
-	./download_map.sh
+	./script/download_map.sh
 	sudo apt update
 	rosdep update --rosdistro=${ROS_DISTRO}
 	rosdep install -y --from-paths src --ignore-src --rosdistro ${ROS_DISTRO}
