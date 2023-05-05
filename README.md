@@ -71,10 +71,10 @@ The section shows how to run Autoware in Carla simulator.
 ./CarlaUE4.sh -quality-level=Epic -world-port=2000 -RenderOffScreen
 ```
 
-2. Run Carla Bridge and Python Agent (In Carla bridge container)
+2. Run zenoh_carla_bridge and Python Agent (In Carla bridge container)
 
 ```shell
-ros2 launch autoware_carla_launch carla_bridge.launch.xml
+./zenoh-carla-bridge.sh
 ```
 
 3. Run zenoh-bridge-dds and Autoware (In Autoware container)
@@ -85,30 +85,18 @@ ros2 launch autoware_carla_launch autoware_zenoh.launch.xml
 
 ## Run multiple vehicles with Autoware in Carla at the same time
 
-* Since running two Autoware will cause port conflict, we need to do some modification.
-  - Modify `src/universe/autoware.universe/launch/tier4_planning_launch/launch/scenario_planning/lane_driving/behavior_planning/behavior_planning.launch.py` (About line 177) 
-
-```diff
-+ import random
-....
-            {
-                "bt_tree_config_path": [
-                    FindPackageShare("behavior_path_planner"),
-                    "/config/behavior_path_planner_tree.xml",
-                ],
-+               "groot_zmq_publisher_port": random.randint(2000, 4000),
-+               "groot_zmq_server_port": random.randint(2000, 4000),
-                "planning_hz": 10.0,
-            },
-```
-
 * Able to spawn second vehicle into Carla.
-  - Modify `src/autoware_carla_launch/launch/carla_bridge.launch.xml` (About line 7)
+  - Modify `zenoh-carla-bridge.sh` (About line 6)
 
 ```diff
--<executable cmd="poetry run python3 main.py --host $(env CARLA_SIMULATOR_IP) --rolename $(env VEHICLE_NAME)" cwd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh_carla_bridge/carla_agent" output="screen" />
-+<executable cmd="poetry run python3 main.py --host $(env CARLA_SIMULATOR_IP) --rolename 'v1' --position 87.687683,145.671295,0.300000,0.000000,90.000053,0.000000" cwd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh_carla_bridge/carla_agent" output="screen" />
-+<executable cmd="poetry run python3 main.py --host $(env CARLA_SIMULATOR_IP) --rolename 'v2' --position 92.109985,227.220001,0.300000,0.000000,-90.000298,0.000000" cwd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh_carla_bridge/carla_agent" output="screen" />
+-                       "poetry -C ${PYTHON_AGENT_PATH} run python3 ${PYTHON_AGENT_PATH}/main.py \
+-                               --host ${CARLA_SIMULATOR_IP} --rolename ${VEHICLE_NAME}"
++                       "poetry -C ${PYTHON_AGENT_PATH} run python3 ${PYTHON_AGENT_PATH}/main.py \
++                               --host ${CARLA_SIMULATOR_IP} --rolename 'v1' \
++                               --position 87.687683,145.671295,0.300000,0.000000,90.000053,0.000000" \
++                       "poetry -C ${PYTHON_AGENT_PATH} run python3 ${PYTHON_AGENT_PATH}/main.py \
++                               --host ${CARLA_SIMULATOR_IP} --rolename 'v2' \
++                               --position 92.109985,227.220001,0.300000,0.000000,-90.000298,0.000000"
 ```
 
 * Spawn vehicles into Carla
