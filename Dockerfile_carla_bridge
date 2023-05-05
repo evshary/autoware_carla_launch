@@ -8,7 +8,7 @@ RUN python3 -m pip install gdown
 # Used by zenoh-bridge-dds
 RUN apt-get install -y llvm-dev libclang-dev cmake 
 # Used by my carla-bridge
-RUN apt-get install -y ros-galactic-moveit-msgs
+RUN apt-get install -y ros-galactic-moveit-msgs parallel
 # Used by pyenv
 RUN apt-get install -y build-essential libssl-dev zlib1g-dev \
                        libbz2-dev libreadline-dev libsqlite3-dev curl \
