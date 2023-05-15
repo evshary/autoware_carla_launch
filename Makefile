@@ -14,6 +14,7 @@ prepare_bridge:
 	# Install dependencies
 	./script/dependency_install.sh rust
 	./script/dependency_install.sh python
+	git submodule update --init --recursive
 
 prepare_autoware:
 	# Install dependencies

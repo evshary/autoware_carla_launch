@@ -80,6 +80,7 @@ The section shows how to run Autoware in Carla simulator.
 3. Run zenoh-bridge-dds and Autoware (In Autoware container)
 
 ```shell
+source env.sh
 ros2 launch autoware_carla_launch autoware_zenoh.launch.xml
 ```
 
