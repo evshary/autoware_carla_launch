@@ -1,7 +1,7 @@
 # Project Root
 ENV_PATH=`realpath $0`
 export AUTOWARE_CARLA_ROOT=`dirname ${ENV_PATH}`
-
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
 # Setup environmental variables for different environments
 shell=`cat /proc/$$/cmdline | tr -d '\0' | tr -d '-'`

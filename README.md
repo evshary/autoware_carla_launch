@@ -74,6 +74,7 @@ The section shows how to run Autoware in Carla simulator.
 2. Run zenoh_carla_bridge and Python Agent (In Carla bridge container)
 
 ```shell
+source env.sh
 ./zenoh-carla-bridge.sh
 ```
 
