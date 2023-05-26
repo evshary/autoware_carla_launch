@@ -1,7 +1,6 @@
 # Project Root
 ENV_PATH=`realpath $0`
 export AUTOWARE_CARLA_ROOT=`dirname ${ENV_PATH}`
-export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
 # Setup environmental variables for different environments
 shell=`cat /proc/$$/cmdline | tr -d '\0' | tr -d '-'`
@@ -12,6 +11,11 @@ if [ -d /opt/ros/humble/ ] && [ -f ${AUTOWARE_CARLA_ROOT}/install/setup.${shell}
 
     # Export the config of zenoh-bridge-dds
     export ZENOH_BRIDGE_DDS_CONFIG=${AUTOWARE_CARLA_ROOT}/zenoh-bridge-dds-conf.json5
+
+    # ROS configuration
+    export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+    export ROS_LOCALHOST_ONLY=1
+    sudo ip link set lo multicast on  # Enable multicast for DDS
 
 else  # Python agent & zenoh_carla_bridge
 
