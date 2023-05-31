@@ -74,6 +74,10 @@ The section shows how to run Autoware in Carla simulator.
 2. Run zenoh_carla_bridge and Python Agent (In Carla bridge container)
 
 ```shell
+# Go inside "Carla bridge container"
+./run-bridge-docker.sh
+# Run zenoh_carla_bridge and Python Agent
+cd autoware_carla_launch
 source env.sh
 ./zenoh-carla-bridge.sh
 ```
@@ -81,35 +85,56 @@ source env.sh
 3. Run zenoh-bridge-dds and Autoware (In Autoware container)
 
 ```shell
+# Go inside "Autoware container"
+./run-autoware-docker.sh
+# Run zenoh-bridge-dds and Autoware
+cd autoware_carla_launch
 source env.sh
 ros2 launch autoware_carla_launch autoware_zenoh.launch.xml
 ```
 
 ## Run multiple vehicles with Autoware in Carla at the same time
 
-* Able to spawn second vehicle into Carla.
-  - Modify `zenoh-carla-bridge.sh` (About line 6)
+1. Run Carla simulator (In native host)
 
-```diff
--                       "poetry -C ${PYTHON_AGENT_PATH} run python3 ${PYTHON_AGENT_PATH}/main.py \
--                               --host ${CARLA_SIMULATOR_IP} --rolename ${VEHICLE_NAME}"
-+                       "poetry -C ${PYTHON_AGENT_PATH} run python3 ${PYTHON_AGENT_PATH}/main.py \
-+                               --host ${CARLA_SIMULATOR_IP} --rolename 'v1' \
-+                               --position 87.687683,145.671295,0.300000,0.000000,90.000053,0.000000" \
-+                       "poetry -C ${PYTHON_AGENT_PATH} run python3 ${PYTHON_AGENT_PATH}/main.py \
-+                               --host ${CARLA_SIMULATOR_IP} --rolename 'v2' \
-+                               --position 92.109985,227.220001,0.300000,0.000000,-90.000298,0.000000"
+```shell
+./CarlaUE4.sh -quality-level=Epic -world-port=2000 -RenderOffScreen
 ```
 
-* Spawn vehicles into Carla
-  - Run Carla
-  - Run `ros2 launch autoware_carla_launch carla_bridge.launch.xml`
+2. Run zenoh_carla_bridge and Python Agent (In Carla bridge container)
 
-* Run Autoware twice:
-  - 1st: `ROS_DOMAIN_ID=1 VEHICLE_NAME="v1" ros2 launch autoware_carla_launch autoware_zenoh.launch.xml`
-  - 2nd: `ROS_DOMAIN_ID=2 VEHICLE_NAME="v2" ros2 launch autoware_carla_launch autoware_zenoh.launch.xml`
+```shell
+# Go inside "Carla bridge container"
+./run-bridge-docker.sh
+# Run zenoh_carla_bridge and Python Agent
+cd autoware_carla_launch
+source env.sh
+./zenoh-carla-bridge-two-vehicles.sh
+```
 
-* Now there are two rviz with separated Autoware at the same time. You can control them separately!
+3. Run zenoh-bridge-dds and Autoware for 1st vehicle (In Autoware container)
+
+```shell
+# Go inside "Autoware container"
+./run-autoware-docker.sh
+# Run zenoh-bridge-dds and Autoware
+cd autoware_carla_launch
+source env.sh
+VEHICLE_NAME="v1" ros2 launch autoware_carla_launch autoware_zenoh.launch.xml
+```
+
+4. Run zenoh-bridge-dds and Autoware for 2nd vehicle (In Autoware container)
+
+```shell
+# Go inside "Autoware container"
+./run-autoware-docker.sh
+# Run zenoh-bridge-dds and Autoware
+cd autoware_carla_launch
+source env.sh
+VEHICLE_NAME="v2" ros2 launch autoware_carla_launch autoware_zenoh.launch.xml
+```
+
+5. Now there are two rviz with separated Autoware at the same time. You can control them separately!
 
 # FAQ
 
