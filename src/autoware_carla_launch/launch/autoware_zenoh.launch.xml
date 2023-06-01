@@ -71,6 +71,6 @@
 
   <!-- Bridge -->
   <group>
-    <executable cmd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh-plugin-dds/target/release/zenoh-bridge-dds -s $(env VEHICLE_NAME) -d $(env ROS_DOMAIN_ID) -c $(env ZENOH_BRIDGE_DDS_CONFIG)" output="screen" />
+    <executable cmd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh-plugin-dds/target/release/zenoh-bridge-dds -s $(env VEHICLE_NAME) -d $(env ROS_DOMAIN_ID) -c $(env ZENOH_BRIDGE_DDS_CONFIG) -e tcp/$(env ZENOH_CARLA_IP):7447" output="screen" />
   </group>
 </launch>
