@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DOCKER_IMAGE=zenoh-autoware
-DOCKER_FILE=Dockerfile_autoware
+DOCKER_FILE=container/Dockerfile_autoware
 
 if [ ! "$(docker images -q ${DOCKER_IMAGE})" ]; then
     echo "${DOCKER_IMAGE} does not exist. Creating..."

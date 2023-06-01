@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DOCKER_IMAGE=zenoh-carla-bridge
-DOCKER_FILE=Dockerfile_carla_bridge
+DOCKER_FILE=container/Dockerfile_carla_bridge
 
 if [ ! "$(docker images -q ${DOCKER_IMAGE})" ]; then
     echo "${DOCKER_IMAGE} does not exist. Creating..."
