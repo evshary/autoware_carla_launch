@@ -11,17 +11,19 @@ build_autoware:
 	cd external/zenoh-plugin-dds && cargo build --release -p zenoh-bridge-dds
 
 prepare_bridge:
+	# Get code
+	git submodule update --init --recursive
 	# Install dependencies
 	./script/dependency_install.sh rust
 	./script/dependency_install.sh python
-	git submodule update --init --recursive
 
 prepare_autoware:
+	# Get code
+	vcs import src < autoware_carla.repos
+	git submodule update --init --recursive
 	# Install dependencies
 	./script/dependency_install.sh rust
 	# Install necessary ROS package
-	vcs import src < autoware_carla.repos
-	git submodule update --init --recursive
 	./script/download_map.sh
 	sudo apt update
 	rosdep update --rosdistro=${ROS_DISTRO}
