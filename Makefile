@@ -32,7 +32,7 @@ prepare_autoware:
 clean:
 	cd external/zenoh-plugin-dds && cargo clean
 	cd external/zenoh_carla_bridge && cargo clean
-	rm -rf install log build
+	rm -rf install log build bridge_log
 	rm -rf external/zenoh_carla_bridge/carla_agent/.venv
 
 docker_clean: clean
