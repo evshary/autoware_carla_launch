@@ -7,3 +7,6 @@ log
 rust
 poetry
 pyenv
+
+# Bridge
+bridge_log
