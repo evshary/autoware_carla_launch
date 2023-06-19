@@ -1,0 +1,12 @@
+{
+  "build": { "dockerfile": "Dockerfile" },
+
+  "customizations": {
+    "vscode": {
+    }
+  },
+
+  "runArgs": ["--rm"],
+
+  "remoteUser": "adlink"
+}
