@@ -59,6 +59,30 @@ make prepare_autoware
 make build_autoware
 ```
 
+## Clean
+
+* Clean the Carla bridge container
+
+```shell
+# Enter into docker
+./container/run-bridge-docker.sh
+# Clean
+cd autoware_carla_launch
+source env.sh
+make clean_bridge
+```
+
+* Clean Zenoh+Autoware container
+
+```shell
+# Enter into docker
+./container/run-autoware-docker.sh
+# Clean
+cd autoware_carla_launch
+source env.sh
+make clean_autoware
+```
+
 # Usage
 
 ## Carla with Autoware
