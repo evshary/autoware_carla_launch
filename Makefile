@@ -30,11 +30,16 @@ prepare_autoware:
 	rosdep update --rosdistro=${ROS_DISTRO}
 	rosdep install -y --from-paths src --ignore-src --rosdistro ${ROS_DISTRO}
 
-clean:
-	cd external/zenoh-plugin-dds && cargo clean
+clean_bridge:
 	cd external/zenoh_carla_bridge && cargo clean
-	rm -rf install log build bridge_log
 	rm -rf external/zenoh_carla_bridge/carla_agent/.venv
+	rm -rf bridge_log
+
+clean_autoware:
+	cd external/zenoh-plugin-dds && cargo clean
+	rm -rf install log build
+
+clean: clean_bridge clean_autoware
 
 docker_clean: clean
 	rm -rf rust poetry pyenv
