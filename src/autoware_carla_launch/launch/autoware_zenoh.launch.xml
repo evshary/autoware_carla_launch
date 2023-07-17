@@ -27,7 +27,7 @@
   <arg name="launch_system_monitor" default="false" description="launch system monitor"/>
   <!-- Tools -->
   <arg name="rviz" default="true" description="launch rviz"/>
-  <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/autoware.rviz" description="rviz config"/>
+  <arg name="rviz_config" default="$(find-pkg-share autoware_carla_launch)/rviz/autoware.rviz" description="rviz config"/>
   
   <group scoped="false">
     <include file="$(find-pkg-share autoware_launch)/launch/autoware.launch.xml">
