@@ -101,18 +101,9 @@ ros2 launch autoware_carla_launch autoware_zenoh.launch.xml
             },
 ```
 
-* Able to spawn second vehicle into Carla.
-  - Modify `src/autoware_carla_launch/launch/carla_bridge.launch.xml` (About line 7)
-
-```diff
--<executable cmd="poetry run python3 main.py --host $(env CARLA_SIMULATOR_IP) --rolename $(env VEHICLE_NAME)" cwd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh_carla_bridge/carla_agent" output="screen" />
-+<executable cmd="poetry run python3 main.py --host $(env CARLA_SIMULATOR_IP) --rolename 'v1' --position 87.687683,145.671295,0.300000,0.000000,90.000053,0.000000" cwd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh_carla_bridge/carla_agent" output="screen" />
-+<executable cmd="poetry run python3 main.py --host $(env CARLA_SIMULATOR_IP) --rolename 'v2' --position 92.109985,227.220001,0.300000,0.000000,-90.000298,0.000000" cwd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh_carla_bridge/carla_agent" output="screen" />
-```
-
-* Spawn vehicles into Carla
+* Spawn two vehicles into Carla
   - Run Carla
-  - Run `ros2 launch autoware_carla_launch carla_bridge.launch.xml`
+  - Run `ros2 launch autoware_carla_launch carla_bridge_two_vehicles.launch.xml`
 
 * Run Autoware twice:
   - 1st: `ROS_DOMAIN_ID=1 VEHICLE_NAME="v1" ros2 launch autoware_carla_launch autoware_zenoh.launch.xml`
