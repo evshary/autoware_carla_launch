@@ -1,4 +1,4 @@
-FROM ghcr.io/autowarefoundation/autoware-universe:humble-20230215-prebuilt-cuda-amd64
+FROM ghcr.io/autowarefoundation/autoware-universe:humble-20230715-prebuilt-cuda-amd64
 
 # Download necessary packages
 RUN apt-get update
