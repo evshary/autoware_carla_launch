@@ -4,7 +4,7 @@ The package includes launch file to run Autoware, Carla agent, and bridge ([zeno
 
 ## Demo
 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/UFBRMqJ2r0w/0.jpg)](https://youtu.be/UFBRMqJ2r0w "Run multiple vehicles with Autoware in Carla")
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/lrFucLUWbDo/0.jpg)](https://youtu.be/lrFucLUWbDo "Run multiple vehicles with Autoware Humble in Carla")
 
 # Architecture
 
