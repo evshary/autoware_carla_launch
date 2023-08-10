@@ -50,7 +50,7 @@ make build_bridge
 ./container/run-autoware-docker.sh
 ```
 
-* Build Carla bridge
+* Build Zenoh+Autoware
 
 ```shell
 cd autoware_carla_launch
