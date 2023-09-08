@@ -24,7 +24,7 @@
   <!-- Vehicle -->
   <arg name="launch_vehicle_interface" default="false"/>
   <!-- System -->
-  <arg name="launch_system_monitor" default="false" description="launch system monitor"/>
+  <arg name="launch_system_monitor" default="true" description="launch system monitor"/>
   <!-- Tools -->
   <arg name="rviz" default="true" description="launch rviz"/>
   <arg name="rviz_config" default="$(find-pkg-share autoware_carla_launch)/rviz/autoware_carla.rviz" description="rviz config"/>
