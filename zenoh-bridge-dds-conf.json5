@@ -9,12 +9,22 @@
               "/vehicle/status/hazard_lights_status",
               "/control/command/control_cmd",
               "/control/command/gear_cmd",
+              "/control/gate_mode_cmd",
+              "/control/current_gate_mode",
               "/sensing/camera/.*",
               "/sensing/lidar/.*",
               "/sensing/imu/.*",
               "/sensing/gnss/.*",
               "/carla_pointcloud",
-              "/clock"]
+              "/clock",
+              "/external/selected/control_cmd",
+              "/external/selected/gear_cmd",
+              "/api/autoware/set/engage",
+              "/api/autoware/get/engage",
+              "/api/external/get/vehicle/status",
+              "/api/external/set/command/remote/shift",
+              "/api/external/set/command/remote/turn_signal",
+              "/api/external/get/cpu_usage"]
     }
   }
 }
