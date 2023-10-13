@@ -1,5 +1,5 @@
 # Project Root
-ENV_PATH=`realpath $0`
+ENV_PATH=`realpath ${0//-}` # In tmux, $0 will become -bash, so we need to remove -
 export AUTOWARE_CARLA_ROOT=`dirname ${ENV_PATH}`
 
 # Setup environmental variables for different environments
