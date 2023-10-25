@@ -145,6 +145,8 @@ source env.sh
 cd autoware_carla_launch
 source env.sh
 ./script/run-autoware.sh v1
+# Optional: If you want to assign Carla IP and FMS IP
+./script/run-autoware.sh v1 127.0.0.1:7447 127.0.0.1:7887
 ```
 
 4. Run zenoh-bridge-dds and Autoware for 2nd vehicle (In Autoware container)
@@ -156,6 +158,8 @@ source env.sh
 cd autoware_carla_launch
 source env.sh
 ./script/run-autoware.sh v2
+# Optional: If you want to assign Carla IP and FMS IP
+./script/run-autoware.sh v2 127.0.0.1:7447 127.0.0.1:7887
 ```
 
 5. Now there are two rviz with separated Autoware at the same time. You can control them separately!
