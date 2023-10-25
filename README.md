@@ -45,6 +45,7 @@ make clean
 * Download necessary code & data
 
 ```shell
+# Source Autoware first before build
 source env.sh
 make prepare
 ```
@@ -52,7 +53,6 @@ make prepare
 * Build
 
 ```shell
-# Source Autoware first before build
 make build
 ```
 
