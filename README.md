@@ -115,6 +115,10 @@ source env.sh
 cd autoware_carla_launch
 source env.sh
 ./script/run-autoware.sh
+
+# (Optional) If you want to drive manually, split the terminal and run the following command
+source env.sh
+ros2 run autoware_manual_control keyboard_control
 ```
 
 ## Run multiple vehicles with Autoware in Carla at the same time
