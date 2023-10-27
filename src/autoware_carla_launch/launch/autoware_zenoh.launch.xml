@@ -30,6 +30,8 @@
   <arg name="rviz_config" default="$(find-pkg-share autoware_carla_launch)/rviz/autoware.rviz" description="rviz config"/>
   <!-- Deprecated API -->
   <arg name="launch_deprecated_api" default="true" description="launch deprecated API"/>
+  <!-- Manual Controll -->
+  <arg name="manual_control" default="true" description="Enable topic relay for manual control"/>
   
   <group scoped="false">
     <include file="$(find-pkg-share autoware_launch)/launch/autoware.launch.xml">
@@ -74,5 +76,11 @@
   <!-- Bridge -->
   <group>
     <executable cmd="$(env AUTOWARE_CARLA_ROOT)/external/zenoh-plugin-dds/target/release/zenoh-bridge-dds -s $(env VEHICLE_NAME) -d $(env ROS_DOMAIN_ID) -c $(env ZENOH_BRIDGE_DDS_CONFIG) -e tcp/$(env ZENOH_CARLA_IP_PORT) -e tcp/$(env ZENOH_FMS_IP_PORT)" output="screen" />
+  </group>
+
+  <!-- Relay for manual control -->
+  <group if="$(var manual_control)">
+	  <node pkg="topic_tools" exec="relay" name="relay" args="external/selected/control_cmd control/command/control_cmd" output="screen"/>
+	  <node pkg="topic_tools" exec="relay" name="relay" args="external/selected/gear_cmd control/command/gear_cmd" output="screen"/>
   </group>
 </launch>
