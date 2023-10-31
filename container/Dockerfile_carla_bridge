@@ -1,4 +1,5 @@
 FROM ghcr.io/autowarefoundation/autoware-universe:galactic-20221201-prebuilt-cuda-amd64
+# TODO: Don't upgrade it until we bump the carla-sys version.
 
 # Download necessary packages
 RUN apt-get update

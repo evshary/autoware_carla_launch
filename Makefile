@@ -38,6 +38,7 @@ clean_bridge:
 clean_autoware:
 	cd external/zenoh-plugin-dds && cargo clean
 	rm -rf install log build
+	rm -rf autoware_log
 
 clean: clean_bridge clean_autoware
 
