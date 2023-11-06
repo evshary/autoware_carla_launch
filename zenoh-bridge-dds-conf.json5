@@ -12,6 +12,8 @@
         "/control/command/gear_cmd",
         "/control/gate_mode_cmd",
         "/control/current_gate_mode",
+        "/control/command/turn_indicators_cmd",
+        "/control/command/hazard_lights_cmd",
         "/sensing/camera/.*",
         "/sensing/lidar/.*",
         "/sensing/imu/.*",
