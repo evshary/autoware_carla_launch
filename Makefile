@@ -10,6 +10,7 @@ build_bridge:
 build_autoware:
 	colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 	cd external/zenoh-plugin-dds && cargo build --release -p zenoh-bridge-dds
+	cd external/zenoh-plugin-ros2dds && cargo build --release -p zenoh-bridge-ros2dds
 
 prepare_bridge:
 	# Get code

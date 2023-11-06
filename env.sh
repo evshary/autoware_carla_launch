@@ -11,6 +11,8 @@ if [ -d /opt/ros/humble/ ] && [ -f ${AUTOWARE_CARLA_ROOT}/install/setup.${shell}
 
     # Export the config of zenoh-bridge-dds
     export ZENOH_BRIDGE_DDS_CONFIG=${AUTOWARE_CARLA_ROOT}/zenoh-bridge-dds-conf.json5
+    # Export the config of zenoh-bridge-ros2dds
+    export ZENOH_BRIDGE_ROS2DDS_CONFIG=${AUTOWARE_CARLA_ROOT}/zenoh-bridge-ros2dds-conf.json5
 
     # ROS configuration
     export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
@@ -44,6 +46,7 @@ export CARLA_MAP_PATH=${AUTOWARE_CARLA_ROOT}/carla_map/${CARLA_MAP_NAME}
 # Set Autoware Settings (Can be overwritten by CLI)
 export ROS_DOMAIN_ID=0
 export VEHICLE_NAME="v1"
+export BRIDGE_TYPE="dds"
 
 
 # Rust path (Only needed while using docker)
