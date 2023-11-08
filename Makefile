@@ -12,6 +12,9 @@ build_autoware:
 	cd external/zenoh-plugin-dds && cargo build --release -p zenoh-bridge-dds
 	cd external/zenoh-plugin-ros2dds && cargo build --release -p zenoh-bridge-ros2dds
 
+lint_bridge:
+	cd external/zenoh_carla_bridge && cargo clippy --all -- -W clippy::all -W clippy::pedantic -W clippy::restriction -W clippy::nursery -D warnings
+
 prepare_bridge:
 	# Get code
 	git submodule update --init --recursive
