@@ -14,8 +14,8 @@ The package includes launch file to run Autoware, Carla agent, and bridge ([zeno
 
 Make sure you meet the following system requirements
 
-* Ubuntu 20.04
-* Carla 0.9.13
+* Ubuntu 22.04
+* Carla 0.9.14
 
 Install rocker for containers
 
