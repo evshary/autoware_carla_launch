@@ -11,3 +11,6 @@ pyenv
 # Bridge
 bridge_log
 autoware_log
+
+# Ignore autoware source code
+autoware
