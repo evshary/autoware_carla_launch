@@ -36,6 +36,7 @@ prepare_autoware:
 
 clean_bridge:
 	cd external/zenoh_carla_bridge && cargo clean
+	cd external/zenoh-plugin-ros2dds && cargo clean
 	rm -rf external/zenoh_carla_bridge/carla_agent/.venv
 	rm -rf bridge_log
 
