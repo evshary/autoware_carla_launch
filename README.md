@@ -59,6 +59,24 @@ make prepare_autoware
 make build_autoware
 ```
 
+* (Optional) If you want to build Autoware from source
+
+```shell
+# Remove old autoware (Optional)
+rm -rf autoware
+# Download source code and run docker
+./container/run-autoware-docker-src.sh
+# Inside container
+cd autoware_carla_launch
+# Build Autoware
+./script/build-autoware.sh
+source autoware/install/setup.bash
+# The remaining steps are the same
+source env.sh
+make prepare_autoware
+make build_autoware
+```
+
 ## Clean
 
 * Clean the Carla bridge container
