@@ -8,7 +8,7 @@ build_bridge:
 	cd external/zenoh_carla_bridge/carla_agent && poetry install --no-root
 
 build_autoware:
-	colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+	colcon build --symlink-install --base-paths src --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 	cd external/zenoh-plugin-dds && cargo build --release -p zenoh-bridge-dds
 	cd external/zenoh-plugin-ros2dds && cargo build --release -p zenoh-bridge-ros2dds
 
