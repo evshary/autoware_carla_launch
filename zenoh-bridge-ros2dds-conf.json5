@@ -31,6 +31,9 @@
             "/api/external/get/vehicle/status",
             "/api/external/set/command/remote/shift",
             "/api/external/set/command/remote/turn_signal",
+            // local is used by FMS for workaround
+            "/api/external/set/command/local/shift",
+            "/api/external/set/command/local/turn_signal",
             "/api/external/get/cpu_usage"
         ],
         service_servers: [
