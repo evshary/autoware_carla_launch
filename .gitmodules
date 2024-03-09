@@ -1,5 +1,5 @@
 [submodule "external/zenoh_carla_bridge"]
-	path = external/zenoh_carla_bridge
+	path = src/external/zenoh_carla_bridge
 	url = https://github.com/evshary/zenoh_carla_bridge.git
 [submodule "src/autoware_manual_control"]
 	path = src/autoware_manual_control

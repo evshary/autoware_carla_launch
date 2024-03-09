@@ -26,12 +26,12 @@ default:
 build: build_bridge build_autoware
 
 build_bridge:
-	cd external/zenoh_carla_bridge && \
+	cd src/external/zenoh_carla_bridge && \
 	cargo build --release
 
 	poetry config virtualenvs.in-project true # Make sure poetry install .venv under carla_agent
 
-	cd external/zenoh_carla_bridge/carla_agent && \
+	cd src/external/zenoh_carla_bridge/carla_agent && \
 	poetry install --no-root
 
 build_autoware:
@@ -41,7 +41,7 @@ build_autoware:
 		--cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
 lint_bridge:
-	cd external/zenoh_carla_bridge && \
+	cd src/external/zenoh_carla_bridge && \
 	cargo clippy --all -- \
 		-W clippy::all \
 		-W clippy::pedantic \
@@ -71,7 +71,7 @@ prepare_autoware:
 	rosdep install -y --from-paths src --ignore-src --rosdistro ${ROS_DISTRO}
 
 clean_bridge:
-	rm -rf external/zenoh_carla_bridge/carla_agent/.venv
+	rm -rf src/external/zenoh_carla_bridge/carla_agent/.venv
 	rm -rf bridge_log
 
 clean_autoware:
