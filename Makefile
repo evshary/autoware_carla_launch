@@ -1,17 +1,55 @@
-.PHONY: prepare \
-		build \
-		clean
+.PHONY: default \
+	prepare \
+	prepare_autoware \
+	prepare_bridge \
+	build \
+	build_autoware \
+	build_bridge \
+	lint_bridge \
+	clean \
+	clean_docker \
+	clean_autoware \
+	clean_bridge
+
+default:
+	@echo 'Usage:'
+	@echo
+	@echo 'make prepare'
+	@echo '	Install required dependencies.'
+	@echo
+	@echo 'make build'
+	@echo '	Build the whole project.'
+	@echo
+	@echo 'make clean'
+	@echo '	Clean up build output and artifacts.'
+
+build: build_bridge build_autoware
 
 build_bridge:
-	cd external/zenoh_carla_bridge && cargo build --release
+	cd external/zenoh_carla_bridge && \
+	cargo build --release
+
 	poetry config virtualenvs.in-project true # Make sure poetry install .venv under carla_agent
-	cd external/zenoh_carla_bridge/carla_agent && poetry install --no-root
+
+	cd external/zenoh_carla_bridge/carla_agent && \
+	poetry install --no-root
 
 build_autoware:
-	colcon build --symlink-install --base-paths src --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+	colcon build \
+		--symlink-install \
+		--base-paths src \
+		--cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
 lint_bridge:
-	cd external/zenoh_carla_bridge && cargo clippy --all -- -W clippy::all -W clippy::pedantic -W clippy::restriction -W clippy::nursery -D warnings
+	cd external/zenoh_carla_bridge && \
+	cargo clippy --all -- \
+		-W clippy::all \
+		-W clippy::pedantic \
+		-W clippy::restriction \
+		-W clippy::nursery \
+		-D warnings
+
+prepare: prepare_bridge prepare_autoware
 
 prepare_bridge:
 	# Get code
@@ -42,6 +80,5 @@ clean_autoware:
 
 clean: clean_bridge clean_autoware
 
-docker_clean: clean
+clean_docker: clean
 	rm -rf rust poetry pyenv
-
