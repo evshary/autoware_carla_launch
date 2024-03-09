@@ -24,7 +24,6 @@ prepare_bridge:
 
 prepare_autoware:
 	# Get code
-	vcs import src < autoware_carla.repos
 	git submodule update --init --recursive
 	# Install dependencies
 	./script/dependency_install.sh rust
