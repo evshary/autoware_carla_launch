@@ -29,12 +29,22 @@ function install_rust()
     curl https://sh.rustup.rs -sSf | bash -s -- -y
 }
 
+function install_zenoh()
+{
+    echo "deb [trusted=yes] https://download.eclipse.org/zenoh/debian-repo/ /" | sudo tee -a /etc/apt/sources.list > /dev/null
+    sudo apt update
+    sudo apt install zenoh-bridge-dds=0.10.1-rc-1 zenoh-bridge-dds=0.10.1-rc.2-1
+}
+
 if [ "$1" = "rust" ]; then
     install_rust
 elif [ "$1" = "python" ]; then
     install_python
+elif [ "$1" = "zenoh" ]; then
+    install_python
 else
     install_rust
     install_python
+    install_zenoh
 fi
 
