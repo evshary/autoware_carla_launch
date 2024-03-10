@@ -1,16 +1,23 @@
 # ROS data
-install
-build
-log
+/install/
+/build/
+/log/
 
 # Compile tools
-rust
-poetry
-pyenv
+/rust/
+/poetry/
+/pyenv/
 
 # Bridge
-bridge_log
-autoware_log
+/bridge_log/
+/autoware_log/
 
 # Ignore autoware source code
-autoware
+/autoware/
+
+# Ignore editor files
+*~
+.*~
+\#*#
+*.swp
+*.swo
