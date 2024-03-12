@@ -2,5 +2,6 @@
     "rust-analyzer.linkedProjects": [
         "external/zenoh_carla_bridge/Cargo.toml",
         "external/zenoh-plugin-dds/Cargo.toml",
-    ]
+    ],
+    "esbonio.sphinx.confDir": ""
 }
