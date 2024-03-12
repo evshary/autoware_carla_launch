@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -e
 
 export VEHICLE_NAME="${1:-v1}"
 export ZENOH_CARLA_IP_PORT="${2:-'127.0.0.1:7447'}"

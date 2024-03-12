@@ -10,9 +10,9 @@ if [ -d /opt/ros/humble/ ] && [ -f ${AUTOWARE_CARLA_ROOT}/install/setup.${shell}
     source ${AUTOWARE_CARLA_ROOT}/install/setup.${shell}
 
     # Export the config of zenoh-bridge-dds
-    export ZENOH_BRIDGE_DDS_CONFIG=${AUTOWARE_CARLA_ROOT}/zenoh-bridge-dds-conf.json5
+    export ZENOH_BRIDGE_DDS_CONFIG=${AUTOWARE_CARLA_ROOT}/config/zenoh-bridge-dds-conf.json5
     # Export the config of zenoh-bridge-ros2dds
-    export ZENOH_BRIDGE_ROS2DDS_CONFIG=${AUTOWARE_CARLA_ROOT}/zenoh-bridge-ros2dds-conf.json5
+    export ZENOH_BRIDGE_ROS2DDS_CONFIG=${AUTOWARE_CARLA_ROOT}/config/zenoh-bridge-ros2dds-conf.json5
 
     # ROS configuration
     export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
