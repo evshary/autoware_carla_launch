@@ -151,7 +151,7 @@ ros2 run autoware_manual_control keyboard_control
 
 ```shell
 # Go inside "Carla bridge container"
-./run-bridge-docker.sh
+./container/run-bridge-docker.sh
 # Run zenoh_carla_bridge and Python Agent
 cd autoware_carla_launch
 source env.sh
@@ -162,7 +162,7 @@ source env.sh
 
 ```shell
 # Go inside "Autoware container"
-./run-autoware-docker.sh
+./container/run-autoware-docker.sh
 # Run zenoh-bridge-dds and Autoware
 cd autoware_carla_launch
 source env.sh
@@ -175,7 +175,7 @@ source env.sh
 
 ```shell
 # Go inside "Autoware container"
-./run-autoware-docker.sh
+./container/run-autoware-docker.sh
 # Run zenoh-bridge-dds and Autoware
 cd autoware_carla_launch
 source env.sh
