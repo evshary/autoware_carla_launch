@@ -1,8 +1,7 @@
 Usage Scenarios
 ===============
 
-Contents
---------
+The page lists some usage scenarios.
 
 .. toctree::
 
