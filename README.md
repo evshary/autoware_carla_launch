@@ -4,7 +4,7 @@
 
 The package includes launch file to run Autoware, Carla agent, and bridge ([zenoh-bridge-ros2dds](https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds) + [zenoh_carla_bridge](https://github.com/evshary/zenoh_carla_bridge)).
 
-The [document webpage](https://autoware-carla-launch.readthedocs.io/en/latest/) is still under construction.
+Documentation: https://autoware-carla-launch.readthedocs.io/en/latest/
 
 ## Demo
 
