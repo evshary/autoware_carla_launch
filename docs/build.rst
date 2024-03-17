@@ -1,5 +1,8 @@
-Build
-=====
+How to Build
+============
+
+We need to build two containers.
+One is for Carla bridge and the other one is for Autoware.
 
 Build the container for Carla bridge
 ------------------------------------
