@@ -7,3 +7,6 @@
 [submodule "external/zenoh-plugin-ros2dds"]
 	path = external/zenoh-plugin-ros2dds
 	url = https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds.git
+[submodule "external/zenoh_autoware_v2x"]
+	path = external/zenoh_autoware_v2x
+	url = https://github.com/evshary/zenoh_autoware_v2x.git
