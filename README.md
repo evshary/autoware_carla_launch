@@ -128,12 +128,12 @@ source env.sh
 ./script/run-bridge.sh
 ```
 
-3. Run zenoh-bridge-dds and Autoware (In Autoware container)
+3. Run zenoh-bridge-ros2dds and Autoware (In Autoware container)
 
 ```shell
 # Go inside "Autoware container"
 ./container/run-autoware-docker.sh
-# Run zenoh-bridge-dds and Autoware
+# Run zenoh-bridge-ros2dds and Autoware
 cd autoware_carla_launch
 source env.sh
 ./script/run-autoware.sh
@@ -162,12 +162,12 @@ source env.sh
 ./script/run-bridge-two-vehicles.sh
 ```
 
-3. Run zenoh-bridge-dds and Autoware for 1st vehicle (In Autoware container)
+3. Run zenoh-bridge-ros2dds and Autoware for 1st vehicle (In Autoware container)
 
 ```shell
 # Go inside "Autoware container"
 ./container/run-autoware-docker.sh
-# Run zenoh-bridge-dds and Autoware
+# Run zenoh-bridge-ros2dds and Autoware
 cd autoware_carla_launch
 source env.sh
 ./script/run-autoware.sh v1
@@ -175,12 +175,12 @@ source env.sh
 ./script/run-autoware.sh v1 127.0.0.1:7447 127.0.0.1:7887
 ```
 
-4. Run zenoh-bridge-dds and Autoware for 2nd vehicle (In Autoware container)
+4. Run zenoh-bridge-ros2dds and Autoware for 2nd vehicle (In Autoware container)
 
 ```shell
 # Go inside "Autoware container"
 ./container/run-autoware-docker.sh
-# Run zenoh-bridge-dds and Autoware
+# Run zenoh-bridge-ros2dds and Autoware
 cd autoware_carla_launch
 source env.sh
 ./script/run-autoware.sh v2

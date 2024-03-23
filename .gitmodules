@@ -1,9 +1,6 @@
 [submodule "external/zenoh_carla_bridge"]
 	path = external/zenoh_carla_bridge
 	url = https://github.com/evshary/zenoh_carla_bridge.git
-[submodule "external/zenoh-plugin-dds"]
-	path = external/zenoh-plugin-dds
-	url = https://github.com/eclipse-zenoh/zenoh-plugin-dds.git
 [submodule "external/zenoh-plugin-ros2dds"]
 	path = external/zenoh-plugin-ros2dds
 	url = https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds.git
