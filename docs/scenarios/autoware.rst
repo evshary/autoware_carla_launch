@@ -20,13 +20,13 @@ The section shows how to run Autoware in Carla simulator.
     source env.sh
     ./script/run-bridge.sh
 
-3. Run zenoh-bridge-dds and Autoware (In Autoware container)
+3. Run zenoh-bridge-ros2dds and Autoware (In Autoware container)
 
 ..  code-block:: bash
 
     # Go inside "Autoware container"
     ./container/run-autoware-docker.sh
-    # Run zenoh-bridge-dds and Autoware
+    # Run zenoh-bridge-ros2dds and Autoware
     cd autoware_carla_launch
     source env.sh
     ./script/run-autoware.sh

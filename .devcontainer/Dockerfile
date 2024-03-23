@@ -5,7 +5,7 @@ RUN apt-get update
 # Useful tools
 RUN apt-get install -y wget unzip tmux inetutils-ping curl vim
 RUN python3 -m pip install gdown
-# Used by zenoh-bridge-dds
+# Used by zenoh-bridge-ros2dds
 RUN apt-get install -y llvm-dev libclang-dev cmake 
 
 # Refer to https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user#_creating-a-nonroot-user
