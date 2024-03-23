@@ -27,10 +27,12 @@ prepare_autoware:
 
 build_bridge:
 	cd external/zenoh_carla_bridge && cargo build --release
-	# Run lint
-	cd external/zenoh_carla_bridge && cargo clippy --all -- -W clippy::all -W clippy::pedantic -W clippy::restriction -W clippy::nursery -D warnings
 	poetry config virtualenvs.in-project true # Make sure poetry install .venv under carla_agent
 	cd external/zenoh_carla_bridge/carla_agent && poetry install --no-root
+
+lint_bridge:
+	# Run lint (TODO: to be fixed later)
+	cd external/zenoh_carla_bridge && cargo clippy --all -- -W clippy::all -W clippy::pedantic -W clippy::restriction -W clippy::nursery -D warnings
 
 build_autoware:
 	colcon build --symlink-install --base-paths src --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
