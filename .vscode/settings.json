@@ -1,7 +1,12 @@
 {
     "rust-analyzer.linkedProjects": [
         "external/zenoh_carla_bridge/Cargo.toml",
-        "external/zenoh-plugin-dds/Cargo.toml",
+        "external/zenoh-plugin-ros2dds/Cargo.toml",
     ],
-    "esbonio.sphinx.confDir": ""
+    "rust-analyzer.cargo.extraEnv": {
+        "LLVM_CONFIG_PATH": "/usr/bin/llvm-config-12",
+        "LIBCLANG_PATH": "/usr/lib/llvm-12/lib",
+        "LIBCLANG_STATIC_PATH": "/usr/lib/llvm-12/lib",
+        "CLANG_PATH": "/usr/bin/clang-12",
+    },
 }
