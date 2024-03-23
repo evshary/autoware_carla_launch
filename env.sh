@@ -35,6 +35,8 @@ else  # Python agent & zenoh_carla_bridge
         export PATH="${PYENV_ROOT}/bin:$PATH"
     fi
 
+    # Export the config of zenoh-carla-bridge
+    export ZENOH_CARLA_BRIDGE_CONFIG=${AUTOWARE_CARLA_ROOT}/zenoh-carla-bridge-conf.json5
 fi
 
 
