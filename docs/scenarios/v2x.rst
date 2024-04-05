@@ -1,6 +1,110 @@
 V2X in Carla
 ============
 
-.. note::
+V2X module integrated the autonomous system between multiple vehicles and the traffic light manager.
 
-   The document is still under construction.
+
+
+Build V2X module
+----------------
+
+* Enter bridge container
+
+.. code-block:: bash
+
+   cd zenoh_autoware_v2x && poetry install --no-root
+
+* Enter Autoware container
+
+.. code-block:: bash
+
+   cd zenoh_autoware_v2x && colcon build --symlink-install
+   pip install eclipse-zenoh==0.10.0rc0 
+
+You must reinstall the Zenoh Python package when re-entering the container.
+
+
+Running single vehicle scenario
+-------------------------------
+
+Step1. Running CARLA simulator
+
+Step2. Entering bridge container then executing...
+
+.. code-block:: bash
+
+   cd autoware_carla_launch
+   source env.sh
+   ./script/run-bridge-v2x.sh
+
+Step3. Entering Autoware container then executing...
+
+.. code-block:: bash
+
+   cd autoware_carla_launch
+   source env.sh
+   ./script/run-autoware.sh
+
+P.S. You can create a *tmux* session and execute the last command to easily run Step 5.
+
+Step4. Wait for Autoware to localize the vehicle, then set the 2D Goal Pose.
+
+Step5.  In Autoware container...
+
+.. code-block:: bash
+
+   source external/zenoh_autoware_v2x/install/setup.bash
+   ros2 run v2x_light v2x_light -- -v <vehicle_id>
+
+<vehicle_id> must same as CARLA agent's rolename. (default is "v1")
+
+Step6. Press the "Auto" button in Rviz and let Autoware autopilot the vehicle
+
+Running multiple vehicles scenario
+----------------------------------
+
+Step1. Running CARLA simulator
+
+Step2. Entering bridge container then executing...
+
+.. code-block:: bash
+
+   cd autoware_carla_launch
+   source env.sh
+   ./script/run-bridge-two-vehicle-v2x.sh
+
+Step3. Running Autoware container for 1st vehicle...
+
+.. code-block:: bash
+
+   cd autoware_carla_launch
+   source env.sh
+   ./script/run-autoware.sh v1
+
+Step4. Running another Autoware container for 2nd vehicle...
+
+.. code-block:: bash
+   cd autoware_carla_launch
+   source env.sh
+   ./script/run-autoware.sh v2
+
+P.S. Same as the above scenario, You can create a tmux session and execute the last command to easily run Step 6, 7.
+
+Step5. Wait for Autoware to localize two vehicles, and then both set the 2D Goal Pose.
+
+Step6.  In 1st Autoware container...
+
+.. code-block:: bash
+
+   source external/zenoh_autoware_v2x/install/setup.bash
+   ros2 run v2x_light v2x_light -- -v v1
+
+Step7. In 2nd Autoware container...
+
+.. code-block:: bash
+
+   source external/zenoh_autoware_v2x/install/setup.bash
+   ros2 run v2x_light v2x_light -- -v v2
+
+Step8. Press the "Auto" button in Rviz and let two Autoware autopilot the vehicles
+   
