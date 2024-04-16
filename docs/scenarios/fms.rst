@@ -3,6 +3,10 @@ Fleet Management System in Carla
 
 Remote fleet management service with manual and automatic drving.
 
+.. image:: http://img.youtube.com/vi/QCt7YoSF6LQ/0.jpg
+    :alt: Zenoh FMS with Autoware in Carla
+    :target: https://youtu.be/QCt7YoSF6LQ
+
 .. note:: 
    This service is for carla version 0.9.13.
 
@@ -24,30 +28,18 @@ Download and build fleet management module
    ./prerequisite.sh
 
 
-Running single vehicle scenario
--------------------------------
+Run Autoware with Carla
+-----------------------
 
-**Step1.** Running CARLA simulator
+Run Carla, bridge and Autoware with the tutorial.
 
-**Step2.** Entering bridge container then executing...
+* :ref:`autoware.rst`
+* :ref:`multiple_autowares.rst`
 
-.. code-block:: bash
+Run Fleet Management System
+---------------------------
 
-   cd autoware_carla_launch
-   source env.sh
-   ./script/run-bridge.sh
-
-
-**Step3.** Entering Autoware container then executing...
-
-.. code-block:: bash
-
-   cd autoware_carla_launch
-   source env.sh
-   ./script/run-autoware.sh
-
-
-**Step4.** Run Web & API fleet management server.
+* Run Web & API fleet management server.
 
 .. code-block:: bash
 
@@ -59,6 +51,4 @@ Running single vehicle scenario
    Please make sure to source ROS 2 environment before this step.
 
 
-**Step4.** Visit the fleet management server at http://localhost:3000
-
-   
+* Visit the fleet management server at http://localhost:3000
