@@ -31,10 +31,10 @@ Download and build fleet management module
 Run Autoware with Carla
 -----------------------
 
-Run Carla, bridge and Autoware with the tutorial.
+Follow the either tutorial to run Carla, bridge and Autoware.
 
-* :ref:`autoware.rst`
-* :ref:`multiple_autowares.rst`
+* :ref:`run carla with one autoware`
+* :ref:`run carla with multiple autowares`
 
 Run Fleet Management System
 ---------------------------

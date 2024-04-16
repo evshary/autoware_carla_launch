@@ -1,3 +1,5 @@
+.. _run carla with one autoware:
+
 Run Carla with one Autoware
 ===========================
 
