@@ -1,5 +1,4 @@
-FROM ghcr.io/autowarefoundation/autoware-universe:galactic-20221201-prebuilt-cuda-amd64
-# TODO: Don't upgrade it until we bump the carla-sys version.
+FROM ghcr.io/autowarefoundation/autoware-universe:humble-2023.08-prebuilt-cuda-amd64
 
 # Download necessary packages
 RUN apt-get update
@@ -10,12 +9,16 @@ RUN printf 'set-option -g default-shell /bin/bash\nset -g default-terminal "tmux
 # Used by zenoh-bridge-ros2dds
 RUN apt-get install -y llvm-dev libclang-dev cmake 
 # Used by my carla-bridge
-RUN apt-get install -y ros-galactic-moveit-msgs parallel
+RUN apt-get install -y ros-humble-moveit-msgs parallel
+# Used by carla-sys
+RUN apt-get install -y clang-12 libclang-12-dev
 # Used by pyenv
 RUN apt-get install -y build-essential libssl-dev zlib1g-dev \
                        libbz2-dev libreadline-dev libsqlite3-dev curl \
                        libncursesw5-dev xz-utils tk-dev libxml2-dev \
                        libxmlsec1-dev libffi-dev liblzma-dev
+# Create a file to differentiate the container
+RUN touch /opt/zenoh-carla-bridge
 
 CMD bash
 
