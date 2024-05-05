@@ -40,7 +40,6 @@ build_autoware:
 
 clean_bridge:
 	cd external/zenoh_carla_bridge && cargo clean
-	rm -rf external/zenoh_carla_bridge/carla_agent/.venv
 	rm -rf bridge_log
 
 clean_autoware:
@@ -51,4 +50,7 @@ clean_autoware:
 clean: clean_bridge clean_autoware
 
 docker_clean: clean
+	# Remove venv in Python
+	rm -rf external/zenoh_carla_bridge/carla_agent/.venv
+	# Remove other toolchains
 	rm -rf rust poetry pyenv
