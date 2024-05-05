@@ -36,6 +36,7 @@ lint_bridge:
 
 build_autoware:
 	colcon build --symlink-install --base-paths src --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+	cd external/zenoh-tools && cargo build --release
 	cd external/zenoh-plugin-ros2dds && cargo build --release -p zenoh-bridge-ros2dds
 
 clean_bridge:
