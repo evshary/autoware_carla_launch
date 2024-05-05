@@ -12,11 +12,9 @@ function install_python()
     poetry config virtualenvs.in-project true
 
     # Install pyenv
-    if [ -f /.dockerenv ]; then
-        curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
-        pyenv install -v 3.8.10
-        cd external/zenoh_carla_bridge/carla_agent && pyenv local 3.8.10 && poetry env use $(pyenv which python)
-    fi
+    curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
+    pyenv install -v 3.8.10
+    cd external/zenoh_carla_bridge/carla_agent && pyenv local 3.8.10 && poetry env use $(pyenv which python)
 }
 
 function install_rust()
