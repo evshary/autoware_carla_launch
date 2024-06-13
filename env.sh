@@ -37,6 +37,8 @@ else  # Python agent & zenoh_carla_bridge
 
 fi
 
+# Able to access binary after pip install
+export PATH="$HOME/.local/bin:$PATH"
 
 # Export Map path
 export CARLA_MAP_NAME="Town01"
