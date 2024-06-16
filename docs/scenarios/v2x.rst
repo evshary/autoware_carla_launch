@@ -18,18 +18,21 @@ Build V2X module
 
 .. code-block:: bash
 
-   cd zenoh_autoware_v2x && poetry install --no-root
+   cd autoware_carla_launch
+   source env.sh
+   cd external/zenoh_autoware_v2x
+   poetry env use $(pyenv which python) && poetry install --no-root
 
 * Enter Autoware container
 
 .. code-block:: bash
 
-   cd zenoh_autoware_v2x && colcon build --symlink-install
-   pip install eclipse-zenoh==0.10.0rc0 
+   cd autoware_carla_launch/external/zenoh_autoware_v2x
+   pip install -r requirements.txt
+   colcon build --symlink-install
 
 .. warning:: 
-   You must reinstall the Zenoh Python package when re-entering the container.
-
+   Each time the Autoware container is executed, the eclipse-zenoh package needs to be reinstalled. Simply run the command `pip install -r requirements.txt`.
 
 Running single vehicle scenario
 -------------------------------
