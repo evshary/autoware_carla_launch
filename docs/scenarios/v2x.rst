@@ -39,6 +39,10 @@ Running single vehicle scenario
 
 **Step1.** Running CARLA simulator
 
+.. code-block:: bash
+
+   ./CarlaUE4.sh -quality-level=Epic -world-port=2000 -RenderOffScreen
+
 **Step2.** Entering bridge container then executing...
 
 .. code-block:: bash
