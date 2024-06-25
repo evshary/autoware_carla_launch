@@ -28,11 +28,7 @@ Build V2X module
 .. code-block:: bash
 
    cd autoware_carla_launch/external/zenoh_autoware_v2x
-   pip install -r requirements.txt
    colcon build --symlink-install
-
-.. warning:: 
-   Each time the Autoware container is executed, the eclipse-zenoh package needs to be reinstalled. Simply run the command `pip install -r requirements.txt`.
 
 Running single vehicle scenario
 -------------------------------
