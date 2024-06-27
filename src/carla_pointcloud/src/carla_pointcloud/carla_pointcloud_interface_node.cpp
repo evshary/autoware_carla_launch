@@ -32,7 +32,7 @@ PointCloudInterface::PointCloudInterface(const rclcpp::NodeOptions & node_option
             std::bind(&PointCloudInterface::processScan, this, std::placeholders::_1));
 
     velodyne_points_localization =
-            this->create_publisher<sensor_msgs::msg::PointCloud2>("/sensing/lidar/top/outlier_filtered/pointcloud", rclcpp::SensorDataQoS());
+            this->create_publisher<sensor_msgs::msg::PointCloud2>("/sensing/lidar/top/pointcloud", rclcpp::SensorDataQoS());
     velodyne_points_perception =
             this->create_publisher<sensor_msgs::msg::PointCloud2>("/sensing/lidar/concatenated/pointcloud", rclcpp::SensorDataQoS());
 
