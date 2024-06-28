@@ -14,15 +14,6 @@ Carla Map Download Link
 Build V2X module
 ----------------
 
-* Enter bridge container
-
-.. code-block:: bash
-
-   cd autoware_carla_launch
-   source env.sh
-   cd external/zenoh_autoware_v2x
-   poetry env use $(pyenv which python) && poetry install --no-root
-
 * Enter Autoware container
 
 .. code-block:: bash
