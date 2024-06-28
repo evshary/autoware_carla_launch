@@ -16,6 +16,7 @@ function install_python()
     pyenv install -v 3.8.10
     pyenv global 3.8.10
     cd external/zenoh_carla_bridge/carla_agent && poetry env use $(pyenv which python)
+    cd external/zenoh_autoware_v2x && poetry env use $(pyenv which python) && poetry install --no-root
 }
 
 function install_rust()
