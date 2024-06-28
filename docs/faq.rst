@@ -12,3 +12,32 @@ FAQ
 3. How to contribute to the project?
 
     - We are happy to see users to contribute to the project. You can start from the issues in `the GitHub project <https://github.com/users/evshary/projects/3/>`_
+
+4. How to list ROS 2 topics generated from the bridge?
+
+    You must be in the **SAME** Autoware Docker container and ensure Autoware is running. Then you can use either way to have another shell to list the ROS 2 topics.
+
+    - Option 1: Run another bash in the existing Autoware Docker container
+    
+      .. code-block:: bash
+
+          # Execute Autoware container
+          docker exec -it <CONTAINER_ID> bash
+
+          # Inside container
+          cd autoware_carla_launch
+          source env.sh
+          ros2 topic list
+
+    - Option 2: Use tmux to run both Autoware and ROS2 commands
+    
+        1. Enter the container and run tmux. Then run Autoware.
+
+        2. Use `ctrl-b + c` to open a new tmux window.
+
+        3. In the new window, run the following commands:
+        
+          .. code-block:: bash
+
+              source env.sh
+              ros2 topic list
