@@ -9,4 +9,4 @@
 	url = https://github.com/evshary/autoware_manual_control.git
 [submodule "src/autoware_launch"]
 	path = src/autoware_launch
-	url = https://github.com/evshary/autoware_launch.git
+	url = https://github.com/habby1012/autoware_launch.git
