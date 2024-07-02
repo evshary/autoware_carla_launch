@@ -41,3 +41,13 @@ FAQ
 
               source env.sh
               ros2 topic list
+
+5. How to modify and verify the document locally?
+
+    We are using ReadTheDocs, and you can use sphinx to check your modification.
+
+    .. code-block:: bash
+
+        pip install sphinx
+        sphinx-build -a docs /tmp/mydocs
+        xdg-open /tmp/mydocs/index.html
