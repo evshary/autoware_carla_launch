@@ -14,27 +14,21 @@ Carla Map Download Link
 Build V2X module
 ----------------
 
-* Enter bridge container
-
-.. code-block:: bash
-
-   cd zenoh_autoware_v2x && poetry install --no-root
-
 * Enter Autoware container
 
 .. code-block:: bash
 
-   cd zenoh_autoware_v2x && colcon build --symlink-install
-   pip install eclipse-zenoh==0.10.0rc0 
-
-.. warning:: 
-   You must reinstall the Zenoh Python package when re-entering the container.
-
+   cd autoware_carla_launch/external/zenoh_autoware_v2x
+   colcon build --symlink-install
 
 Running single vehicle scenario
 -------------------------------
 
 **Step1.** Running CARLA simulator
+
+.. code-block:: bash
+
+   ./CarlaUE4.sh -quality-level=Epic -world-port=2000 -RenderOffScreen
 
 **Step2.** Entering bridge container then executing...
 
