@@ -1,4 +1,5 @@
 {
+  mode: "peer",
   plugins: {
     ros2dds: {
       allow: {
