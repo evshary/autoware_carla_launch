@@ -8,7 +8,12 @@
             "/control/command/gear_cmd",
             "/control/current_gate_mode",
             "/control/command/turn_indicators_cmd",
-            "/control/command/hazard_lights_cmd"
+            "/control/command/hazard_lights_cmd",
+            "/api/external/get/vehicle/status",
+            "/api/external/get/cpu_usage",
+            "/api/autoware/get/engage",
+            "/planning/mission_planning/echo_back_goal_pose",
+            "/api/vehicle/kinematics"
         ],
         subscribers: [
             // Receive from bridge
@@ -27,14 +32,14 @@
             "/clock",
             "/external/selected/control_cmd",
             "/external/selected/gear_cmd",
-            "/api/autoware/get/engage",
-            "/api/external/get/vehicle/status",
             "/api/external/set/command/remote/shift",
             "/api/external/set/command/remote/turn_signal",
             // local is used by FMS for workaround
             "/api/external/set/command/local/shift",
             "/api/external/set/command/local/turn_signal",
-            "/api/external/get/cpu_usage"
+            "/api/external/set/command/local/control",
+            "/api/autoware/set/engageRequest",
+            "/planning/mission_planning/goal"
         ],
         service_servers: [
             "/api/autoware/set/engage"
