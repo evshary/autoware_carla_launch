@@ -8,7 +8,7 @@ Remote fleet management service with manual and automatic drving.
     :target: https://youtu.be/QCt7YoSF6LQ
 
 .. note:: 
-   This service is for carla version 0.9.13.
+   This service is for carla version 0.9.14.
 
 
 Download and build fleet management module
