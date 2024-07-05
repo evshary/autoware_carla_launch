@@ -10,3 +10,6 @@
 [submodule "src/autoware_launch"]
 	path = src/autoware_launch
 	url = https://github.com/habby1012/autoware_launch.git
+[submodule "external/zenoh_autoware_v2x"]
+	path = external/zenoh_autoware_v2x
+	url = https://github.com/evshary/zenoh_autoware_v2x.git
