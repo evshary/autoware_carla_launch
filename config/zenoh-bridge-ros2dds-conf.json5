@@ -38,11 +38,11 @@
             "/api/external/set/command/local/shift",
             "/api/external/set/command/local/turn_signal",
             "/api/external/set/command/local/control",
-            "/api/autoware/set/engageRequest",
+            "/autoware/engage",
             "/planning/mission_planning/goal"
         ],
         service_servers: [
-            "/api/autoware/set/engage"
+            
         ],
         service_clients: [
             "/all_ignore"
