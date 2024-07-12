@@ -15,8 +15,8 @@ function install_python()
     curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
     pyenv install -v 3.8.10
     pyenv global 3.8.10
-    cd external/zenoh_carla_bridge/carla_agent && poetry env use $(pyenv which python)
-    cd external/zenoh_autoware_v2x && poetry env use $(pyenv which python) && poetry install --no-root
+    cd $HOME/autoware_carla_launch/external/zenoh_carla_bridge/carla_agent && poetry env use $(pyenv which python)
+    cd $HOME/autoware_carla_launch/external/zenoh_autoware_v2x && poetry env use $(pyenv which python) && poetry install --no-root
 }
 
 function install_rust()
