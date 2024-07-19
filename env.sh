@@ -28,6 +28,9 @@ if [ -f /opt/zenoh-carla-bridge ]; then   # Python agent & zenoh_carla_bridge
 
 else  # zenoh-bridge-ros2dds & Autoware
 
+    # Set up Autoware environment 
+    source /autoware/install/setup.${shell}
+    
     # Source workspace after build
     if [ -f ${AUTOWARE_CARLA_ROOT}/install/setup.${shell} ]; then
         source ${AUTOWARE_CARLA_ROOT}/install/setup.${shell}
