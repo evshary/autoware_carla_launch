@@ -34,15 +34,15 @@
             "/external/selected/gear_cmd",
             "/api/external/set/command/remote/shift",
             "/api/external/set/command/remote/turn_signal",
-            // local is used by FMS for workaround
-            "/api/external/set/command/local/shift",
-            "/api/external/set/command/local/turn_signal",
-            "/api/external/set/command/local/control",
+            "/api/external/set/command/remote/shift",
+            "/api/external/set/command/remote/turn_signal",
+            "/api/external/set/command/remote/control",
             "/autoware/engage",
             "/planning/mission_planning/goal"
         ],
         service_servers: [
-            
+	    "/api/operation_mode/change_to_autonomous",
+	    "/api/operation_mode/change_to_remote"
         ],
         service_clients: [
             "/all_ignore"
