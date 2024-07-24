@@ -75,7 +75,7 @@
 
   <!-- Relay for manual control -->
   <group if="$(var manual_control)">
-	  <node pkg="topic_tools" exec="relay" name="relay" args="external/selected/control_cmd control/command/control_cmd" output="screen"/>
-	  <node pkg="topic_tools" exec="relay" name="relay" args="external/selected/gear_cmd control/command/gear_cmd" output="screen"/>
+	  <node pkg="topic_tools" exec="relay" name="relay_control_cmd" args="external/selected/control_cmd control/command/control_cmd" output="screen"/>
+	  <node pkg="topic_tools" exec="relay" name="relay_gear_cmd" args="external/selected/gear_cmd control/command/gear_cmd" output="screen"/>
   </group>
 </launch>
