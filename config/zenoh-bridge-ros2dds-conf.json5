@@ -34,8 +34,6 @@
             "/external/selected/gear_cmd",
             "/api/external/set/command/remote/shift",
             "/api/external/set/command/remote/turn_signal",
-            "/api/external/set/command/remote/shift",
-            "/api/external/set/command/remote/turn_signal",
             "/api/external/set/command/remote/control",
             "/autoware/engage",
             "/planning/mission_planning/goal"
