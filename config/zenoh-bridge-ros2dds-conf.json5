@@ -13,7 +13,8 @@
             "/api/external/get/cpu_usage",
             "/api/autoware/get/engage",
             "/planning/mission_planning/echo_back_goal_pose",
-            "/api/vehicle/kinematics"
+            "/api/vehicle/kinematics",
+            "/api/routing/route"
         ],
         subscribers: [
             // Receive from bridge
