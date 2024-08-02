@@ -13,7 +13,8 @@
             "/api/external/get/cpu_usage",
             "/api/autoware/get/engage",
             "/planning/mission_planning/echo_back_goal_pose",
-            "/api/vehicle/kinematics"
+            "/api/vehicle/kinematics",
+            "/api/routing/route"
         ],
         subscribers: [
             // Receive from bridge
@@ -32,8 +33,6 @@
             "/clock",
             "/external/selected/control_cmd",
             "/external/selected/gear_cmd",
-            "/api/external/set/command/remote/shift",
-            "/api/external/set/command/remote/turn_signal",
             "/api/external/set/command/remote/shift",
             "/api/external/set/command/remote/turn_signal",
             "/api/external/set/command/remote/control",
