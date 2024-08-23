@@ -26,6 +26,9 @@ if [ -f /opt/zenoh-carla-bridge ]; then   # Python agent & zenoh_carla_bridge
     export LIBCLANG_STATIC_PATH=/usr/lib/llvm-12/lib
     export CLANG_PATH=/usr/bin/clang-12
 
+    # Export the config of zenoh-carla-bridge
+    export ZENOH_CARLA_BRIDGE_CONFIG=${AUTOWARE_CARLA_ROOT}/config/zenoh-carla-bridge-conf.json5
+
 else  # zenoh-bridge-ros2dds & Autoware
 
     # Source workspace after build

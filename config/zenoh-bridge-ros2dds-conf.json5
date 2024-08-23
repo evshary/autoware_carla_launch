@@ -1,4 +1,13 @@
 {
+  mode: "peer",
+  transport: {
+    link: {
+      tx: {
+        /// Perform batching of messages if they are smaller of the batch_size
+        //batching: false,
+      }
+    }
+  },
   plugins: {
     ros2dds: {
       allow: {
