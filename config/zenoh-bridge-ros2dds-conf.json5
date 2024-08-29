@@ -1,4 +1,13 @@
 {
+  mode: "peer",
+  transport: {
+    link: {
+      tx: {
+        /// Perform batching of messages if they are smaller of the batch_size
+        batching: false,
+      }
+    }
+  },
   plugins: {
     ros2dds: {
       allow: {
@@ -9,11 +18,12 @@
             "/control/current_gate_mode",
             "/control/command/turn_indicators_cmd",
             "/control/command/hazard_lights_cmd",
+            
+            // Used by FMS
             "/api/external/get/vehicle/status",
             "/api/external/get/cpu_usage",
-            "/api/autoware/get/engage",
-            "/planning/mission_planning/echo_back_goal_pose",
-            "/api/vehicle/kinematics"
+            "/api/vehicle/kinematics",
+            "/api/routing/route"
         ],
         subscribers: [
             // Receive from bridge
@@ -23,26 +33,24 @@
             "/vehicle/status/gear_status",
             "/vehicle/status/turn_indicators_status",
             "/vehicle/status/hazard_lights_status",
-            "/control/gate_mode_cmd",
-            "/sensing/camera/.*",
             "/sensing/lidar/.*",
             "/sensing/imu/.*",
             "/sensing/gnss/.*",
             "/carla_pointcloud",
             "/clock",
-            "/external/selected/control_cmd",
             "/external/selected/gear_cmd",
+            
+            // Used by FMS
             "/api/external/set/command/remote/shift",
-            "/api/external/set/command/remote/turn_signal",
-            // local is used by FMS for workaround
-            "/api/external/set/command/local/shift",
-            "/api/external/set/command/local/turn_signal",
-            "/api/external/set/command/local/control",
-            "/autoware/engage",
+            "/external/selected/control_cmd",
+            "/control/gate_mode_cmd",
+            "/sensing/camera/.*",
             "/planning/mission_planning/goal"
         ],
         service_servers: [
-            
+            // Used by FMS
+            "/api/operation_mode/change_to_autonomous",
+            "/api/operation_mode/change_to_remote"
         ],
         service_clients: [
             "/all_ignore"

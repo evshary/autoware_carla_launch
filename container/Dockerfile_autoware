@@ -9,7 +9,7 @@ RUN printf 'set-option -g default-shell /bin/bash\nset -g default-terminal "tmux
 RUN apt-get install -y llvm-dev libclang-dev cmake 
 # Used by Autoware & my ROS packages
 RUN python3 -m pip install gdown \
-                           eclipse-zenoh==0.11.0-rc3 \
+                           eclipse-zenoh==1.0.0-alpha.6 \
                            setuptools==58.2.0
 RUN apt-get install -y ros-humble-moveit-msgs \
                        ros-humble-object-recognition-msgs \
