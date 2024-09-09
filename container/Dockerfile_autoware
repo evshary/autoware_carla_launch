@@ -1,4 +1,4 @@
-FROM ghcr.io/autowarefoundation/autoware:20240603-prebuilt-cuda-amd64
+FROM ghcr.io/autowarefoundation/autoware:20240905-runtime-cuda-amd64
 
 # Download necessary packages
 RUN apt-get update
