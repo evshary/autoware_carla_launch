@@ -6,7 +6,7 @@
 	url = https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds.git
 [submodule "src/autoware_manual_control"]
 	path = src/autoware_manual_control
-	url = https://github.com/evshary/autoware_manual_control.git
+	url = https://github.com/habby1012/autoware_manual_control.git
 [submodule "external/zenoh_autoware_v2x"]
 	path = external/zenoh_autoware_v2x
 	url = https://github.com/evshary/zenoh_autoware_v2x.git
