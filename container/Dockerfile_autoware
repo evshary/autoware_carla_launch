@@ -1,4 +1,4 @@
-FROM ghcr.io/autowarefoundation/autoware:20240905-runtime-cuda-amd64
+FROM ghcr.io/autowarefoundation/autoware:20240905-devel-cuda-amd64
 
 # Download necessary packages
 RUN apt-get update
@@ -14,7 +14,6 @@ RUN python3 -m pip install gdown \
 RUN apt-get install -y ros-humble-moveit-msgs \
                        ros-humble-object-recognition-msgs \
                        ros-humble-octomap-msgs
-RUN mv /root/autoware_data /opt
 
 CMD bash
 
