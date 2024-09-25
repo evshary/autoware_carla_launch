@@ -58,7 +58,7 @@ export CARLA_MAP_PATH=${AUTOWARE_CARLA_ROOT}/carla_map/${CARLA_MAP_NAME}
 export ROS_DOMAIN_ID=0
 export VEHICLE_NAME="v1"
 
-# Set the ccache directory to /tmp
+# Set the ccache directory to /tmp to avoid permission issue
 export CCACHE_DIR=/tmp/ccache
 
 # Rust path (Only needed while using docker)
