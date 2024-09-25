@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKER_IMAGE=zenoh-autoware
+DOCKER_IMAGE=zenoh-autoware-2024-9
 DOCKER_FILE=container/Dockerfile_autoware
 
 if [ ! "$(docker images -q ${DOCKER_IMAGE})" ]; then

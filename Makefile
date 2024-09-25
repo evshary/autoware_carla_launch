@@ -21,6 +21,7 @@ prepare_autoware:
 	./script/dependency_install.sh rust
 	# Install necessary ROS package
 	./script/download_map.sh
+	./script/download_models.sh
 	sudo apt update
 	rosdep update --rosdistro=${ROS_DISTRO}
 	rosdep install -y --from-paths src --ignore-src --rosdistro ${ROS_DISTRO}

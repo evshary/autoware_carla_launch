@@ -6,7 +6,7 @@
 #include <sensor_msgs/msg/point_cloud2.hpp>
 #include <tf2_ros/buffer.h>
 #include <tf2_ros/transform_listener.h>
-#include <autoware_auto_control_msgs/msg/ackermann_control_command.hpp>
+#include <autoware_control_msgs/msg/control.hpp>
 
 class PointCloudInterface : public rclcpp::Node
 {
