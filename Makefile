@@ -25,6 +25,8 @@ prepare_autoware:
 	sudo apt update
 	rosdep update --rosdistro=${ROS_DISTRO}
 	rosdep install -y --from-paths src --ignore-src --rosdistro ${ROS_DISTRO}
+	# Prebuild models
+	./script/build_models.sh
 
 build_bridge:
 	cd external/zenoh_carla_bridge && cargo build --release
