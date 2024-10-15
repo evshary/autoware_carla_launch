@@ -61,6 +61,9 @@ export VEHICLE_NAME="v1"
 # Set the ccache directory to /tmp to avoid permission issue
 export CCACHE_DIR=/tmp/ccache
 
+# Enable/Disable lidar detection model functionality ("centerpoint", "apollo", "transfusion", or "disable")
+export LIDAR_DETECTION_MODEL="centerpoint"
+
 # Rust path (Only needed while using docker)
 if [ -f /.dockerenv ]; then
     RUST_PATH=${AUTOWARE_CARLA_ROOT}/rust
