@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKER_IMAGE=zenoh-autoware-src-2024-9-3
+DOCKER_IMAGE=zenoh-autoware-src-20240903
 DOCKER_FILE=container/Dockerfile_autoware_src
 AUTOWARE_VERSION=2024.09
 
