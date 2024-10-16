@@ -6,7 +6,7 @@ AUTOWARE_VERSION=2024.09
 
 if [ ! "$(docker images -q ${DOCKER_IMAGE})" ]; then
     echo "${DOCKER_IMAGE} does not exist. Creating..."
-    docker build -f ${DOCKER_FILE} -t ${DOCKER_IMAGE} .
+    docker build --no-cache -f ${DOCKER_FILE} -t ${DOCKER_IMAGE} .
 fi
 
 # Download Autoware source code
