@@ -51,3 +51,15 @@ FAQ
         pip install sphinx
         sphinx-build -a docs /tmp/mydocs
         xdg-open /tmp/mydocs/index.html
+
+6. How to change the lidar detection model for object detection?
+
+    - In the env.sh file located in your project directory, you can adjust the lidar detection model by modifying the LIDAR_DETECTION_MODEL environment variable. The available options are "centerpoint", "apollo", "transfusion", or "disable" to disable lidar detection. 
+    
+    - If you choose "centerpoint", you can also select a specific model version by modifying the CENTERPOINT_MODEL_NAME variable. The available options are "centerpoint" and "centerpoint_tiny".
+    
+    - After making changes, save the file and reload the environment by running:
+
+    .. code-block:: bash
+
+        source env.sh
