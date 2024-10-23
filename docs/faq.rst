@@ -60,6 +60,6 @@ FAQ
     
     - After making changes, save the file and reload the environment by running:
 
-    .. code-block:: bash
+        .. code-block:: bash
 
-        source env.sh
+            source env.sh
