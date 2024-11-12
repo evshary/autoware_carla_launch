@@ -206,6 +206,49 @@ Visualization Manager:
               Value: true
               Wave Color: 255; 255; 255
               Wave Velocity: 40
+            - Class: rviz_plugins/ConsoleMeter
+              Enabled: true
+              Left: 341
+              Length: 171
+              Name: ConsoleMeter
+              Text Color: 25; 255; 240
+              Top: 85
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /vehicle/status/velocity_status
+              Value: true
+              Value Scale: 0.14999249577522278
+              Value height offset: 0
+            - Class: rviz_plugins/SteeringAngle
+              Enabled: true
+              Left: 85
+              Length: 171
+              Name: SteeringAngle
+              Scale: 3
+              Text Color: 25; 255; 240
+              Top: 85
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /vehicle/status/steering_status
+              Value: true
+              Value Scale: 0.14999249577522278
+              Value height offset: 0
+            - Class: rviz_plugins/MaxVelocity
+              Enabled: true
+              Left: 397
+              Length: 64
+              Name: MaxVelocity
+              Text Color: 255; 255; 255
+              Top: 187
+              Topic: /planning/scenario_planning/current_max_velocity
+              Value: true
+              Value Scale: 0.25
           Enabled: true
           Name: Vehicle
         - Class: rviz_plugins/MrmSummaryOverlayDisplay
@@ -3123,4 +3166,4 @@ Window Geometry:
     collapsed: false
   Width: 1850
   X: 469
-  Y: 1467
+  Y: 387
