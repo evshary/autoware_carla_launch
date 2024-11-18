@@ -50,7 +50,9 @@
         service_servers: [
             // Used by FMS
             "/api/operation_mode/change_to_autonomous",
-            "/api/operation_mode/change_to_remote"
+            "/api/operation_mode/change_to_remote",
+            "/api/routing/clear_route",
+            "/api/routing/set_route_points"
         ],
         service_clients: [
             "/all_ignore"
