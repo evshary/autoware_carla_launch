@@ -4,7 +4,9 @@
     link: {
       tx: {
         queue:{
+          /// Perform batching of messages if they are smaller of the batch_size
           batching: {
+            /// Default works well in most cases. If performance problems arise, remove the comment to disable batching.
             // enabled: false,
           }
         }
