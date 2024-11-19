@@ -3,8 +3,6 @@
   transport: {
     link: {
       tx: {
-        /// Perform batching of messages if they are smaller of the batch_size
-        batching: false,
       }
     }
   },
@@ -44,8 +42,7 @@
             "/api/external/set/command/remote/shift",
             "/external/selected/control_cmd",
             "/control/gate_mode_cmd",
-            "/sensing/camera/.*",
-            "/planning/mission_planning/goal"
+            "/sensing/camera/.*"
         ],
         service_servers: [
             // Used by FMS
