@@ -3,6 +3,11 @@
   transport: {
     link: {
       tx: {
+        queue:{
+          batching: {
+            // enabled: false,
+          }
+        }
       }
     }
   },
