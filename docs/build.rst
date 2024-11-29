@@ -37,6 +37,7 @@ Build the container for Zenoh+Autoware
 
     cd autoware_carla_launch
     source env.sh
+    # Note it will take some time first time initialize models used in Autoware
     make prepare_autoware
     make build_autoware
 

@@ -10,6 +10,13 @@ The package includes launch file to run Autoware, Carla agent, and bridges.
     :alt: Run multiple vehicles with Autoware Humble in Carla
     :target: https://youtu.be/lrFucLUWbDo
 
+Version
+-------
+
+* Autoware: 2024.09.03
+* Carla: 0.9.14
+* Zenoh: 1.0.2
+
 Contents
 --------
 
