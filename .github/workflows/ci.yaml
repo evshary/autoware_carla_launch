@@ -11,6 +11,9 @@ on:
       - "examples/**"
       - "Cargo.*"
       - ".github/**"
+  # Able to call by other workflow
+  workflow_call:
+  # Able to call on GitHub
   workflow_dispatch:
 
 concurrency:
