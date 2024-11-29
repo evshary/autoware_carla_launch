@@ -1,7 +1,5 @@
 # autoware_carla_launch
 
-**Note: The main branch is not stable. Suggest using the branch [humble](https://github.com/evshary/autoware_carla_launch/tree/humble) instead.**
-
 The package includes launch file to run Autoware, Carla agent, and bridge ([zenoh-bridge-ros2dds](https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds) + [zenoh_carla_bridge](https://github.com/evshary/zenoh_carla_bridge)).
 
 ## Useful link
