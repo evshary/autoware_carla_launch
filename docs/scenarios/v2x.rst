@@ -66,6 +66,7 @@ Running single vehicle scenario
 
 .. code-block:: bash
 
+   cd autoware_carla_launch
    source external/zenoh_autoware_v2x/install/setup.bash
    ros2 run v2x_light v2x_light -- -v <vehicle_id>
 
