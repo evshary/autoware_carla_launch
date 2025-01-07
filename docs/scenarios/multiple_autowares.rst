@@ -38,7 +38,7 @@ Run Carla with multiple Autowares
 ..  code-block:: bash
 
     # Go inside "Autoware container"
-    ./run-autoware-docker.sh
+    ./container/run-autoware-docker.sh
     # Run zenoh-bridge-ros2dds and Autoware
     cd autoware_carla_launch
     source env.sh
