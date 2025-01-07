@@ -7,7 +7,7 @@ Run Carla with multiple Autowares
 
 ..  code-block:: bash
 
-    ./CarlaUE4.sh -quality-level=Epic -world-port=2000 -RenderOffScreen
+    ./CarlaUE4.sh -quality-level=Epic -world-port=2000 -RenderOffScreen -prefernvidia
 
 2. Run zenoh_carla_bridge and Python Agent (In Carla bridge container)
 
