@@ -28,7 +28,7 @@ Running single vehicle scenario
 
 .. code-block:: bash
 
-   ./CarlaUE4.sh -quality-level=Epic -world-port=2000 -RenderOffScreen
+   ./CarlaUE4.sh -quality-level=Epic -world-port=2000 -RenderOffScreen -prefernvidia
 
 **Step2.** Entering bridge container then executing...
 
