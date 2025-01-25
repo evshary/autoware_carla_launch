@@ -29,11 +29,13 @@ ros2 launch autoware_traffic_light_classifier traffic_light_classifier.launch.xm
 	car_traffic_light_classifier_label_name:=traffic_light_classifier_mobilenetv2_batch_6 \
 	car_traffic_light_classifier_model_name:=traffic_light_classifier_mobilenetv2_batch_6 \
 	traffic_light_classifier_model_path:=$AUTOWARE_CARLA_ROOT/autoware_data/traffic_light_classifier \
-	traffic_light_classifier_param_path:=$(ros2 pkg prefix autoware_traffic_light_classifier --share)/config/car_traffic_light_classifier.param.yaml
+	traffic_light_classifier_param_path:=$(ros2 pkg prefix autoware_traffic_light_classifier --share)/config/car_traffic_light_classifier.param.yaml \
+	build_only:=true
 
 # traffic light (pedestrian)
 ros2 launch autoware_traffic_light_classifier traffic_light_classifier.launch.xml \
 	pedestrian_traffic_light_classifier_label_name:=ped_traffic_light_classifier_mobilenetv2_batch_4 \
 	pedestrian_traffic_light_classifier_model_name:=ped_traffic_light_classifier_mobilenetv2_batch_4 \
 	traffic_light_classifier_model_path:=$AUTOWARE_CARLA_ROOT/autoware_data/traffic_light_classifier \
-	traffic_light_classifier_param_path:=$(ros2 pkg prefix autoware_traffic_light_classifier --share)/config/pedestrian_traffic_light_classifier.param.yaml
+	traffic_light_classifier_param_path:=$(ros2 pkg prefix autoware_traffic_light_classifier --share)/config/pedestrian_traffic_light_classifier.param.yaml \
+	build_only:=true
