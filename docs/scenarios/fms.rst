@@ -3,9 +3,9 @@ Fleet Management System in Carla
 
 Remote fleet management service with manual and automatic drving.
 
-.. image:: http://img.youtube.com/vi/QCt7YoSF6LQ/0.jpg
+.. image:: http://img.youtube.com/vi/e_wtX7X7aTA/0.jpg
     :alt: Zenoh FMS with Autoware in Carla
-    :target: https://youtu.be/QCt7YoSF6LQ
+    :target: https://youtu.be/e_wtX7X7aTA
 
 .. note:: 
    This service is for carla version 0.9.14.
