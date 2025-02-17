@@ -32,4 +32,14 @@ install(DIRECTORY
   DESTINATION share/${PROJECT_NAME}/
 )
 
+install(DIRECTORY
+  config
+  DESTINATION share/${PROJECT_NAME}/
+)
+
+install(DIRECTORY
+  calibration_maps
+  DESTINATION share/${PROJECT_NAME}/
+)
+
 ament_package()

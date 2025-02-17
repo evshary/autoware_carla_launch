@@ -32,7 +32,7 @@
   <arg name="launch_deprecated_api" default="true" description="launch deprecated API"/>
   <!-- Manual Controll -->
   <arg name="manual_control" default="true" description="Enable topic relay for manual control"/>
-  
+
   <group scoped="false">
     <include file="$(find-pkg-share autoware_launch)/launch/autoware.launch.xml">
       <!-- Common -->
@@ -70,12 +70,26 @@
 
   <!-- CARLA -->
   <group if="$(var carla_interface)">
-		<node pkg="carla_pointcloud" exec="carla_pointcloud_node" name="carla_pointcloud_interface" output="screen"/>
+    <node pkg="carla_pointcloud" exec="carla_pointcloud_node" name="carla_pointcloud_interface" output="screen"/>
+
+    <!-- Converts Autoware's Ackermann control command into actuation command for CARLA vehicles -->
+    <arg name="input_control_cmd" default="/control/command/control_cmd"/>
+    <arg name="input_odometry" default="/localization/kinematic_state"/>
+    <arg name="input_steering" default="/vehicle/status/steering_status"/>
+    <arg name="output_actuation_cmd" default="/control/command/actuation_cmd"/>
+    <arg name="config_file" default="$(find-pkg-share autoware_carla_launch)/config/raw_vehicle_cmd_converter.param.yaml"/>
+    <node pkg="autoware_raw_vehicle_cmd_converter" exec="autoware_raw_vehicle_cmd_converter_node" name="autoware_raw_vehicle_cmd_converter" output="screen">
+      <param from="$(var config_file)" allow_substs="true"/>
+      <remap from="~/input/control_cmd" to="$(var input_control_cmd)"/>
+      <remap from="~/input/odometry" to="$(var input_odometry)"/>
+      <remap from="~/input/steering" to="$(var input_steering)"/>
+      <remap from="~/output/actuation_cmd" to="$(var output_actuation_cmd)"/>
+    </node>
 	</group>
 
   <!-- Relay for manual control -->
   <group if="$(var manual_control)">
-	  <node pkg="topic_tools" exec="relay" name="relay_control_cmd" args="external/selected/control_cmd control/command/control_cmd" output="screen"/>
-	  <node pkg="topic_tools" exec="relay" name="relay_gear_cmd" args="external/selected/gear_cmd control/command/gear_cmd" output="screen"/>
+    <node pkg="topic_tools" exec="relay" name="relay_control_cmd" args="external/selected/control_cmd control/command/control_cmd" output="screen"/>
+    <node pkg="topic_tools" exec="relay" name="relay_gear_cmd" args="external/selected/gear_cmd control/command/gear_cmd" output="screen"/>
   </group>
 </launch>
