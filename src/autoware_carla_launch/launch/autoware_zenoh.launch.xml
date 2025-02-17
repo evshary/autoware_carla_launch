@@ -32,6 +32,8 @@
   <arg name="launch_deprecated_api" default="true" description="launch deprecated API"/>
   <!-- Manual Controll -->
   <arg name="manual_control" default="true" description="Enable topic relay for manual control"/>
+  <arg name="is_simulation" default="true"/>
+  <arg name="use_traffic_light_recognition" default="false"/>
   
   <group scoped="false">
     <include file="$(find-pkg-share autoware_launch)/launch/autoware.launch.xml">
@@ -65,6 +67,8 @@
       <!-- Tools -->
       <arg name="rviz" value="$(var rviz)"/>
       <arg name="rviz_config" value="$(var rviz_config)"/>
+      <arg name="is_simulation" value="$(var is_simulation)"/>
+      <arg name="use_traffic_light_recognition" value="$(var use_traffic_light_recognition)"/>
     </include>
   </group>
 
