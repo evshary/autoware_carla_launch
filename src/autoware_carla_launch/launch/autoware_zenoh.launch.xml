@@ -32,7 +32,7 @@
   <arg name="launch_deprecated_api" default="true" description="launch deprecated API"/>
   <!-- Manual Controll -->
   <arg name="manual_control" default="true" description="Enable topic relay for manual control"/>
-  
+
   <group scoped="false">
     <include file="$(find-pkg-share autoware_launch)/launch/autoware.launch.xml">
       <!-- Common -->
@@ -89,7 +89,7 @@
 
   <!-- Relay for manual control -->
   <group if="$(var manual_control)">
-	  <node pkg="topic_tools" exec="relay" name="relay_control_cmd" args="external/selected/control_cmd control/command/control_cmd" output="screen"/>
-	  <node pkg="topic_tools" exec="relay" name="relay_gear_cmd" args="external/selected/gear_cmd control/command/gear_cmd" output="screen"/>
+    <node pkg="topic_tools" exec="relay" name="relay_control_cmd" args="external/selected/control_cmd control/command/control_cmd" output="screen"/>
+    <node pkg="topic_tools" exec="relay" name="relay_gear_cmd" args="external/selected/gear_cmd control/command/gear_cmd" output="screen"/>
   </group>
 </launch>
