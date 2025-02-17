@@ -13,8 +13,8 @@ fi
 
 if [ ! -f "$MAP_PATH/lanelet2_map.osm" ] || [ ! -f "$MAP_PATH/pointcloud_map.pcd" ] || [ ! -f "$MAP_PATH/map_projector_info.yaml" ]; then
     echo "Download map from Internet..."
-    gdown --fuzzy -O $MAP_PATH/lanelet2_map.osm https://drive.google.com/file/d/1CMfWin62qIEqQbcIQ6UfplztZDjMBKD6/view
+    gdown --fuzzy -O $MAP_PATH/lanelet2_map.osm https://drive.google.com/file/d/1eTuRuXWCLHzunwD11zgDahIjVrKLpv__/view
     gdown --fuzzy -O $MAP_PATH/pointcloud_map.pcd https://drive.google.com/file/d/1MvJlfjkw3LWFUs5hdE_KQ2_CQTusU8UN/view
-    gdown --fuzzy -O $MAP_PATH/map_projector_info.yaml https://drive.google.com/file/d/1h1me3TXSoTBL86S94QKlkwSpwUeZXv2J/view
+    gdown --fuzzy -O $MAP_PATH/map_projector_info.yaml https://drive.google.com/file/d/1Nl3NsDADGQliMgjk7_En5Fc14ja7sIZF/view
     echo "Download complete"
 fi
