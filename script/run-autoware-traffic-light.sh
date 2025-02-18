@@ -18,6 +18,7 @@ LOG_PATH=autoware_log/`date '+%Y-%m-%d_%H:%M:%S'`/
 mkdir -p ${LOG_PATH}
 
 # Run the program
+# If is_simulation is true, planning behavior will change and doesn't care about the traffic light recognition. So we make it false.
 parallel --verbose --lb ::: \
     "ros2 launch autoware_carla_launch autoware_zenoh.launch.xml is_simulation:=false use_traffic_light_recognition:=true \
             2>&1 | tee ${LOG_PATH}/autoware.log" \
