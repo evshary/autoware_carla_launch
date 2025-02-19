@@ -28,12 +28,12 @@ sensor_kit_base_link:
     pitch: 0.0 #0.325
     yaw: 0.0 #2.0943951
   camera4/camera_link:
-    x: 0.0 #0.07356
+    x: 2.3 #0.07356
     y: 0.0
     z: 0.0 #-0.0525
-    roll: 0.0
-    pitch: 0.0 #-0.03
-    yaw: 0.0 #-0.005
+    roll: 1.57
+    pitch: -3.14 #-0.03
+    yaw: 1.57 #-0.005
   camera5/camera_link:
     x: 0.0 #-0.07356
     y: 0.0
