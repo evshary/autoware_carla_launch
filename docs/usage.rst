@@ -9,3 +9,4 @@ The page lists some usage scenarios.
    scenarios/multiple_autowares
    scenarios/fms
    scenarios/v2x
+   scenarios/autoware_traffic_light
