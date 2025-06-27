@@ -52,7 +52,7 @@ Build the container for Zenoh+Autoware
     # Inside container
     cd autoware_carla_launch
     # Build Autoware
-    ./script/build-autoware.sh
+    ./script/setup/build-autoware.sh
     source autoware/install/setup.bash
     # The remaining steps are the same
     source env.sh

@@ -11,22 +11,22 @@ prepare_bridge:
 	# Get code
 	git submodule update --init --recursive
 	# Install dependencies
-	./script/dependency_install.sh rust
-	./script/dependency_install.sh python
+	./script/setup/dependency_install.sh rust
+	./script/setup/dependency_install.sh python
 
 prepare_autoware:
 	# Get code
 	git submodule update --init --recursive
 	# Install dependencies
-	./script/dependency_install.sh rust
+	./script/setup/dependency_install.sh rust
 	# Install necessary ROS package
-	./script/download_map.sh
-	./script/download_models.sh
+	./script/setup/download_map.sh
+	./script/setup/download_models.sh
 	sudo apt update
 	rosdep update --rosdistro=${ROS_DISTRO}
 	rosdep install -y --from-paths src --ignore-src --rosdistro ${ROS_DISTRO}
 	# Prebuild models
-	./script/build_models.sh
+	./script/setup/build_models.sh
 
 build_bridge:
 	cd external/zenoh_carla_bridge && cargo build --release
