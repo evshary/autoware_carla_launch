@@ -20,7 +20,7 @@ The section shows how to run Autoware in Carla simulator.
     # Run zenoh_carla_bridge and Python Agent
     cd autoware_carla_launch
     source env.sh
-    ./script/run-bridge.sh
+    ./script/bridge_ros2dds/run-bridge.sh
 
 3. Run zenoh-bridge-ros2dds and Autoware (In Autoware container)
 
@@ -31,7 +31,7 @@ The section shows how to run Autoware in Carla simulator.
     # Run zenoh-bridge-ros2dds and Autoware
     cd autoware_carla_launch
     source env.sh
-    ./script/run-autoware.sh
+    ./script/autoware_ros2dds/run-autoware.sh
 
     # (Optional) If you want to drive manually, split the terminal and run the following command
     source env.sh

@@ -42,7 +42,7 @@ Running single vehicle scenario
 
    cd autoware_carla_launch
    source env.sh
-   ./script/run-bridge-v2x.sh
+   ./script/bridge_ros2dds/run-bridge-v2x.sh
 
 .. note::
    You can determine whether the bridge is running properly and verify that the V2X component is successfully retrieving the required information from the Carla simulator by checking if the terminal displays the following output...
@@ -63,7 +63,7 @@ Running single vehicle scenario
 
    cd autoware_carla_launch
    source env.sh
-   ./script/run-autoware.sh
+   ./script/autoware_ros2dds/run-autoware.sh
 
 .. note:: 
    For convenience, use a *tmux* session to keep **Step 3** running in the background.
@@ -102,7 +102,7 @@ Running multiple vehicles scenario
 
    cd autoware_carla_launch
    source env.sh
-   ./script/run-autoware.sh v1
+   ./script/autoware_ros2dds/run-autoware.sh v1
 
 **Step 4:** Running another Autoware container for 2nd vehicle...
 
@@ -110,7 +110,7 @@ Running multiple vehicles scenario
 
    cd autoware_carla_launch
    source env.sh
-   ./script/run-autoware.sh v2
+   ./script/autoware_ros2dds/run-autoware.sh v2
 
 .. note::
    Just like in the single vehicle scenario, you can create a *tmux* session to execute the last command and more easily manage Steps 6 and 7.
