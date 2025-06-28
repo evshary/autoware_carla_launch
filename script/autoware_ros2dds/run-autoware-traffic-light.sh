@@ -17,6 +17,13 @@ fi
 LOG_PATH=autoware_log/`date '+%Y-%m-%d_%H:%M:%S'`/
 mkdir -p ${LOG_PATH}
 
+# Overwrite the behavior_planning.launch.xml with the default (multi-threaded) version.
+# This version uses the original container configuration, running behavior_path_planner
+# with the default multi-threaded executor
+# Use this to revert any prior single-threaded replacement and ensure default behavior.
+sudo cp "$AUTOWARE_CARLA_ROOT/script/replace/behavior_planning.launch.xml" \
+   /opt/autoware/share/tier4_planning_launch/launch/scenario_planning/lane_driving/behavior_planning/behavior_planning.launch.xml
+
 # Run the program
 # If is_simulation is true, planning behavior will change and doesn't care about the traffic light recognition. So we make it false.
 parallel --verbose --lb ::: \

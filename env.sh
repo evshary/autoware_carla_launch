@@ -28,6 +28,7 @@ if [ -f /opt/zenoh-carla-bridge ]; then   # Python agent & zenoh_carla_bridge
 
     # Export the config of zenoh-carla-bridge
     export ZENOH_CARLA_BRIDGE_CONFIG=${AUTOWARE_CARLA_ROOT}/config/zenoh-carla-bridge-conf.json5
+    export RMW_ZENOH_CARLA_BRIDGE_CONFIG=${AUTOWARE_CARLA_ROOT}/config/rmw-zenoh-carla-bridge-conf.json5
 
 else  # zenoh-bridge-ros2dds & Autoware
 
