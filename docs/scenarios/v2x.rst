@@ -94,7 +94,7 @@ Running multiple vehicles scenario
 
    cd autoware_carla_launch
    source env.sh
-   ./script/run-bridge-two-vehicle-v2x.sh
+   ./script/bridge_ros2dds/run-bridge-two-vehicles-v2x.sh
 
 **Step 3:** Running Autoware container for 1st vehicle...
 
