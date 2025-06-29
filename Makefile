@@ -10,6 +10,8 @@
 prepare_bridge:
 	# Get code
 	git submodule update --init --recursive
+	# Install rmw_zenoh
+	./script/setup/build_zenoh.sh
 	# Install dependencies
 	./script/setup/dependency_install.sh rust
 	./script/setup/dependency_install.sh python
