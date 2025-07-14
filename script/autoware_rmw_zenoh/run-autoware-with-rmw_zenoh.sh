@@ -6,6 +6,9 @@ source rmw_zenoh_ws/install/setup.bash
 export ZENOH_ROUTER_CONFIG_URI=config/RMW_ZENOH_ROUTER_CONFIG.json5
 export ZENOH_SESSION_CONFIG_URI=config/RMW_ZENOH_SESSION_CONFIG.json5
 
+export VEHICLE_NAME="${1:-v1}"
+export ZENOH_CONFIG_OVERRIDE="namespace=\"${VEHICLE_NAME}\""
+
 # Log folder
 LOG_PATH=autoware_log/`date '+%Y-%m-%d_%H:%M:%S'`/
 mkdir -p ${LOG_PATH}
