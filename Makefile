@@ -52,7 +52,10 @@ clean_autoware:
 	rm -rf install log build
 	rm -rf autoware_log
 
-clean: clean_bridge clean_autoware
+clean_zenoh:
+	cd rmw_zenoh_ws && rm -rf install log build
+
+clean: clean_bridge clean_autoware clean_zenoh
 
 docker_clean: clean
 	# Remove venv in Python
