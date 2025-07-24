@@ -25,21 +25,9 @@ Build the container for Carla bridge
 .. note::
     **Troubleshooting:**
 
-    1. If you encounter an error message indicating that `cargo` is not installed during `make prepare_bridge`, try running the following command to update the package list and then rerun the build:
-    
-        .. code-block:: bash
+    1. During compilation, some packages may fail to compile. You can rerun the build command until all packages compile successfully. If some packages still fail after several attempts, please report an issue.
 
-            sudo apt update
-
-    2. If an error occurs during the `ros install` process, run the following command to update the ROS dependencies before retrying:
-    
-        .. code-block:: bash
-
-            rosdep update
-
-    3. During compilation, some packages may fail to compile. You can rerun the build command until all packages compile successfully. If some packages still fail after several attempts, please report an issue.
-
-    4. If `python3.8.10` cannot be installed by `pyenv`, you can install and configure it using `deadsnakes`. Run the following commands to install Python 3.8.10:
+    2. If `python3.8.10` cannot be installed by `pyenv`, you can install and configure it using `deadsnakes`. Run the following commands to install Python 3.8.10:
     
         .. code-block:: bash
 
