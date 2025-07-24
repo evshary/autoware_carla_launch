@@ -48,7 +48,7 @@ FAQ
 
     .. code-block:: bash
 
-        pip install sphinx
+        pip install -r docs/requirements.txt
         sphinx-build -a docs /tmp/mydocs
         xdg-open /tmp/mydocs/index.html
 

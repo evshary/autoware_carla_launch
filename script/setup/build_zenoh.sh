@@ -7,6 +7,7 @@ if [ ! -d "rmw_zenoh_ws" ]; then
     cd rmw_zenoh || exit
     git checkout 65ded05
     cd ../.. || exit
+    rosdep update
     rosdep install --from-paths src --ignore-src --rosdistro humble -y
     cd .. || exit
 fi
