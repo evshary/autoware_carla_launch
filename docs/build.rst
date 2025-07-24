@@ -22,6 +22,34 @@ Build the container for Carla bridge
     make prepare_bridge
     make build_bridge
 
+.. note::
+    **Troubleshooting:**
+
+    1. If you encounter an error message indicating that `cargo` is not installed during `make prepare_bridge`, try running the following command to update the package list and then rerun the build:
+    
+        .. code-block:: bash
+
+            sudo apt update
+
+    2. If an error occurs during the `ros install` process, run the following command to update the ROS dependencies before retrying:
+    
+        .. code-block:: bash
+
+            rosdep update
+
+    3. During compilation, some packages may fail to compile. You can rerun the build command until all packages compile successfully. If some packages still fail after several attempts, please report an issue.
+
+    4. If `python3.8.10` cannot be installed by `pyenv`, you can install and configure it using `deadsnakes`. Run the following commands to install Python 3.8.10:
+    
+        .. code-block:: bash
+
+            sudo add-apt-repository ppa:deadsnakes/ppa
+            sudo apt update
+            sudo apt install python3.8 python3.8-dev python3.8-venv
+            sudo ln -sf /usr/bin/python3.8 /usr/bin/python
+            sudo curl https://bootstrap.pypa.io/pip/3.8/get-pip.py -o get-pip.py && python get-pip.py
+
+
 Build the container for Zenoh+Autoware
 --------------------------------------
 
