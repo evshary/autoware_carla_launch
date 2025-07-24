@@ -16,14 +16,12 @@ Install rocker for containers
     sudo apt install docker.io python3-rocker
 
 .. note::
-    `python3-rocker` is provided by the ROS 2 Humble release. 
-    To install it, you should first configure Ubuntu for ROS 2 Humble. 
+    `python3-rocker` is provided by the ROS 2. 
+    To install it, you should first configure Ubuntu for ROS 2 repositories. 
     You can refer to the official documentation for installation steps:
     https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html.
 
-    The following steps will guide you in configuring ROS 2 Humble:
-
-1. Configure ROS 2 repositories for your system:
+    The following steps will guide you in configuring ROS 2 repositories and install `python3-rocker`:
 
     .. code-block:: bash
 
@@ -33,16 +31,5 @@ Install rocker for containers
         export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F "tag_name" | awk -F\" '{print $4}')
         curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo $VERSION_CODENAME)_all.deb"
         sudo dpkg -i /tmp/ros2-apt-source.deb
-
-2. Update, upgrade, and install ROS 2 Humble:
-
-    .. code-block:: bash
-
         sudo apt update
-        sudo apt upgrade
-        sudo apt install ros-humble-desktop
-3. Then, you can install `python3-rocker`:
-
-    .. code-block:: bash
-
         sudo apt install python3-rocker
