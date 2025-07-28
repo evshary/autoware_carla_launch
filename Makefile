@@ -10,6 +10,7 @@
 prepare_bridge:
 	# Get code
 	git submodule update --init --recursive
+	sudo apt update
 	# Install rmw_zenoh
 	./script/setup/build_zenoh.sh
 	# Install dependencies
