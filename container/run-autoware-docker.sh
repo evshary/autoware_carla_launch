@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKER_IMAGE=zenoh-autoware-20240903
+DOCKER_IMAGE=zenoh-autoware-20250725
 DOCKER_FILE=container/Dockerfile_autoware
 
 if [ ! "$(docker images -q ${DOCKER_IMAGE})" ]; then
@@ -9,4 +9,3 @@ if [ ! "$(docker images -q ${DOCKER_IMAGE})" ]; then
 fi
 
 rocker --nvidia --privileged --x11 --user --ipc host  --volume $(pwd):$HOME/autoware_carla_launch -- ${DOCKER_IMAGE}
-

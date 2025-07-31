@@ -44,11 +44,6 @@ else  # zenoh-bridge-ros2dds & Autoware
     export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
     export ROS_LOCALHOST_ONLY=1
     sudo ip link set lo multicast on  # Enable multicast for DDS
-
-    # Require the traffic_light node to use the correct topic for traffic light recognition.
-    if ! grep -q '<arg name="namespace1" value="traffic_light"/>' /opt/autoware/share/tier4_perception_launch/launch/perception.launch.xml; then
-        sudo sed -i '/<include file="$(find-pkg-share tier4_perception_launch)\/launch\/traffic_light_recognition\/traffic_light.launch.xml">/a\        <arg name="namespace1" value="traffic_light"/>' /opt/autoware/share/tier4_perception_launch/launch/perception.launch.xml
-    fi
 fi
 
 # Able to access binary after pip install

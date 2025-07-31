@@ -21,8 +21,15 @@ mkdir -p ${LOG_PATH}
 # This version uses the original container configuration, running behavior_path_planner
 # with the default multi-threaded executor
 # Use this to revert any prior single-threaded replacement and ensure default behavior.
-sudo cp "$AUTOWARE_CARLA_ROOT/script/replace/behavior_planning.launch.xml" \
-   /opt/autoware/share/tier4_planning_launch/launch/scenario_planning/lane_driving/behavior_planning/behavior_planning.launch.xml
+# Set destination path and SUDO variable based on Autoware build type
+if [[ "$AMENT_PREFIX_PATH" == *"/autoware/install"* ]]; then
+    DEST_PATH="autoware/src/universe/autoware_universe/launch/tier4_planning_launch/launch/scenario_planning/lane_driving/behavior_planning/behavior_planning.launch.xml"
+    SUDO=""
+else
+    DEST_PATH="/opt/autoware/share/tier4_planning_launch/launch/scenario_planning/lane_driving/behavior_planning/behavior_planning.launch.xml"
+    SUDO="sudo"
+fi
+$SUDO cp "$AUTOWARE_CARLA_ROOT/script/replace/behavior_planning.launch.xml" "$DEST_PATH"
 
 # Run the program
 # If is_simulation is true, planning behavior will change and doesn't care about the traffic light recognition. So we make it false.
