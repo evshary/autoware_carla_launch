@@ -1,20 +1,4 @@
-FROM ghcr.io/autowarefoundation/autoware:20240903-devel-cuda-amd64
-
-# ROS repository key expired on 2025-06-01.
-# Workaround based on: https://github.com/osrf/docker_images/issues/807
-
-# Remove existing keys / source
-RUN rm /etc/apt/sources.list.d/ros2-latest.list \
-  && rm /usr/share/keyrings/ros2-latest-archive-keyring.gpg
-
-# Install the new key
-RUN apt-get update \
-  && apt-get install -y ca-certificates curl
-RUN export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F "tag_name" | awk -F\" '{print $4}') ;\
-    curl -L -s -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo $VERSION_CODENAME)_all.deb" \
-    && apt-get update \
-    && apt-get install /tmp/ros2-apt-source.deb \
-    && rm -f /tmp/ros2-apt-source.deb
+FROM ghcr.io/autowarefoundation/autoware:universe-devel-cuda-20250725
 
 # Download necessary packages
 RUN apt-get update
@@ -24,9 +8,15 @@ RUN printf 'set-option -g default-shell /bin/bash\nset -g default-terminal "tmux
 # Used by zenoh-bridge-ros2dds
 RUN apt-get install -y llvm-dev libclang-dev cmake
 # Used by Autoware & my ROS packages
-RUN python3 -m pip install gdown
+RUN python3 -m pip install gdown \
+                           setuptools==58.2.0
 RUN apt-get install -y ros-humble-moveit-msgs \
                        ros-humble-object-recognition-msgs \
                        ros-humble-octomap-msgs
+
+# Patch velodyne_pointcloud's wrong dependency export (fix eigen → Eigen3 and pcl → PCL)
+# Solution based on: https://github.com/ros-drivers/velodyne/issues/550
+RUN sed -i 's/\beigen\b/Eigen3/g' /opt/ros/humble/share/velodyne_pointcloud/cmake/ament_cmake_export_dependencies-extras.cmake && \
+    sed -i 's/\bpcl\b/PCL/g' /opt/ros/humble/share/velodyne_pointcloud/cmake/ament_cmake_export_dependencies-extras.cmake
 
 CMD bash

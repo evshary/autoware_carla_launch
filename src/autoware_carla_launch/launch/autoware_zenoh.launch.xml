@@ -4,6 +4,7 @@
   <arg name="map_path" default="$(env CARLA_MAP_PATH)" description="point cloud and lanelet2 map directory path"/>
   <arg name="vehicle_model" default="sample_vehicle" description="vehicle model name"/>
   <arg name="sensor_model" default="carla_sensor_kit" description="sensor model name"/>
+  <arg name="data_path" default="$(env AUTOWARE_CARLA_ROOT)/autoware_data" description="packages data and artifacts directory path"/>
 
   <!-- Optional parameters -->
   <!-- Modules to be launched -->
@@ -34,13 +35,14 @@
   <arg name="manual_control" default="true" description="Enable topic relay for manual control"/>
   <arg name="is_simulation" default="true"/>
   <arg name="use_traffic_light_recognition" default="false"/>
-  
+
   <group scoped="false">
     <include file="$(find-pkg-share autoware_launch)/launch/autoware.launch.xml">
       <!-- Common -->
       <arg name="map_path" value="$(var map_path)"/>
       <arg name="vehicle_model" value="$(var vehicle_model)"/>
       <arg name="sensor_model" value="$(var sensor_model)"/>
+      <arg name="data_path" value="$(var data_path)"/>
       <!-- Modules to be launched -->
       <arg name="launch_vehicle" value="$(var vehicle)"/>
       <arg name="launch_map" value="$(var map)"/>
