@@ -257,6 +257,7 @@
         <!-- composable node config -->
         <extra_arg name="use_intra_process_comms" value="false"/>
       </composable_node>
+      <param name="thread_num" value="1"/>
     </node_container>
   </group>
 
