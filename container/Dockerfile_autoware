@@ -14,7 +14,7 @@ RUN export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-inf
     curl -L -s -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo $VERSION_CODENAME)_all.deb" \
     && apt-get update \
     && apt-get install /tmp/ros2-apt-source.deb \
-    && rm -f /tmp/ros2-apt-source.debs
+    && rm -f /tmp/ros2-apt-source.deb
 
 # Download necessary packages
 RUN apt-get update
