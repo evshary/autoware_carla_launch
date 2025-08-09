@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKER_IMAGE=zenoh-carla-bridge-20250725
+DOCKER_IMAGE=zenoh-carla-bridge-20250807
 DOCKER_FILE=container/Dockerfile_carla_bridge
 
 if [ ! "$(docker images -q ${DOCKER_IMAGE})" ]; then
