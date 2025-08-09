@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DOCKER_IMAGE=zenoh-autoware-src-20250725
-DOCKER_FILE=container/Dockerfile_autoware_src
+DOCKER_IMAGE=zenoh-autoware-20250725
+DOCKER_FILE=container/Dockerfile_autoware
 AUTOWARE_VERSION=main
 AUTOWARE_COMMIT=8e44ac3 #20250725
 
