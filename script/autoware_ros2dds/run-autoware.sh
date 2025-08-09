@@ -22,13 +22,13 @@ mkdir -p ${LOG_PATH}
 # with the default multi-threaded executor as provided by upstream Autoware.
 # Use this to revert any prior single-threaded replacement and ensure default behavior.
 if [[ "$AMENT_PREFIX_PATH" == *"/autoware/install"* ]]; then
-    DEST_PATH="autoware/src/universe/autoware_universe/launch/tier4_planning_launch/launch/scenario_planning/lane_driving/behavior_planning/behavior_planning.launch.xml"
+    DEST_PATH="autoware/src/universe/autoware_universe/launch"
     SUDO=""
 else
-    DEST_PATH="/opt/autoware/share/tier4_planning_launch/launch/scenario_planning/lane_driving/behavior_planning/behavior_planning.launch.xml"
+    DEST_PATH="/opt/autoware/share"
     SUDO="sudo"
 fi
-$SUDO cp "$AUTOWARE_CARLA_ROOT/script/replace/behavior_planning.launch.xml" "$DEST_PATH"
+$SUDO cp "$AUTOWARE_CARLA_ROOT/script/replace/behavior_planning.launch.xml" "$DEST_PATH/tier4_planning_launch/launch/scenario_planning/lane_driving/behavior_planning/behavior_planning.launch.xml"
 
 # Run the program
 parallel --verbose --lb ::: \

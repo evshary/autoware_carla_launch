@@ -26,13 +26,13 @@ mkdir -p ${LOG_PATH}
 # to avoid a GuardCondition use-after-free issue when using rmw_zenoh with multi-threaded executor.
 # Known issue in ROS 2 Humble; fixed in Rolling (2025.04+), not backported.
 if [[ "$AMENT_PREFIX_PATH" == *"/autoware/install"* ]]; then
-    DEST_PATH="autoware/src/universe/autoware_universe/launch/tier4_planning_launch/launch/scenario_planning/lane_driving/behavior_planning/behavior_planning.launch.xml"
+    DEST_PATH="autoware/src/universe/autoware_universe/launch"
     SUDO=""
 else
-    DEST_PATH="/opt/autoware/share/tier4_planning_launch/launch/scenario_planning/lane_driving/behavior_planning/behavior_planning.launch.xml"
+    DEST_PATH="/opt/autoware/share"
     SUDO="sudo"
 fi
-$SUDO cp "$AUTOWARE_CARLA_ROOT/script/replace/behavior_planning_singlethread.launch.xml" "$DEST_PATH"
+$SUDO cp "$AUTOWARE_CARLA_ROOT/script/replace/behavior_planning_singlethread.launch.xml" "$DEST_PATH/tier4_planning_launch/launch/scenario_planning/lane_driving/behavior_planning/behavior_planning.launch.xml"
 
 # Run the program
 parallel --verbose --lb ::: \
