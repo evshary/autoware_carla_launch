@@ -1,9 +1,9 @@
 #!/bin/bash
 
-DOCKER_IMAGE=zenoh-autoware-20250725
+DOCKER_IMAGE=zenoh-autoware-20250807
 DOCKER_FILE=container/Dockerfile_autoware
 AUTOWARE_VERSION=main
-AUTOWARE_COMMIT=8e44ac3 #20250725
+AUTOWARE_COMMIT=afb3dff99a781f91b4029fbb8835e338f50ecc6a #20250808
 
 if [ ! "$(docker images -q ${DOCKER_IMAGE})" ]; then
     echo "${DOCKER_IMAGE} does not exist. Creating..."
