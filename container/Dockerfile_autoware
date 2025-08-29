@@ -1,4 +1,4 @@
-FROM ghcr.io/autowarefoundation/autoware:universe-devel-cuda-20250807
+FROM ghcr.io/autowarefoundation/autoware:universe-devel-cuda-20250814
 
 # Download necessary packages
 RUN apt-get update
