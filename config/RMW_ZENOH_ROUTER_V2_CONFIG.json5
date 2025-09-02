@@ -492,20 +492,21 @@
     "rules": [
       {
         "id": "allow_topic",
-	"messages": [
+        "messages": [
            "put", "delete", "declare_subscriber",
            "query", "reply", "declare_queryable",
-	],
-	"flows": ["ingress", "egress"],
+           "liveliness_token", "liveliness_query", "declare_liveliness_subscriber",
+        ],
+        "flows": ["ingress", "egress"],
         "permission": "allow",
         "key_exprs": [
-	  "v2/*/control/command/actuation_cmd/**",
+          "v2/*/control/command/actuation_cmd/**",
           "v2/*/control/command/control_cmd/**",
           "v2/*/control/command/gear_cmd/**",
           "v2/*/control/current_gate_mode/**",
           "v2/*/control/command/turn_indicators_cmd/**",
           "v2/*/control/command/hazard_lights_cmd/**",
-	  "v2/*/vehicle/status/actuation_status/**",
+          "v2/*/vehicle/status/actuation_status/**",
           "v2/*/vehicle/status/velocity_status/**",
           "v2/*/vehicle/status/steering_status/**",
           "v2/*/vehicle/status/control_mode/**",
@@ -518,15 +519,15 @@
           "v2/*/sensing/camera/**",
           "v2/*/carla_pointcloud/**",
           "v2/*/external/selected/gear_cmd/**",
-	  "**/clock/**",
+          "**/clock/**",
         ]
       },
     ],
 
     "subjects": [
-      { 
- 	"id": "all", 
-	"interfaces": ["lo", "eth0"], 
+      {
+        "id": "all",
+        "interfaces": ["lo", "eth0"],
       }
     ],
 
