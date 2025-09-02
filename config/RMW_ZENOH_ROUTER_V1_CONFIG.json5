@@ -496,7 +496,7 @@
            "put", "delete", "declare_subscriber",
            "query", "reply", "declare_queryable",
            "liveliness_token", "liveliness_query", "declare_liveliness_subscriber",
-	],
+        ],
         "flows": ["ingress", "egress"],
         "permission": "allow",
         "key_exprs": [
