@@ -482,7 +482,7 @@
   //         "rules": ["rule2"],
   //         "subjects": ["subject3", "subject4"],
   //      },
-     //]
+  //   ]
   //},
 
   access_control: {
@@ -497,16 +497,16 @@
            "query", "reply", "declare_queryable",
            "liveliness_token", "liveliness_query", "declare_liveliness_subscriber",
 	],
-	"flows": ["ingress", "egress"],
+        "flows": ["ingress", "egress"],
         "permission": "allow",
         "key_exprs": [
-	  "v1/*/control/command/actuation_cmd/**",
+          "v1/*/control/command/actuation_cmd/**",
           "v1/*/control/command/control_cmd/**",
           "v1/*/control/command/gear_cmd/**",
           "v1/*/control/current_gate_mode/**",
           "v1/*/control/command/turn_indicators_cmd/**",
           "v1/*/control/command/hazard_lights_cmd/**",
-	  "v1/*/vehicle/status/actuation_status/**",
+          "v1/*/vehicle/status/actuation_status/**",
           "v1/*/vehicle/status/velocity_status/**",
           "v1/*/vehicle/status/steering_status/**",
           "v1/*/vehicle/status/control_mode/**",
@@ -516,18 +516,18 @@
           "v1/*/sensing/lidar/**",
           "v1/*/sensing/imu/**",
           "v1/*/sensing/gnss/**",
-	  "v1/*/sensing/camera/**",
+          "v1/*/sensing/camera/**",
           "v1/*/carla_pointcloud/**",
           "v1/*/external/selected/gear_cmd/**",
-	  "**/clock/**",
+          "**/clock/**",
         ]
       },
     ],
 
     "subjects": [
       { 
- 	"id": "all", 
-	"interfaces": ["lo", "eth0"], 
+        "id": "all", 
+        "interfaces": ["lo", "eth0"], 
       }
     ],
 
