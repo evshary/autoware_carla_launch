@@ -347,7 +347,7 @@
   // /// The namespace prefix should satisfy all key expression constraints
   // /// and additionally it can not contain wild characters ('*').
   // /// Namespace is applied to the session.
-  // /// E. g. if session has a namespace of "1" then session.put("my/keyexpr", my_message), 
+  // /// E. g. if session has a namespace of "1" then session.put("my/keyexpr", my_message),
   // /// will put a message into 1/my/keyexpr. Same applies to all other operations within this session.
   // namespace: "my/namespace",
 
@@ -513,7 +513,9 @@
           "v1/*/vehicle/status/gear_status/**",
           "v1/*/vehicle/status/turn_indicators_status/**",
           "v1/*/vehicle/status/hazard_lights_status/**",
-          "v1/*/sensing/lidar/**",
+          // Prevent cuda_blackboard subscriber negotiate to CUDA
+          // "v1/*/sensing/lidar/**",
+          "v1/*/sensing/lidar/top/pointcloud",
           "v1/*/sensing/imu/**",
           "v1/*/sensing/gnss/**",
           "v1/*/sensing/camera/**",
@@ -526,9 +528,9 @@
     ],
 
     "subjects": [
-      { 
-        "id": "all", 
-        "interfaces": ["lo", "eth0"], 
+      {
+        "id": "all",
+        "interfaces": ["lo", "eth0"],
       }
     ],
 
@@ -708,8 +710,8 @@
             time_limit: 1,
           },
           allocation: {
-            /// Mode for memory allocation of batches in the priority queues. 
-            /// - "init": batches are allocated at queue initialization time. 
+            /// Mode for memory allocation of batches in the priority queues.
+            /// - "init": batches are allocated at queue initialization time.
             /// - "lazy": batches are allocated when needed up to the maximum number of batches configured in the size configuration parameter.
             mode: "lazy",
           },
