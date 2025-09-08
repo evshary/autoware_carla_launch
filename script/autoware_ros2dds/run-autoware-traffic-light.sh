@@ -34,7 +34,10 @@ $SUDO cp "$AUTOWARE_CARLA_ROOT/script/replace/behavior_planning.launch.xml" "$DE
 # Run the program
 # If is_simulation is true, planning behavior will change and doesn't care about the traffic light recognition. So we make it false.
 parallel --verbose --lb ::: \
-    "ros2 launch autoware_carla_launch autoware_zenoh.launch.xml is_simulation:=false use_traffic_light_recognition:=true \
+    "ros2 launch autoware_carla_launch autoware_zenoh.launch.xml \
+            use_traffic_light_recognition:=true \
+            lidar_detection_model:=${LIDAR_DETECTION_MODEL}/${CENTERPOINT_MODEL_NAME} \
+            traffic_light_recognition/camera_namespaces:=[traffic_light] \
             input/pointcloud:="/sensing/lidar/top/pointcloud" \
             input_pointcloud:="/sensing/lidar/top/pointcloud" \
             2>&1 | tee ${LOG_PATH}/autoware.log" \
