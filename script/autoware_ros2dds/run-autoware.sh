@@ -33,6 +33,11 @@ $SUDO cp "$AUTOWARE_CARLA_ROOT/script/replace/behavior_planning.launch.xml" "$DE
 # Run the program
 parallel --verbose --lb ::: \
     "ros2 launch autoware_carla_launch autoware_zenoh.launch.xml \
+            use_traffic_light_recognition:=false \
+            lidar_detection_model:=${LIDAR_DETECTION_MODEL}/${CENTERPOINT_MODEL_NAME} \
+            traffic_light_recognition/camera_namespaces:=[traffic_light] \
+            input/pointcloud:="/sensing/lidar/top/pointcloud" \
+            input_pointcloud:="/sensing/lidar/top/pointcloud" \
             2>&1 | tee ${LOG_PATH}/autoware.log" \
     "${AUTOWARE_CARLA_ROOT}/external/zenoh-plugin-ros2dds/target/release/zenoh-bridge-ros2dds \
             -n /${VEHICLE_NAME} -d ${ROS_DOMAIN_ID} -c ${ZENOH_BRIDGE_ROS2DDS_CONFIG} -e tcp/${ZENOH_CARLA_IP_PORT} -e tcp/${ZENOH_FMS_IP_PORT} \

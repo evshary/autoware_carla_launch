@@ -76,14 +76,13 @@
 
   <!-- CARLA -->
   <group if="$(var carla_interface)">
-    <node pkg="carla_pointcloud" exec="carla_pointcloud_node" name="carla_pointcloud_interface" output="screen"/>
 
     <!-- Converts Autoware's Ackermann control command into actuation command for CARLA vehicles -->
     <arg name="input_control_cmd" default="/control/command/control_cmd"/>
     <arg name="input_odometry" default="/localization/kinematic_state"/>
     <arg name="input_steering" default="/vehicle/status/steering_status"/>
     <arg name="output_actuation_cmd" default="/control/command/actuation_cmd"/>
-    <arg name="config_file" default="$(find-pkg-share autoware_carla_launch)/config/raw_vehicle_cmd_converter.param.yaml"/>
+    <arg name="config_file" default="$(find-pkg-share autoware_carla_interface)/raw_vehicle_cmd_converter.param.yaml"/>
     <node pkg="autoware_raw_vehicle_cmd_converter" exec="autoware_raw_vehicle_cmd_converter_node" name="autoware_raw_vehicle_cmd_converter" output="screen">
       <param from="$(var config_file)" allow_substs="true"/>
       <remap from="~/input/control_cmd" to="$(var input_control_cmd)"/>
