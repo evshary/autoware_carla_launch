@@ -21,4 +21,4 @@ if [ ! -d autoware ]; then
     fi
 fi
 
-rocker --nvidia --privileged --x11 --user --volume $(pwd):$HOME/autoware_carla_launch -- ${DOCKER_IMAGE}
+rocker --nvidia --privileged --x11 --user --ipc host  --volume $(pwd):$HOME/autoware_carla_launch -- ${DOCKER_IMAGE}
