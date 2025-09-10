@@ -25,12 +25,23 @@ mkdir -p ${LOG_PATH}
 # It runs behavior_path_planner in a separate container with one thread
 # to avoid a GuardCondition use-after-free issue when using rmw_zenoh with multi-threaded executor.
 # Known issue in ROS 2 Humble; fixed in Rolling (2025.04+), not backported.
-sudo cp "$AUTOWARE_CARLA_ROOT/script/replace/behavior_planning_singlethread.launch.xml" \
-   /opt/autoware/share/tier4_planning_launch/launch/scenario_planning/lane_driving/behavior_planning/behavior_planning.launch.xml
+if [[ "$AMENT_PREFIX_PATH" == *"/autoware/install"* ]]; then
+    DEST_PATH="autoware/src/universe/autoware_universe/launch"
+    SUDO=""
+else
+    DEST_PATH="/opt/autoware/share"
+    SUDO="sudo"
+fi
+$SUDO cp "$AUTOWARE_CARLA_ROOT/script/replace/behavior_planning_singlethread.launch.xml" "$DEST_PATH/tier4_planning_launch/launch/scenario_planning/lane_driving/behavior_planning/behavior_planning.launch.xml"
 
 # Run the program
 parallel --verbose --lb ::: \
     "ros2 launch autoware_carla_launch autoware_zenoh.launch.xml \
+            use_traffic_light_recognition:=false \
+            lidar_detection_model:=${LIDAR_DETECTION_MODEL}/${CENTERPOINT_MODEL_NAME} \
+            traffic_light_recognition/camera_namespaces:=[traffic_light] \
+            input/pointcloud:="/sensing/lidar/top/pointcloud" \
+            input_pointcloud:="/sensing/lidar/top/pointcloud" \
             2>&1 | tee ${LOG_PATH}/autoware.log" \
     "RUST_LOG=debug ros2 run rmw_zenoh_cpp rmw_zenohd \
     	    2>&1 | tee ${LOG_PATH}/rmw_zenohd.log"

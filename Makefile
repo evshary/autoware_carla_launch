@@ -35,6 +35,8 @@ build_bridge:
 	cd external/zenoh_carla_bridge && cargo build --release
 	poetry config virtualenvs.in-project true # Make sure poetry install .venv under carla_agent
 	cd external/zenoh_carla_bridge/carla_agent && poetry install --no-root
+	# build rmw_zenoh
+	./script/setup/build_zenoh.sh
 
 lint_bridge:
 	# Run lint (TODO: to be fixed later)
