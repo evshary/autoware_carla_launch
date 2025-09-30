@@ -520,6 +520,7 @@
           "v1/*/carla_pointcloud/**",
           "v1/*/external/selected/gear_cmd/**",
           "**/clock/**",
+          "v1/@ros2_lv/**",
         ]
       },
     ],
