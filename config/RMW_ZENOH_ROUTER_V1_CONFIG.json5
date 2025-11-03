@@ -513,9 +513,7 @@
           "v1/*/vehicle/status/gear_status/**",
           "v1/*/vehicle/status/turn_indicators_status/**",
           "v1/*/vehicle/status/hazard_lights_status/**",
-          // Prevent cuda_blackboard subscriber negotiate to CUDA
-          // "v1/*/sensing/lidar/**",
-          "v1/*/sensing/lidar/top/pointcloud",
+          "v1/*/sensing/lidar/**",
           "v1/*/sensing/imu/**",
           "v1/*/sensing/gnss/**",
           "v1/*/sensing/camera/**",
