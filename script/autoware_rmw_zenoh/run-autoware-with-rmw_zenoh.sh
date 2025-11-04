@@ -13,9 +13,9 @@ fi
 export ZENOH_SESSION_CONFIG_URI=config/RMW_ZENOH_SESSION_CONFIG.json5
 
 # Enable Zenoh shared memory
-export ZENOH_CONFIG_OVERRIDE="namespace=\"${VEHICLE_NAME}\";transport/shared_memory/enabled=true"
-export ZENOH_SHM_ALLOC_SIZE=$((512 * 1024 * 1024))
-export ZENOH_SHM_MESSAGE_SIZE_THRESHOLD=1024
+# export ZENOH_CONFIG_OVERRIDE="namespace=\"${VEHICLE_NAME}\";transport/shared_memory/enabled=true"
+# export ZENOH_SHM_ALLOC_SIZE=$((512 * 1024 * 1024))
+# export ZENOH_SHM_MESSAGE_SIZE_THRESHOLD=1024
 
 # Log folder
 LOG_PATH=autoware_log/`date '+%Y-%m-%d_%H:%M:%S'`/
