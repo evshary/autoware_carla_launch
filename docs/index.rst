@@ -13,9 +13,9 @@ The package includes launch file to run Autoware, Carla agent, and bridges.
 Version
 -------
 
-* Autoware: 2024.09.03
+* Autoware: 2025.10.27
 * Carla: 0.9.14
-* Zenoh: 1.0.2
+* Zenoh: 1.6.2
 
 Contents
 --------

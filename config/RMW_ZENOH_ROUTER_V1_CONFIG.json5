@@ -517,7 +517,6 @@
           "v1/*/sensing/imu/**",
           "v1/*/sensing/gnss/**",
           "v1/*/sensing/camera/**",
-          "v1/*/carla_pointcloud/**",
           "v1/*/external/selected/gear_cmd/**",
           "**/clock/**",
           "v1/@ros2_lv/**",
