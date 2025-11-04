@@ -13,9 +13,9 @@ fi
 export ZENOH_SESSION_CONFIG_URI=config/RMW_ZENOH_SESSION_CONFIG.json5
 
 # Enable Zenoh shared memory
-export ZENOH_CONFIG_OVERRIDE="namespace=\"${VEHICLE_NAME}\";transport/shared_memory/enabled=true"
-export ZENOH_SHM_ALLOC_SIZE=$((512 * 1024 * 1024))
-export ZENOH_SHM_MESSAGE_SIZE_THRESHOLD=1024
+# export ZENOH_CONFIG_OVERRIDE="namespace=\"${VEHICLE_NAME}\";transport/shared_memory/enabled=true"
+# export ZENOH_SHM_ALLOC_SIZE=$((512 * 1024 * 1024))
+# export ZENOH_SHM_MESSAGE_SIZE_THRESHOLD=1024
 
 # Log folder
 LOG_PATH=autoware_log/`date '+%Y-%m-%d_%H:%M:%S'`/
@@ -25,12 +25,21 @@ mkdir -p ${LOG_PATH}
 # It runs behavior_path_planner in a separate container with one thread
 # to avoid a GuardCondition use-after-free issue when using rmw_zenoh with multi-threaded executor.
 # Known issue in ROS 2 Humble; fixed in Rolling (2025.04+), not backported.
-sudo cp "$AUTOWARE_CARLA_ROOT/script/replace/behavior_planning_singlethread.launch.xml" \
-   /opt/autoware/share/tier4_planning_launch/launch/scenario_planning/lane_driving/behavior_planning/behavior_planning.launch.xml
+if [[ "$AMENT_PREFIX_PATH" == *"/autoware/install"* ]]; then
+    DEST_PATH="autoware/src/universe/autoware_universe/launch"
+    SUDO=""
+else
+    DEST_PATH="/opt/autoware/share"
+    SUDO="sudo"
+fi
+$SUDO cp "$AUTOWARE_CARLA_ROOT/script/replace/behavior_planning_singlethread.launch.xml" "$DEST_PATH/tier4_planning_launch/launch/scenario_planning/lane_driving/behavior_planning/behavior_planning.launch.xml"
 
 # Run the program
 parallel --verbose --lb ::: \
     "ros2 launch autoware_carla_launch autoware_zenoh.launch.xml \
+            use_traffic_light_recognition:=false \
+            lidar_detection_model:=${LIDAR_DETECTION_MODEL}/${CENTERPOINT_MODEL_NAME} \
+            traffic_light_recognition/camera_namespaces:=[traffic_light] \
             input/pointcloud:="/sensing/lidar/top/pointcloud" \
             input_pointcloud:="/sensing/lidar/top/pointcloud" \
             2>&1 | tee ${LOG_PATH}/autoware.log" \

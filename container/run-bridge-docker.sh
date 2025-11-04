@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKER_IMAGE=zenoh-carla-bridge-20240903
+DOCKER_IMAGE=zenoh-carla-bridge-20251027
 DOCKER_FILE=container/Dockerfile_carla_bridge
 
 if [ ! "$(docker images -q ${DOCKER_IMAGE})" ]; then
@@ -9,4 +9,3 @@ if [ ! "$(docker images -q ${DOCKER_IMAGE})" ]; then
 fi
 
 rocker --nvidia --network host --privileged --x11 --user --ipc host --volume $(pwd):$HOME/autoware_carla_launch -- ${DOCKER_IMAGE}
-
