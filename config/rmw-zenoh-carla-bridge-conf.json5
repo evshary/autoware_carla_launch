@@ -347,7 +347,7 @@
   // /// The namespace prefix should satisfy all key expression constraints
   // /// and additionally it can not contain wild characters ('*').
   // /// Namespace is applied to the session.
-  // /// E. g. if session has a namespace of "1" then session.put("my/keyexpr", my_message), 
+  // /// E. g. if session has a namespace of "1" then session.put("my/keyexpr", my_message),
   // /// will put a message into 1/my/keyexpr. Same applies to all other operations within this session.
   // namespace: "my/namespace",
 
@@ -653,8 +653,8 @@
             time_limit: 1,
           },
           allocation: {
-            /// Mode for memory allocation of batches in the priority queues. 
-            /// - "init": batches are allocated at queue initialization time. 
+            /// Mode for memory allocation of batches in the priority queues.
+            /// - "init": batches are allocated at queue initialization time.
             /// - "lazy": batches are allocated when needed up to the maximum number of batches configured in the size configuration parameter.
             mode: "lazy",
           },
@@ -728,7 +728,7 @@
       /// subscriber side. By doing so, the probing procedure will succeed and shared memory will operate as expected.
       ///
       /// ROS setting: disabled by default until fully tested
-      enabled: false,
+      enabled: true,
       /// SHM resources initialization mode (default "lazy").
       /// - "lazy": SHM subsystem internals will be initialized lazily upon the first SHM buffer
       /// allocation or reception. This setting provides better startup time and optimizes resource usage,
