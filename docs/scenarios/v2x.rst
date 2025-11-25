@@ -5,7 +5,7 @@ V2X module integrated the autonomous system between multiple vehicles and the tr
 
 .. image:: https://img.youtube.com/vi/8R8hPGfjEwk/0.jpg
     :alt: Zenoh-based V2X with Autoware and Carla
-    :target: https://youtu.be/e_wtX7X7aTA
+    :target: https://youtu.be/8R8hPGfjEwk
 
 .. note:: 
    This service is for carla version 0.9.14.
