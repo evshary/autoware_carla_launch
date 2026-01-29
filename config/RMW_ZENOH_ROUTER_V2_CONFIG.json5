@@ -40,7 +40,8 @@
     ///
     /// See https://docs.rs/zenoh/latest/zenoh/config/struct.EndPoint.html
     endpoints: [
-      "tcp/172.17.0.1:7447"
+      "tcp/172.17.0.1:7447",  // Bridge
+      "tcp/127.0.0.1:7887"   // FMS
     ],
 
     /// Global connect configuration,
@@ -520,6 +521,19 @@
           "v2/*/external/selected/gear_cmd/**",
           "**/clock/**",
           "v2/@ros2_lv/**",
+
+          // Used by FMS
+          "v1/*/api/external/get/vehicle/status/**",
+          "v1/*/api/external/get/cpu_usage/**",
+          "v1/*/api/vehicle/kinematics/**",
+          "v1/*/api/routing/route/**",
+          "v1/*/api/external/set/command/remote/shift/**",
+          "v1/*/external/selected/control_cmd/**",
+          "v1/*/control/gate_mode_cmd/**",
+          "v1/*/api/operation_mode/change_to_autonomous/**",
+          "v1/*/api/operation_mode/change_to_remote/**",
+          "v1/*/api/routing/clear_route/**",
+          "v1/*/api/routing/set_route_points/**",
         ]
       },
     ],
@@ -527,7 +541,7 @@
     "subjects": [
       {
         "id": "all",
-        "interfaces": ["lo", "eth0"],
+        // "interfaces": ["lo", "eth0", "docker0"],
       }
     ],
 

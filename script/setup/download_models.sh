@@ -14,7 +14,7 @@ declare -A models=(
   https://awf.ml.dev.web.auto/perception/models/bevfusion/t4base_120m/v1/ml_package_bevfusion_camera_lidar.param.yaml \
   https://awf.ml.dev.web.auto/perception/models/bevfusion/t4base_120m/v1/detection_class_remapper.param.yaml"
 
-  ["bevdet"]="https://autoware-files.s3.us-west-2.amazonaws.com/models/tensorrt_bevdet.tar.gz"
+  ["tensorrt_bevdet"]="https://autoware-files.s3.us-west-2.amazonaws.com/models/tensorrt_bevdet.tar.gz"
 
   ["image_projection_based_fusion"]="\
   https://awf.ml.dev.web.auto/perception/models/pointpainting/v4/pts_voxel_encoder_pointpainting.onnx \
@@ -53,10 +53,11 @@ declare -A models=(
   https://awf.ml.dev.web.auto/perception/models/object_detection_semseg_yolox_s/v1/yolox-sPlus-opt-pseudoV2-T4-960x960-T4-seg16cls.onnx \
   https://awf.ml.dev.web.auto/perception/models/object_detection_semseg_yolox_s/v1/yolox-sPlus-opt-pseudoV2-T4-960x960-T4-seg16cls.EntropyV2-calibration.table \
   https://awf.ml.dev.web.auto/perception/models/object_detection_semseg_yolox_s/v1/semseg_color_map.csv \
-  https://autoware-files.s3.us-west-2.amazonaws.com/models/tensorrt_rtmdet_onnx_models.tar.gz \
   https://awf.ml.dev.web.auto/perception/models/tl_detector_yolox_s/v1/yolox_s_car_ped_tl_detector_960_960_batch_1.onnx \
   https://awf.ml.dev.web.auto/perception/models/tl_detector_yolox_s/v1/yolox_s_car_ped_tl_detector_960_960_batch_1.EntropyV2-calibration.table \
   https://awf.ml.dev.web.auto/perception/models/tl_detector_yolox_s/v1/car_ped_tl_detector_labels.txt"
+
+  ["tensorrt_rtmdet"]="https://autoware-files.s3.us-west-2.amazonaws.com/models/tensorrt_rtmdet_onnx_models.tar.gz"
 
   ["traffic_light_classifier"]="\
   https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v2/traffic_light_classifier_mobilenetv2_batch_1.onnx \
@@ -71,15 +72,33 @@ declare -A models=(
   https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v2/lamp_labels.txt \
   https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v3/lamp_labels_ped.txt"
 
-  ["diffusion_planner"]="\
+  ["diffusion_planner/v0.1"]="\
   https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v0.1/diffusion_planner.onnx \
   https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v0.1/diffusion_planner.param.json"
+
+  ["diffusion_planner/v1.0"]="\
+  https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v1.0/diffusion_planner.onnx \
+  https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v1.0/diffusion_planner.param.json"
 
   ["traffic_light_fine_detector"]="\
   https://awf.ml.dev.web.auto/perception/models/tlr_yolox_s/v3/tlr_car_ped_yolox_s_batch_1.onnx \
   https://awf.ml.dev.web.auto/perception/models/tlr_yolox_s/v3/tlr_car_ped_yolox_s_batch_4.onnx \
   https://awf.ml.dev.web.auto/perception/models/tlr_yolox_s/v3/tlr_car_ped_yolox_s_batch_6.onnx \
   https://awf.ml.dev.web.auto/perception/models/tlr_yolox_s/v3/tlr_labels.txt"
+
+  ["simpl_prediction"]="https://awf.ml.dev.web.auto/perception/models/simpl/v0.1.0/simpl.onnx"
+
+  ["ptv3"]="\
+  https://awf.ml.dev.web.auto/perception/models/ptv3/v1/ptv3.onnx \
+  https://awf.ml.dev.web.auto/perception/models/ptv3/v1/ml_package_ptv3.param.yaml"
+
+  ["lidar_frnet"]="\
+  https://awf.ml.dev.web.auto/perception/models/frnet/v1/frnet.onnx \
+  https://awf.ml.dev.web.auto/perception/models/frnet/v1/ml_package_frnet.param.yaml"
+
+  ["calibration_status_classifier"]="\
+  https://awf.ml.dev.web.auto/sensing/models/calibration_status_classifier/v1/calibration_status_classifier.onnx \
+  https://awf.ml.dev.web.auto/sensing/models/calibration_status_classifier/v1/ml_package_calibration_status_classifier.param.yaml"
 )
 
 # Function for download models
