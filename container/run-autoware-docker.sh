@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKER_IMAGE=zenoh-autoware-20251027
+DOCKER_IMAGE=zenoh-autoware-1.5.0
 DOCKER_FILE=container/Dockerfile_autoware
 
 # Set the maximum locked memory inside the container.

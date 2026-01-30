@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKER_IMAGE=zenoh-carla-bridge-20251027
+DOCKER_IMAGE=zenoh-carla-bridge-1.5.0
 DOCKER_FILE=container/Dockerfile_carla_bridge
 
 # Set the maximum locked memory inside the container.
