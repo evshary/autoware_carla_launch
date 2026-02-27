@@ -8,19 +8,20 @@ declare -A models=(
   ["yabloc_pose_initializer"]="https://s3.ap-northeast-2.wasabisys.com/pinto-model-zoo/136_road-segmentation-adas-0001/resources.tar.gz"
 
   ["bevfusion"]="\
-  https://awf.ml.dev.web.auto/perception/models/bevfusion/t4base_120m/v1/bevfusion_lidar.onnx \
-  https://awf.ml.dev.web.auto/perception/models/bevfusion/t4base_120m/v1/bevfusion_camera_lidar.onnx \
-  https://awf.ml.dev.web.auto/perception/models/bevfusion/t4base_120m/v1/ml_package_bevfusion_lidar.param.yaml \
-  https://awf.ml.dev.web.auto/perception/models/bevfusion/t4base_120m/v1/ml_package_bevfusion_camera_lidar.param.yaml \
-  https://awf.ml.dev.web.auto/perception/models/bevfusion/t4base_120m/v1/detection_class_remapper.param.yaml"
+  https://awf.ml.dev.web.auto/perception/models/bevfusion/t4base_120m/v2/bevfusion_lidar.onnx \
+  https://awf.ml.dev.web.auto/perception/models/bevfusion/t4base_120m/v2/bevfusion_camera_lidar.onnx \
+  https://awf.ml.dev.web.auto/perception/models/bevfusion/t4base_120m/v2/bevfusion_image_backbone.onnx \
+  https://awf.ml.dev.web.auto/perception/models/bevfusion/t4base_120m/v2/ml_package_bevfusion_lidar.param.yaml \
+  https://awf.ml.dev.web.auto/perception/models/bevfusion/t4base_120m/v2/ml_package_bevfusion_camera_lidar.param.yaml \
+  https://awf.ml.dev.web.auto/perception/models/bevfusion/t4base_120m/v2/detection_class_remapper.param.yaml"
 
   ["tensorrt_bevdet"]="https://autoware-files.s3.us-west-2.amazonaws.com/models/tensorrt_bevdet.tar.gz"
 
   ["image_projection_based_fusion"]="\
-  https://awf.ml.dev.web.auto/perception/models/pointpainting/v4/pts_voxel_encoder_pointpainting.onnx \
-  https://awf.ml.dev.web.auto/perception/models/pointpainting/v4/pts_backbone_neck_head_pointpainting.onnx \
-  https://awf.ml.dev.web.auto/perception/models/pointpainting/v4/detection_class_remapper.param.yaml \
-  https://awf.ml.dev.web.auto/perception/models/pointpainting/v4/pointpainting_ml_package.param.yaml"
+  https://awf.ml.dev.web.auto/perception/models/pointpainting/v5/pts_voxel_encoder_pointpainting.onnx \
+  https://awf.ml.dev.web.auto/perception/models/pointpainting/v5/pts_backbone_neck_head_pointpainting.onnx \
+  https://awf.ml.dev.web.auto/perception/models/pointpainting/v5/detection_class_remapper.param.yaml \
+  https://awf.ml.dev.web.auto/perception/models/pointpainting/v5/pointpainting_ml_package.param.yaml"
 
   ["lidar_apollo_instance_segmentation"]="\
   https://awf.ml.dev.web.auto/perception/models/lidar_apollo_instance_segmentation/vlp-16.onnx \
@@ -28,15 +29,15 @@ declare -A models=(
   https://awf.ml.dev.web.auto/perception/models/lidar_apollo_instance_segmentation/vls-128.onnx"
 
   ["lidar_centerpoint"]="\
-  https://awf.ml.dev.web.auto/perception/models/centerpoint/v2/pts_voxel_encoder_centerpoint.onnx \
-  https://awf.ml.dev.web.auto/perception/models/centerpoint/v2/pts_backbone_neck_head_centerpoint.onnx \
-  https://awf.ml.dev.web.auto/perception/models/centerpoint/v2/pts_voxel_encoder_centerpoint_tiny.onnx \
-  https://awf.ml.dev.web.auto/perception/models/centerpoint/v2/pts_backbone_neck_head_centerpoint_tiny.onnx \
-  https://awf.ml.dev.web.auto/perception/models/centerpoint/v2/centerpoint_ml_package.param.yaml \
-  https://awf.ml.dev.web.auto/perception/models/centerpoint/v2/centerpoint_tiny_ml_package.param.yaml \
-  https://awf.ml.dev.web.auto/perception/models/centerpoint/v2/centerpoint_sigma_ml_package.param.yaml \
-  https://awf.ml.dev.web.auto/perception/models/centerpoint/v2/detection_class_remapper.param.yaml \
-  https://awf.ml.dev.web.auto/perception/models/centerpoint/v2/deploy_metadata.yaml"
+  https://awf.ml.dev.web.auto/perception/models/centerpoint/v3/pts_voxel_encoder_centerpoint.onnx \
+  https://awf.ml.dev.web.auto/perception/models/centerpoint/v3/pts_backbone_neck_head_centerpoint.onnx \
+  https://awf.ml.dev.web.auto/perception/models/centerpoint/v3/pts_voxel_encoder_centerpoint_tiny.onnx \
+  https://awf.ml.dev.web.auto/perception/models/centerpoint/v3/pts_backbone_neck_head_centerpoint_tiny.onnx \
+  https://awf.ml.dev.web.auto/perception/models/centerpoint/v3/centerpoint_ml_package.param.yaml \
+  https://awf.ml.dev.web.auto/perception/models/centerpoint/v3/centerpoint_tiny_ml_package.param.yaml \
+  https://awf.ml.dev.web.auto/perception/models/centerpoint/v3/centerpoint_sigma_ml_package.param.yaml \
+  https://awf.ml.dev.web.auto/perception/models/centerpoint/v3/detection_class_remapper.param.yaml \
+  https://awf.ml.dev.web.auto/perception/models/centerpoint/v3/deploy_metadata.yaml"
 
   ["lidar_transfusion"]="\
   https://awf.ml.dev.web.auto/perception/models/transfusion/t4xx1_90m/v2.1/transfusion.onnx \
@@ -72,13 +73,19 @@ declare -A models=(
   https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v2/lamp_labels.txt \
   https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v3/lamp_labels_ped.txt"
 
-  ["diffusion_planner/v0.1"]="\
-  https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v0.1/diffusion_planner.onnx \
-  https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v0.1/diffusion_planner.param.json"
+  ["diffusion_planner/v2.0"]="\
+  https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v2.0/diffusion_planner.onnx \
+  https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v2.0/diffusion_planner.param.json"
 
-  ["diffusion_planner/v1.0"]="\
-  https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v1.0/diffusion_planner.onnx \
-  https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v1.0/diffusion_planner.param.json"
+  ["diffusion_planner/v3.0"]="\
+  https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v3.0/diffusion_planner.onnx \
+  https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v3.0/diffusion_planner.param.json"
+
+  ["vad/v0.1"]="\
+  https://awf.ml.dev.web.auto/planning/models/tensorrt_vad/carla_tiny/v0.1/vad-carla-tiny_backbone.onnx \
+  https://awf.ml.dev.web.auto/planning/models/tensorrt_vad/carla_tiny/v0.1/vad-carla-tiny_head.onnx \
+  https://awf.ml.dev.web.auto/planning/models/tensorrt_vad/carla_tiny/v0.1/vad-carla-tiny_head_no_prev.onnx \
+  https://awf.ml.dev.web.auto/planning/models/tensorrt_vad/carla_tiny/v0.1/vad-carla-tiny.param.json"
 
   ["traffic_light_fine_detector"]="\
   https://awf.ml.dev.web.auto/perception/models/tlr_yolox_s/v3/tlr_car_ped_yolox_s_batch_1.onnx \

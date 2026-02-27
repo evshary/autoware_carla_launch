@@ -1,24 +1,29 @@
-FROM ghcr.io/autowarefoundation/autoware:universe-devel-cuda-1.5.0
+FROM ghcr.io/autowarefoundation/autoware:universe-devel-cuda-1.7.1-jazzy-amd64
 
 # Download necessary packages
 RUN apt-get update
 # Useful tools
 RUN apt-get install -y wget unzip tmux inetutils-ping curl vim
-RUN python3 -m pip install gdown
+RUN python3 -m pip install --break-system-packages gdown
 RUN printf 'set-option -g default-shell /bin/bash\nset -g default-terminal "tmux-256color"' > /etc/tmux.conf
 # Used by zenoh-bridge-ros2dds
 RUN apt-get install -y llvm-dev libclang-dev cmake
 # Used by my carla-bridge
-RUN apt-get install -y ros-humble-moveit-msgs parallel
-# Used by carla-sys
-RUN apt-get install -y clang-12 libclang-12-dev
+RUN apt-get install -y ros-jazzy-moveit-msgs parallel
+# Used by carla-sys (autocxx 0.26.0 requires LLVM <= 13)
+RUN echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu jammy universe" > /etc/apt/sources.list.d/jammy.list && \
+    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu jammy-updates universe" >> /etc/apt/sources.list.d/jammy.list && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends clang-12 libclang-12-dev && \
+    rm /etc/apt/sources.list.d/jammy.list && \
+    apt-get update
 # Used by pyenv
 RUN apt-get install -y build-essential libssl-dev zlib1g-dev \
                        libbz2-dev libreadline-dev libsqlite3-dev curl \
                        libncursesw5-dev xz-utils tk-dev libxml2-dev \
                        libxmlsec1-dev libffi-dev liblzma-dev
 # Used by rmw_zenoh
-RUN apt-get install -y ros-humble-ament-cmake-vendor-package
+RUN apt-get install -y ros-jazzy-ament-cmake-vendor-package
 # Create a file to differentiate the container
 RUN touch /opt/zenoh-carla-bridge
 

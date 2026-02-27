@@ -3,9 +3,6 @@ set -e
 
 MAP_PATH="carla_map/Town01"
 
-# Install gdown
-python3 -m pip install --upgrade gdown
-
 # If map doesn't exist
 if [ ! -d $MAP_PATH ]; then
     mkdir $MAP_PATH

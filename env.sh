@@ -42,7 +42,9 @@ else  # zenoh-bridge-ros2dds & Autoware
 
     # ROS configuration
     export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-    export ROS_LOCALHOST_ONLY=1
+    export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
+    # Workaround for Cyclone DDS participant limit in Jazzy: https://github.com/autowarefoundation/autoware/issues/6759
+    export CYCLONEDDS_URI='<CycloneDDS><Domain><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>1000</MaxAutoParticipantIndex></Discovery></Domain></CycloneDDS>'
     sudo ip link set lo multicast on  # Enable multicast for DDS
 fi
 

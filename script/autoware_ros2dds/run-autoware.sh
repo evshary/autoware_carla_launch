@@ -17,27 +17,14 @@ fi
 LOG_PATH=autoware_log/`date '+%Y-%m-%d_%H:%M:%S'`/
 mkdir -p ${LOG_PATH}
 
-# Overwrite the behavior_planning.launch.xml with the default (multi-threaded) version.
-# This version uses the original container configuration, running behavior_path_planner
-# with the default multi-threaded executor as provided by upstream Autoware.
-# Use this to revert any prior single-threaded replacement and ensure default behavior.
-if [[ "$AMENT_PREFIX_PATH" == *"/autoware/install"* ]]; then
-    DEST_PATH="autoware/src/universe/autoware_universe/launch"
-    SUDO=""
-else
-    DEST_PATH="/opt/autoware/share"
-    SUDO="sudo"
-fi
-$SUDO cp "$AUTOWARE_CARLA_ROOT/script/replace/behavior_planning.launch.xml" "$DEST_PATH/tier4_planning_launch/launch/scenario_planning/lane_driving/behavior_planning/behavior_planning.launch.xml"
-
 # Run the program
 parallel --verbose --lb ::: \
     "ros2 launch autoware_carla_launch autoware_zenoh.launch.xml \
             use_traffic_light_recognition:=false \
             lidar_detection_model:=${LIDAR_DETECTION_MODEL}/${CENTERPOINT_MODEL_NAME} \
             traffic_light_recognition/camera_namespaces:=[traffic_light] \
-            input/pointcloud:="/sensing/lidar/top/pointcloud" \
-            input_pointcloud:="/sensing/lidar/top/pointcloud" \
+            input/pointcloud:="/sensing/lidar/top/pointcloud_raw_ex" \
+            input_pointcloud:="/sensing/lidar/top/pointcloud_raw_ex" \
             2>&1 | tee ${LOG_PATH}/autoware.log" \
     "${AUTOWARE_CARLA_ROOT}/external/zenoh-plugin-ros2dds/target/release/zenoh-bridge-ros2dds \
             -n /${VEHICLE_NAME} -d ${ROS_DOMAIN_ID} -c ${ZENOH_BRIDGE_ROS2DDS_CONFIG} -e tcp/${ZENOH_CARLA_IP_PORT} -e tcp/${ZENOH_FMS_IP_PORT} \

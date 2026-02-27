@@ -4,7 +4,7 @@ Prerequisites
 Make sure you meet the following system requirements
 
 * Ubuntu 22.04
-* `Carla 0.9.14 <https://github.com/carla-simulator/carla/releases/tag/0.9.14>`_
+* `Carla 0.9.16 <https://github.com/carla-simulator/carla/releases/tag/0.9.16>`_
 
 Packages Installation
 ---------------------
@@ -16,8 +16,8 @@ Install rocker for containers
     sudo apt install docker.io python3-rocker
 
 .. note::
-    `python3-rocker` is provided by the ROS 2. 
-    To install it, you should first configure Ubuntu for ROS 2 repositories. 
+    `python3-rocker` is provided by the ROS 2.
+    To install it, you should first configure Ubuntu for ROS 2 repositories.
     You can refer to the official documentation for installation steps:
     https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html.
 

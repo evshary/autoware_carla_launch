@@ -7,8 +7,8 @@ Remote fleet management service with manual and automatic drving.
     :alt: Zenoh FMS with Autoware in Carla
     :target: https://youtu.be/e_wtX7X7aTA
 
-.. note:: 
-   This service is for carla version 0.9.14.
+.. note::
+   This service is for carla version 0.9.16.
 
 
 Download and build fleet management module
@@ -47,7 +47,7 @@ Run Fleet Management System
    source env.sh
    ./run_server.sh
 
-.. note:: 
+.. note::
    Please make sure to source ROS 2 environment before this step.
 
 

@@ -42,7 +42,7 @@
             "/vehicle/status/hazard_lights_status",
             // Prevent cuda_blackboard subscriber negotiate to CUDA
             // "/sensing/lidar/.*",
-            "/sensing/lidar/top/pointcloud",
+            "/sensing/lidar/top/pointcloud_raw_ex",
             "/sensing/imu/.*",
             "/sensing/gnss/.*",
             "/clock",

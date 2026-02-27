@@ -5,12 +5,13 @@
   <arg name="vehicle_id" default="$(env VEHICLE_ID default)"/>
 
   <group>
-    <!-- LiDAR Driver -->
-    <include file="$(find-pkg-share carla_sensor_kit_launch)/launch/lidar.launch.xml">
+    <!-- LiDAR Driver disabled for CARLA: bridge publishes decoded PointCloud2
+         directly to pointcloud_raw_ex, bypassing the hardware driver and preprocessor pipeline -->
+    <!-- <include file="$(find-pkg-share carla_sensor_kit_launch)/launch/lidar.launch.xml">
       <arg name="launch_driver" value="$(var launch_driver)"/>
       <arg name="vehicle_mirror_param_file" value="$(var vehicle_mirror_param_file)"/>
       <arg name="pointcloud_container_name" value="$(var pointcloud_container_name)"/>
-    </include>
+    </include> -->
 
     <!-- Camera Driver -->
     <!-- <include file="$(find-pkg-share carla_sensor_kit_launch)/launch/camera.launch.xml">

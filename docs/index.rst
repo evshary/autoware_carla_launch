@@ -8,14 +8,14 @@ The package includes launch file to run Autoware, Carla agent, and bridges.
 * `zenoh-bridge-ros2dds <https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds>`_
 
 .. image:: http://img.youtube.com/vi/lrFucLUWbDo/0.jpg
-    :alt: Run multiple vehicles with Autoware Humble in Carla
+    :alt: Run multiple vehicles with Autoware Jazzy in Carla
     :target: https://youtu.be/lrFucLUWbDo
 
 Version
 -------
 
-* Autoware: 1.5.0
-* Carla: 0.9.14
+* Autoware: 1.7.1
+* Carla: 0.9.16
 * Zenoh: 1.7.2
 
 Contents
