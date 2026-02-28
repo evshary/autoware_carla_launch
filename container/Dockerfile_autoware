@@ -11,6 +11,7 @@ RUN apt-get install -y llvm-dev libclang-dev cmake
 RUN python3 -m pip install --break-system-packages gdown
 RUN apt-get install -y ros-jazzy-moveit-msgs \
                        ros-jazzy-object-recognition-msgs \
-                       ros-jazzy-octomap-msgs
+                       ros-jazzy-octomap-msgs \
+                       ros-jazzy-rviz-2d-overlay-plugins
 
 CMD bash
