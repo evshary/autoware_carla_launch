@@ -37,6 +37,9 @@ else  # zenoh-bridge-ros2dds & Autoware
         source ${AUTOWARE_CARLA_ROOT}/install/setup.${shell}
     fi
 
+    # Fix: GoalPoseVisualizer not found in mission_planner_universe, use core version instead
+    sudo sed -i 's|autoware_mission_planner_universe)/launch/goal_pose_visualizer|autoware_mission_planner)/launch/goal_pose_visualizer|' /opt/autoware/share/tier4_planning_launch/launch/mission_planning/mission_planning.launch.xml 2>/dev/null
+
     # Export the config of zenoh-bridge-ros2dds
     export ZENOH_BRIDGE_ROS2DDS_CONFIG=${AUTOWARE_CARLA_ROOT}/config/zenoh-bridge-ros2dds-conf.json5
 

@@ -26,10 +26,10 @@
             "/control/command/hazard_lights_cmd",
 
             // Used by FMS
-            "/api/external/get/vehicle/status",
-            "/api/external/get/cpu_usage",
             "/api/vehicle/kinematics",
-            "/api/routing/route"
+            "/api/vehicle/status",
+            "/api/routing/route",
+            "/system/system_monitor/cpu_monitor/cpu_usage",
         ],
         subscribers: [
             // Receive from bridge
@@ -46,11 +46,10 @@
             "/sensing/imu/.*",
             "/sensing/gnss/.*",
             "/clock",
-            "/external/selected/gear_cmd",
 
             // Used by FMS
-            "/api/external/set/command/remote/shift",
             "/external/selected/control_cmd",
+            "/external/selected/gear_cmd",
             "/control/gate_mode_cmd",
             "/sensing/camera/.*"
         ],
