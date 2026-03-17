@@ -2,7 +2,6 @@
 set -e
 
 export RMW_IMPLEMENTATION=rmw_zenoh_cpp
-source rmw_zenoh_ws/install/setup.bash
 
 export VEHICLE_NAME="${1:-v1}"
 if [[ "$VEHICLE_NAME" == "v1" ]]; then
