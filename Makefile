@@ -14,8 +14,6 @@ prepare_bridge:
 	# Install dependencies
 	./script/setup/dependency_install.sh rust
 	./script/setup/dependency_install.sh python
-	# Install rmw_zenoh
-	./script/setup/build_zenoh.sh
 
 prepare_autoware:
 	# Get code
@@ -35,8 +33,6 @@ build_bridge:
 	cd external/zenoh_carla_bridge && cargo build --release
 	poetry config virtualenvs.in-project true # Make sure poetry install .venv under carla_agent
 	cd external/zenoh_carla_bridge/carla_agent && poetry install --no-root
-	# build rmw_zenoh
-	./script/setup/build_zenoh.sh
 
 lint_bridge:
 	# Run lint (TODO: to be fixed later)
@@ -55,10 +51,7 @@ clean_autoware:
 	rm -rf install log build
 	rm -rf autoware_log
 
-clean_zenoh:
-	cd rmw_zenoh_ws && rm -rf install log build
-
-clean: clean_bridge clean_autoware clean_zenoh
+clean: clean_bridge clean_autoware
 
 docker_clean: clean
 	# Remove venv in Python
