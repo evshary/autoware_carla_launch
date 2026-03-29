@@ -25,11 +25,6 @@ mkdir -p ${LOG_PATH}
 # Run the program
 parallel --verbose --lb ::: \
     "ros2 launch autoware_carla_launch autoware_zenoh.launch.xml \
-            use_traffic_light_recognition:=false \
-            lidar_detection_model:=${LIDAR_DETECTION_MODEL}/${CENTERPOINT_MODEL_NAME} \
-            traffic_light_recognition/camera_namespaces:=[traffic_light] \
-            input/pointcloud:="/sensing/lidar/top/pointcloud_raw_ex" \
-            input_pointcloud:="/sensing/lidar/top/pointcloud_raw_ex" \
             2>&1 | tee ${LOG_PATH}/autoware.log" \
     "RUST_LOG=debug ros2 run rmw_zenoh_cpp rmw_zenohd \
     	    2>&1 | tee ${LOG_PATH}/rmw_zenohd.log"

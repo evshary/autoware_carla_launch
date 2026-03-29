@@ -35,6 +35,12 @@
   <arg name="manual_control" default="true" description="Enable topic relay for manual control"/>
   <arg name="is_simulation" default="true"/>
   <arg name="use_traffic_light_recognition" default="false"/>
+  <!-- Sensor and perception -->
+  <arg name="lidar_detection_model" default="$(env LIDAR_DETECTION_MODEL)/$(env CENTERPOINT_MODEL_NAME)"/>
+  <!-- Override Autoware defaults to match CARLA sensor setup -->
+  <arg name="traffic_light_recognition/camera_namespaces" default="[traffic_light]"/>
+  <arg name="input/pointcloud" default="/sensing/lidar/top/pointcloud_raw_ex"/>  <!-- perception -->
+  <arg name="input_pointcloud" default="/sensing/lidar/top/pointcloud_raw_ex"/>  <!-- localization -->
 
   <group scoped="false">
     <include file="$(find-pkg-share autoware_launch)/launch/autoware.launch.xml">
