@@ -63,3 +63,26 @@ FAQ
         .. code-block:: bash
 
             source env.sh
+
+7. How to enable Zenoh Shared Memory in ``rmw_zenoh``?
+
+    ``rmw_zenoh`` supports Zenoh's Shared Memory (SHM) transport, but it is disabled by default in this repository. ``zenoh_carla_bridge`` uses SHM by default, while Autoware with ``rmw_zenoh`` keeps it disabled because it may cause components to fail to be loaded randomly, which can lead to planning failures. This is a known issue and not fixed yet.
+
+    The following scripts already contain SHM-related environment variables, but they are commented out by default:
+
+    - ``script/autoware_rmw_zenoh/run-autoware-with-rmw_zenoh.sh`` — tested and working with SHM enabled under the recommended configuration below.
+    - ``script/autoware_rmw_zenoh/run-autoware-traffic-light-with-rmw_zenoh.sh`` — with SHM enabled, some components may still fail to load.
+
+    To enable SHM, simply uncomment the three lines shown below. The default SHM size in this repository is currently set to **128 MiB**; ``ZENOH_SHM_ALLOC_SIZE`` and ``ZENOH_SHM_MESSAGE_SIZE_THRESHOLD`` can be adjusted based on the workload and the available ``/dev/shm``.
+
+    .. code-block:: bash
+
+        # Enable Zenoh shared memory
+        # export ZENOH_CONFIG_OVERRIDE="namespace=\"${VEHICLE_NAME}\";transport/shared_memory/enabled=true"
+        # export ZENOH_SHM_ALLOC_SIZE=$((128 * 1024 * 1024))       # 128 MiB SHM arena per context
+        # export ZENOH_SHM_MESSAGE_SIZE_THRESHOLD=1024             # use SHM for msgs > 1 KiB
+
+    Recommended system memory configuration:
+
+    - RAM: 32 GiB
+    - Swap: 8 GiB

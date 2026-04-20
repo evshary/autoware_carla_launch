@@ -16,7 +16,7 @@ Version
 
 * Autoware: 1.7.1
 * Carla: 0.9.16
-* Zenoh: 1.7.2
+* Zenoh: 1.8.0
 
 Contents
 --------
