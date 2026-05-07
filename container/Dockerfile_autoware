@@ -14,5 +14,8 @@ RUN apt-get install -y ros-jazzy-moveit-msgs \
                        ros-jazzy-octomap-msgs \
                        ros-jazzy-rviz-2d-overlay-plugins \
                        ros-jazzy-rmw-zenoh-cpp
-
+# Used by zenoh_autoware_v2x
+ENV PATH="/root/.cargo/bin:${PATH}"
+ENV RUSTUP_PERMIT_COPY_RENAME=true
+RUN python3 -m pip install --break-system-packages eclipse-zenoh==1.8.0
 CMD bash
