@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 
 V2X_PATH=${AUTOWARE_CARLA_ROOT}/external/zenoh_autoware_v2x/
@@ -11,8 +11,8 @@ mkdir -p ${LOG_PATH}
 # Python script will overwrite the settings if bridge run first.
 parallel --verbose --lb ::: \
         "sleep 5 && RUST_LOG=z=info ${AUTOWARE_CARLA_ROOT}/external/zenoh_carla_bridge/target/release/zenoh_carla_bridge \
-                --mode ros2 --zenoh-listen tcp/0.0.0.0:7447 \
-                --zenoh-config ${ZENOH_CARLA_BRIDGE_CONFIG} \
+                --mode rmw-zenoh --zenoh-listen tcp/0.0.0.0:7447 \
+                --zenoh-config ${RMW_ZENOH_CARLA_BRIDGE_CONFIG} \
                 --carla-address ${CARLA_SIMULATOR_IP} 2>&1 \
                 | tee ${LOG_PATH}/bridge.log" \
         "poetry -C ${PYTHON_AGENT_PATH} run python3 ${PYTHON_AGENT_PATH}/main.py \
