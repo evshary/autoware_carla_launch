@@ -7,9 +7,6 @@ V2X module integrated the autonomous system between multiple vehicles and the tr
     :alt: Zenoh-based V2X with Autoware and Carla
     :target: https://youtu.be/8R8hPGfjEwk
 
-.. note:: 
-   This service is for carla version 0.9.14.
-
 Carla Map Download Link
 -----------------------
 
@@ -20,7 +17,13 @@ Carla Map Download Link
 Build V2X module
 ----------------
 
-* Enter Autoware container
+* Enter into docker
+
+..  code-block:: bash
+
+    ./container/run-autoware-docker.sh
+
+* Build the code
 
 .. code-block:: bash
 
@@ -36,10 +39,13 @@ Running single vehicle scenario
 
    ./CarlaUE4.sh -quality-level=Epic -world-port=2000 -RenderOffScreen -prefernvidia
 
-**Step 2:** Entering bridge container then executing...
+**Step 2:** Run the zenoh_carla_bridge with V2X component (In Carla bridge container)
 
 .. code-block:: bash
 
+   # Go inside "Carla bridge container"
+   ./container/run-bridge-docker.sh
+   # Run zenoh_carla_bridge and Python Agent with V2X component
    cd autoware_carla_launch
    source env.sh
    ./script/bridge_ros2dds/run-bridge-v2x.sh
@@ -57,16 +63,19 @@ Running single vehicle scenario
    INFO: [Intersection Manager] Declaring Queryable on 'intersection/**/traffic_light/**'...
    ...
 
-**Step 3:** Entering Autoware container then executing...
-
-.. code-block:: bash
-
-   cd autoware_carla_launch
-   source env.sh
-   ./script/autoware_ros2dds/run-autoware.sh
+**Step 3:** Run the zenoh-bridge-ros2dds and Autoware (In Autoware container)
 
 .. note:: 
    For convenience, use a *tmux* session to keep **Step 3** running in the background.
+
+.. code-block:: bash
+
+   # Go inside "Autoware container"
+   ./container/run-autoware-docker.sh
+   # Run zenoh-bridge-ros2dds and Autoware
+   cd autoware_carla_launch
+   source env.sh
+   ./script/autoware_ros2dds/run-autoware.sh
 
 **Step 4:** Wait for Autoware to localize the vehicle, then set the 2D Goal Pose.
 
@@ -76,7 +85,8 @@ Running single vehicle scenario
 
    cd autoware_carla_launch
    source external/zenoh_autoware_v2x/install/setup.bash
-   ros2 run v2x_light v2x_light -- -v <vehicle_id>
+   # Format: ros2 run v2x_light v2x_light -- -v <vehicle_id>
+   ros2 run v2x_light v2x_light -- -v v1
 
 .. note:: 
    <vehicle_id> must **match** CARLA agent's rolename. (default is **"v1"**)
