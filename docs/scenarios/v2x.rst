@@ -7,12 +7,34 @@ V2X module integrated the autonomous system between multiple vehicles and the tr
     :alt: Zenoh-based V2X with Autoware and Carla
     :target: https://youtu.be/8R8hPGfjEwk
 
-Carla Map Download Link
------------------------
+Map Info
+--------
 
-* Map information : `map_information <https://docs.google.com/presentation/d/1OGcAZwJlukMIv6jWCTFcrgRx-otBlLC7AP5ryMIy-Do/edit?usp=sharing>`_
-* Map : `map_download <https://drive.google.com/file/d/1TBfWKDxxGnfm1ZUfzotDgcadEERYr85s/view?usp=drive_link>`_
+.. image:: graph/town01_v2x_overview.png
+   :alt: Town01 V2X Lane and Traffic Light reference
 
+``map_info.json`` describes the traffic lights at each intersection used by the V2X module. The structure is:
+
+.. code-block:: json
+
+   {
+     "intersections": {
+       "<intersection_id>": [
+         {
+           "autoware_lane": <int>,
+           "autoware_traffic_light": <int>,
+           "traffic_light_position": { "x": <float>, "y": <float> }
+         }
+       ]
+     }
+   }
+
+Field meanings:
+
+* ``intersection_id`` — intersection label.
+* ``autoware_lane`` — Lane ID.
+* ``autoware_traffic_light`` — Traffic Light ID.
+* ``traffic_light_position`` — ``(x, y)`` in the Autoware map frame.
 
 Build V2X module
 ----------------
