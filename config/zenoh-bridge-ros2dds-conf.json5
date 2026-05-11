@@ -62,7 +62,7 @@
             "/api/routing/set_route_points"
         ],
         service_clients: [
-            "/all_ignore"
+            "/control/control_mode_request"
         ],
         action_servers: [
             "/all_ignore"
