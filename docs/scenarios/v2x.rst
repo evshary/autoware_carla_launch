@@ -88,42 +88,28 @@ Running single vehicle scenario
    INFO: [Intersection Manager] Declaring Queryable on 'intersection/**/traffic_light/**'...
    ...
 
-**Step 3:** Run Autoware (In Autoware container)
-
-.. note::
-   For convenience, use a *tmux* session to keep **Step 3** running in the background.
+**Step 3:** Run Autoware with the V2X light client (In Autoware container)
 
 .. code-block:: bash
 
    # Go inside "Autoware container"
    ./container/run-autoware-docker.sh
-   # Run Autoware
+   # Run Autoware and the V2X light client in one shot
    cd autoware_carla_launch
    source env.sh
    # Option A: rmw_zenoh
-   ./script/autoware_rmw_zenoh/run-autoware-with-rmw_zenoh.sh
+   # Format: ./script/autoware_rmw_zenoh/run-autoware-v2x-with-rmw_zenoh.sh <vehicle_id>
+   ./script/autoware_rmw_zenoh/run-autoware-v2x-with-rmw_zenoh.sh
    # Option B: ros2dds
-   ./script/autoware_ros2dds/run-autoware.sh
-
-**Step 4:** Wait for Autoware to localize the vehicle, then set the 2D Goal Pose.
-
-**Step 5:**  In Autoware container, run the V2X light client...
-
-.. code-block:: bash
-
-   cd autoware_carla_launch
-   source env.sh
-   # Option A: rmw_zenoh
-   # Format: ./script/autoware_rmw_zenoh/run-v2x-light-with-rmw_zenoh.sh <vehicle_id>
-   ./script/autoware_rmw_zenoh/run-v2x-light-with-rmw_zenoh.sh v1
-   # Option B: ros2dds
-   # Format: ./script/autoware_ros2dds/run-v2x-light.sh <vehicle_id>
-   ./script/autoware_ros2dds/run-v2x-light.sh v1
+   # Format: ./script/autoware_ros2dds/run-autoware-v2x.sh <vehicle_id>
+   ./script/autoware_ros2dds/run-autoware-v2x.sh
 
 .. note::
    <vehicle_id> must **match** CARLA agent's rolename. (default is **"v1"**)
 
-**Step 6:** Press the **"Auto"** button in **Rviz** and let Autoware autopilot the vehicle.
+**Step 4:** Wait for Autoware to localize the vehicle, then set the 2D Goal Pose.
+
+**Step 5:** Press the **"Auto"** button in **Rviz** and let Autoware autopilot the vehicle.
 
 Running multiple vehicles scenario
 ----------------------------------
@@ -148,9 +134,9 @@ Running multiple vehicles scenario
    cd autoware_carla_launch
    source env.sh
    # Option A: rmw_zenoh
-   ./script/autoware_rmw_zenoh/run-autoware-with-rmw_zenoh.sh v1
+   ./script/autoware_rmw_zenoh/run-autoware-v2x-with-rmw_zenoh.sh v1
    # Option B: ros2dds
-   ./script/autoware_ros2dds/run-autoware.sh v1
+   ./script/autoware_ros2dds/run-autoware-v2x.sh v1
 
 **Step 4:** Running another Autoware container for 2nd vehicle...
 
@@ -159,33 +145,10 @@ Running multiple vehicles scenario
    cd autoware_carla_launch
    source env.sh
    # Option A: rmw_zenoh
-   ./script/autoware_rmw_zenoh/run-autoware-with-rmw_zenoh.sh v2
+   ./script/autoware_rmw_zenoh/run-autoware-v2x-with-rmw_zenoh.sh v2
    # Option B: ros2dds
-   ./script/autoware_ros2dds/run-autoware.sh v2
-
-.. note::
-   Just like in the single vehicle scenario, you can create a *tmux* session to execute the last command and more easily manage Steps 6 and 7.
+   ./script/autoware_ros2dds/run-autoware-v2x.sh v2
 
 **Step 5:** Wait for Autoware to localize two vehicles, and then both set the 2D Goal Pose.
 
-**Step 6:**  In 1st Autoware container...
-
-.. code-block:: bash
-
-   source env.sh
-   # Option A: rmw_zenoh
-   ./script/autoware_rmw_zenoh/run-v2x-light-with-rmw_zenoh.sh v1
-   # Option B: ros2dds
-   ./script/autoware_ros2dds/run-v2x-light.sh v1
-
-**Step 7:** In 2nd Autoware container...
-
-.. code-block:: bash
-
-   source env.sh
-   # Option A: rmw_zenoh
-   ./script/autoware_rmw_zenoh/run-v2x-light-with-rmw_zenoh.sh v2
-   # Option B: ros2dds
-   ./script/autoware_ros2dds/run-v2x-light.sh v2
-
-**Step 8:** Press the "Auto" button in Rviz and let two Autoware autopilot the vehicles
+**Step 6:** Press the "Auto" button in Rviz and let two Autoware autopilot the vehicles
