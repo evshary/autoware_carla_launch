@@ -1,7 +1,7 @@
 .. _run carla with one autoware, with traffic light module enabled:
 
 Run Carla with one Autoware, with traffic light module enabled
-===========================
+==============================================================
 
 The section shows how to run Autoware with traffic light module in Carla simulator.
 
@@ -20,17 +20,23 @@ The section shows how to run Autoware with traffic light module in Carla simulat
     # Run zenoh_carla_bridge and Python Agent
     cd autoware_carla_launch
     source env.sh
+    # Option A: rmw_zenoh
+    ./script/bridge_rmw_zenoh/run-bridge-with-rmw_zenoh.sh
+    # Option B: ros2dds
     ./script/bridge_ros2dds/run-bridge.sh
 
-3. Run zenoh-bridge-ros2dds and Autoware (In Autoware container)
+3. Run Autoware (In Autoware container)
 
 ..  code-block:: bash
 
     # Go inside "Autoware container"
     ./container/run-autoware-docker.sh
-    # Run zenoh-bridge-ros2dds and Autoware
+    # Run Autoware
     cd autoware_carla_launch
     source env.sh
+    # Option A: rmw_zenoh
+    ./script/autoware_rmw_zenoh/run-autoware-traffic-light-with-rmw_zenoh.sh
+    # Option B: ros2dds
     ./script/autoware_ros2dds/run-autoware-traffic-light.sh
 
     # (Optional) If you want to drive manually, split the terminal and run the following command
