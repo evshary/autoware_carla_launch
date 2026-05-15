@@ -24,6 +24,7 @@
             "/control/current_gate_mode",
             "/control/command/turn_indicators_cmd",
             "/control/command/hazard_lights_cmd",
+            "/initialpose",
 
             // Used by FMS
             "/api/external/get/vehicle/status",
