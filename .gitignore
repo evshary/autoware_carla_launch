@@ -5,8 +5,8 @@
 
 # Compile tools
 /rust/
-/poetry/
 /pyenv/
+/uv/
 
 # Bridge
 /bridge_log/

@@ -15,11 +15,11 @@ parallel --verbose --lb ::: \
                 --zenoh-config ${ZENOH_CARLA_BRIDGE_CONFIG} \
                 --carla-address ${CARLA_SIMULATOR_IP} 2>&1 \
                 | tee ${LOG_PATH}/bridge.log" \
-        "poetry -C ${PYTHON_AGENT_PATH} run python3 ${PYTHON_AGENT_PATH}/main.py \
+        "uv run --project ${PYTHON_AGENT_PATH} python3 ${PYTHON_AGENT_PATH}/main.py \
                 --host ${CARLA_SIMULATOR_IP} --rolename ${VEHICLE_NAME} \
                 --position 87.687683,20.787275,0.300000,0.000000,90.000053,0.000000 \
                 2>&1 | tee ${LOG_PATH}/vehicle.log" \
-        "sleep 5 && poetry -C ${V2X_PATH} run python3 ${V2X_PATH}/traffic_manager/main.py \
+        "sleep 5 && uv run --project ${V2X_PATH} python3 ${V2X_PATH}/traffic_manager/main.py \
                 2>&1 | tee ${LOG_PATH}/v2x.log" \
-        "sleep 5 && poetry -C ${V2X_PATH} run python3 ${V2X_PATH}/intersection_manager/main.py \
+        "sleep 5 && uv run --project ${V2X_PATH} python3 ${V2X_PATH}/intersection_manager/main.py \
                 2>&1 | tee ${LOG_PATH}/v2x.log"
