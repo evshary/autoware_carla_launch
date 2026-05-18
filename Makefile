@@ -31,8 +31,7 @@ prepare_autoware:
 
 build_bridge:
 	cd external/zenoh_carla_bridge && cargo build --release
-	poetry config virtualenvs.in-project true # Make sure poetry install .venv under carla_agent
-	cd external/zenoh_carla_bridge/carla_agent && poetry install --no-root
+	cd external/zenoh_carla_bridge/carla_agent && uv sync
 
 lint_bridge:
 	# Run lint (TODO: to be fixed later)
@@ -57,4 +56,4 @@ docker_clean: clean
 	# Remove venv in Python
 	rm -rf external/zenoh_carla_bridge/carla_agent/.venv
 	# Remove other toolchains
-	rm -rf rust poetry pyenv
+	rm -rf rust pyenv uv

@@ -9,15 +9,15 @@ if [ -f /opt/zenoh-carla-bridge ]; then   # Python agent & zenoh_carla_bridge
     # Export Carla simulator IP
     export CARLA_SIMULATOR_IP=127.0.0.1
 
-    # Poetry path (Only needed while using docker)
+    # uv path (Only needed while using docker)
     if [ -f /.dockerenv ]; then
-        POETRY_PATH=${AUTOWARE_CARLA_ROOT}/poetry
         PYENV_PATH=${AUTOWARE_CARLA_ROOT}/pyenv
+        UV_PATH=${AUTOWARE_CARLA_ROOT}/uv
 
-        export POETRY_HOME=${POETRY_PATH}
-        export PATH="${POETRY_PATH}/bin:$PATH"
         export PYENV_ROOT="${PYENV_PATH}"
         export PATH="${PYENV_ROOT}/bin:$PATH"
+        export UV_INSTALL_DIR=${UV_PATH}/bin
+        export PATH="${UV_PATH}/bin:$PATH"
     fi
 
     # Environmental variables to build carla-sys

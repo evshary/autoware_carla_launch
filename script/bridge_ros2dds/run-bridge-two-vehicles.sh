@@ -14,11 +14,11 @@ parallel --verbose --lb ::: \
                 --zenoh-config ${ZENOH_CARLA_BRIDGE_CONFIG} \
                 --carla-address ${CARLA_SIMULATOR_IP} --slowdown 2 2>&1 \
                 | tee ${LOG_PATH}/bridge.log" \
-        "poetry -C ${PYTHON_AGENT_PATH} run python3 ${PYTHON_AGENT_PATH}/main.py \
+        "uv run --project ${PYTHON_AGENT_PATH} python3 ${PYTHON_AGENT_PATH}/main.py \
                 --host ${CARLA_SIMULATOR_IP} --rolename 'v1' \
                 --position 87.687683,145.671295,0.300000,0.000000,90.000053,0.000000 \
                 2>&1 | tee ${LOG_PATH}/vehicle1.log" \
-        "sleep 1 && poetry -C ${PYTHON_AGENT_PATH} run python3 ${PYTHON_AGENT_PATH}/main.py \
+        "sleep 1 && uv run --project ${PYTHON_AGENT_PATH} python3 ${PYTHON_AGENT_PATH}/main.py \
                 --host ${CARLA_SIMULATOR_IP} --rolename 'v2' \
                 --position 92.109985,227.220001,0.300000,0.000000,-90.000298,0.000000 \
                 2>&1 | tee ${LOG_PATH}/vehicle2.log"

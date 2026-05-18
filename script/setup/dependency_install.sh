@@ -3,21 +3,20 @@ set -e
 
 function install_python()
 {
-    # Install poetry
+    # Install uv
     if [ -f /.dockerenv ]; then
-        # Create folder for poetry installation
-        mkdir -p ${POETRY_HOME}
+        # Create folder for uv installation
+        mkdir -p ${UV_INSTALL_DIR}
     fi
-    curl -sSL https://install.python-poetry.org | python3 -
-    poetry config virtualenvs.in-project true
+    curl -LsSf https://astral.sh/uv/install.sh | env UV_NO_MODIFY_PATH=1 sh
 
     # Install pyenv
     curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
     pyenv install -v 3.12.3
     pyenv global 3.12.3
     eval "$(pyenv init -)"
-    cd ${AUTOWARE_CARLA_ROOT}/external/zenoh_carla_bridge/carla_agent && poetry env use $(pyenv which python)
-    cd ${AUTOWARE_CARLA_ROOT}/external/zenoh_autoware_v2x && poetry env use $(pyenv which python) && poetry install --no-root
+    cd ${AUTOWARE_CARLA_ROOT}/external/zenoh_carla_bridge/carla_agent && uv sync --python $(pyenv which python)
+    cd ${AUTOWARE_CARLA_ROOT}/external/zenoh_autoware_v2x && uv sync --python $(pyenv which python)
 }
 
 function install_rust()
