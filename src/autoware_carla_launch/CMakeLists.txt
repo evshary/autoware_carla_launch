@@ -32,4 +32,9 @@ install(DIRECTORY
   DESTINATION share/${PROJECT_NAME}/
 )
 
+install(PROGRAMS
+  scripts/vehicle_interface_shim.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 ament_package()

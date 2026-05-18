@@ -24,3 +24,7 @@
 \#*#
 *.swp
 *.swo
+
+# Python bytecode (vehicle_interface_shim.py)
+__pycache__/
+*.pyc

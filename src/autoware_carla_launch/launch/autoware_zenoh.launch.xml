@@ -77,6 +77,12 @@
   <!-- CARLA -->
   <group if="$(var carla_interface)">
 
+    <!-- Carla vehicle-interface shim: answers /control/control_mode_request
+         (the engage handshake) and republishes /vehicle/status/control_mode.
+         simple_planning_simulator does this for the built-in sim; with Carla
+         the role moves here so zenoh_carla_bridge stays pure data-transport. -->
+    <node pkg="autoware_carla_launch" exec="vehicle_interface_shim.py" name="vehicle_interface_shim" output="screen"/>
+
     <!-- Converts Autoware's Ackermann control command into actuation command for CARLA vehicles -->
     <arg name="input_control_cmd" default="/control/command/control_cmd"/>
     <arg name="input_odometry" default="/localization/kinematic_state"/>
@@ -92,9 +98,4 @@
     </node>
 	</group>
 
-  <!-- Relay for manual control -->
-  <group if="$(var manual_control)">
-    <node pkg="topic_tools" exec="relay" name="relay_control_cmd" args="external/selected/control_cmd control/command/control_cmd" output="screen"/>
-    <node pkg="topic_tools" exec="relay" name="relay_gear_cmd" args="external/selected/gear_cmd control/command/gear_cmd" output="screen"/>
-  </group>
 </launch>
