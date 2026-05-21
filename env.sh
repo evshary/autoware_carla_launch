@@ -9,15 +9,12 @@ if [ -f /opt/zenoh-carla-bridge ]; then   # Python agent & zenoh_carla_bridge
     # Export Carla simulator IP
     export CARLA_SIMULATOR_IP=127.0.0.1
 
-    # uv path (Only needed while using docker)
+    # pyenv path (Only needed while using docker)
     if [ -f /.dockerenv ]; then
         PYENV_PATH=${AUTOWARE_CARLA_ROOT}/pyenv
-        UV_PATH=${AUTOWARE_CARLA_ROOT}/uv
 
         export PYENV_ROOT="${PYENV_PATH}"
         export PATH="${PYENV_ROOT}/bin:$PATH"
-        export UV_INSTALL_DIR=${UV_PATH}/bin
-        export PATH="${UV_PATH}/bin:$PATH"
     fi
 
     # Environmental variables to build carla-sys
@@ -73,11 +70,13 @@ export LIDAR_DETECTION_MODEL="centerpoint"
 # It is used when LIDAR_DETECTION_MODEL is set as "centerpoint"
 export CENTERPOINT_MODEL_NAME="centerpoint_tiny"
 
-# Rust path (Only needed while using docker)
+# Rust & uv path (Only needed while using docker)
 if [ -f /.dockerenv ]; then
     RUST_PATH=${AUTOWARE_CARLA_ROOT}/rust
+    UV_PATH=${AUTOWARE_CARLA_ROOT}/uv
 
     export RUSTUP_HOME=${RUST_PATH}
     export CARGO_HOME=${RUST_PATH}
-    export PATH="${RUST_PATH}/bin:$PATH"
+    export UV_INSTALL_DIR=${UV_PATH}/bin
+    export PATH="${RUST_PATH}/bin:${UV_PATH}/bin:$PATH"
 fi

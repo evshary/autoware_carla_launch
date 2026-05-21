@@ -13,8 +13,7 @@ if [[ ${ZENOH_FMS_IP_PORT} != *":"* ]]; then
     export ZENOH_FMS_IP_PORT="${ZENOH_FMS_IP_PORT}:7887"
 fi
 
-# Source v2x_light overlay so ros2 run can find it in the parallel job below
-source external/zenoh_autoware_v2x/install/setup.bash
+V2X_PATH=${AUTOWARE_CARLA_ROOT}/external/zenoh_autoware_v2x/
 
 # Log folder
 LOG_PATH=autoware_log/`date '+%Y-%m-%d_%H:%M:%S'`/
@@ -27,5 +26,6 @@ parallel --verbose --lb ::: \
     "${AUTOWARE_CARLA_ROOT}/external/zenoh-plugin-ros2dds/target/release/zenoh-bridge-ros2dds \
             -n /${VEHICLE_NAME} -d ${ROS_DOMAIN_ID} -c ${ZENOH_BRIDGE_ROS2DDS_CONFIG} -e tcp/${ZENOH_CARLA_IP_PORT} -e tcp/${ZENOH_FMS_IP_PORT} \
             2>&1 | tee ${LOG_PATH}/zenoh_bridge_ros2dds.log" \
-    "sleep 5 && ros2 run v2x_light v2x_light -- -v ${VEHICLE_NAME} --map-info external/zenoh_autoware_v2x/map_info.json \
+    "sleep 5 && uv run --project ${V2X_PATH} ${V2X_PATH}/v2x_light/main.py \
+            -v ${VEHICLE_NAME} --map-info ${V2X_PATH}/map_info.json \
             2>&1 | tee ${LOG_PATH}/v2x_light.log"
