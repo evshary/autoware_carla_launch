@@ -522,7 +522,7 @@
           "v2/@ros2_lv/**",
 
           // Used by FMS
-          "v2/*/api/vehicle/kinematics/**",
+          "v2/*/api/vehicle/kinematics/**", // v2x also
           "v2/*/api/vehicle/status/**",
           "v2/*/api/routing/route/**",
           "v2/*/system/system_monitor/cpu_monitor/cpu_usage/**",
@@ -533,6 +533,10 @@
           "v2/*/api/operation_mode/change_to_remote/**",
           "v2/*/api/routing/clear_route/**",
           "v2/*/api/routing/set_route_points/**",
+
+          // Used by v2x (ROS topics via rmw_zenoh)
+          "v2/*/planning/scenario_planning/lane_driving/behavior_planning/path_with_lane_id/**",
+          "v2/*/perception/traffic_light_recognition/traffic_signals/**",
         ]
       },
     ],

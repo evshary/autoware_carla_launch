@@ -18,8 +18,7 @@ export ZENOH_CONFIG_OVERRIDE="namespace=\"${VEHICLE_NAME}\""
 # export ZENOH_SHM_ALLOC_SIZE=$((128 * 1024 * 1024))
 # export ZENOH_SHM_MESSAGE_SIZE_THRESHOLD=1024
 
-# Source v2x_light overlay so ros2 run can find it in the parallel job below
-source external/zenoh_autoware_v2x/install/setup.bash
+V2X_PATH=${AUTOWARE_CARLA_ROOT}/external/zenoh_autoware_v2x/
 
 # Log folder
 LOG_PATH=autoware_log/`date '+%Y-%m-%d_%H:%M:%S'`/
@@ -31,5 +30,7 @@ parallel --verbose --lb ::: \
             2>&1 | tee ${LOG_PATH}/autoware.log" \
     "RUST_LOG=debug ros2 run rmw_zenoh_cpp rmw_zenohd \
     	    2>&1 | tee ${LOG_PATH}/rmw_zenohd.log" \
-    "sleep 5 && ros2 run v2x_light v2x_light -- -v ${VEHICLE_NAME} --map-info external/zenoh_autoware_v2x/map_info.json \
+    "sleep 5 && uv run --project ${V2X_PATH} ${V2X_PATH}/v2x_light/main.py \
+            --rmw_zenoh -v ${VEHICLE_NAME} --map-info ${V2X_PATH}/map_info.json \
+            -e tcp/127.0.0.1:7447 -e tcp/172.17.0.1:7447 \
             2>&1 | tee ${LOG_PATH}/v2x_light.log"

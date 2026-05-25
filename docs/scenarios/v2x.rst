@@ -36,22 +36,6 @@ Field meanings:
 * ``autoware_traffic_light`` — Traffic Light ID.
 * ``traffic_light_position`` — ``(x, y)`` in the Autoware map frame.
 
-Build V2X module
-----------------
-
-* Enter into docker
-
-..  code-block:: bash
-
-    ./container/run-autoware-docker.sh
-
-* Build the code
-
-.. code-block:: bash
-
-   cd autoware_carla_launch/external/zenoh_autoware_v2x
-   colcon build --symlink-install
-
 Running single vehicle scenario
 -------------------------------
 

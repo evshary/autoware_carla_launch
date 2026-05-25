@@ -26,10 +26,13 @@
             "/control/command/hazard_lights_cmd",
 
             // Used by FMS
-            "/api/vehicle/kinematics",
+            "/api/vehicle/kinematics", // v2x also
             "/api/vehicle/status",
             "/api/routing/route",
             "/system/system_monitor/cpu_monitor/cpu_usage",
+
+            // Used by v2x
+            "/planning/scenario_planning/lane_driving/behavior_planning/path_with_lane_id",
         ],
         subscribers: [
             // Receive from bridge
@@ -51,7 +54,10 @@
             "/external/selected/control_cmd",
             "/external/selected/gear_cmd",
             "/control/gate_mode_cmd",
-            "/sensing/camera/.*"
+            "/sensing/camera/.*",
+
+            // Used by v2x_light
+            "/perception/traffic_light_recognition/traffic_signals"
         ],
         service_servers: [
             // Used by FMS
