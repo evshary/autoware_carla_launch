@@ -10,7 +10,9 @@ V2X module integrated the autonomous system between multiple vehicles and the tr
 Map Info
 --------
 
-.. image:: graph/town01_v2x_overview.png
+.. Editing note (not rendered): this overview is stored as an SVG. Free vector editors such as Inkscape can edit the file.
+
+.. image:: graph/town01_v2x_overview.svg
    :alt: Town01 V2X Lane and Traffic Light reference
 
 ``map_info.json`` describes the traffic lights at each intersection used by the V2X module. The structure is:
