@@ -20,6 +20,8 @@ The package includes launch file to run Autoware, Carla agent, and bridge ([zeno
 
 ## Maintainers
 
-* [ChenYing Kuo](https://github.com/evshary)
-* [Leann Hsu](https://github.com/hsule)
-* [Habby Hsu](https://github.com/habby1012)
+| Avatar | GitHub ID | Name |
+| --- | --- | --- |
+| <a href="https://github.com/evshary"><img src="https://github.com/evshary.png" width="48" alt="evshary" /></a> | [@evshary](https://github.com/evshary) | ChenYing Kuo |
+| <a href="https://github.com/hsule"><img src="https://github.com/hsule.png" width="48" alt="hsule" /></a> | [@hsule](https://github.com/hsule) | Leann Hsu |
+| <a href="https://github.com/habby1012"><img src="https://github.com/habby1012.png" width="48" alt="habby1012" /></a> | [@habby1012](https://github.com/habby1012) | Habby Hsu |
