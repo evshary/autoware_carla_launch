@@ -17,3 +17,9 @@ The package includes launch file to run Autoware, Carla agent, and bridge ([zeno
 * Zenoh FMS with Autoware in Carla
 
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/QCt7YoSF6LQ/0.jpg)](https://youtu.be/QCt7YoSF6LQ "Zenoh FMS with Autoware in Carla")
+
+## Maintainers
+
+* [ChenYing Kuo](https://github.com/evshary)
+* [Leann Hsu](https://github.com/hsule)
+* [Habby Hsu](https://github.com/habby1012)
