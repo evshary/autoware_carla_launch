@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKER_IMAGE=zenoh-carla-bridge-1.7.1-jazzy
+DOCKER_IMAGE=zenoh-carla-bridge-jazzy-1.8.0
 DOCKER_FILE=container/Dockerfile_carla_bridge
 
 # Set the maximum locked memory inside the container.
@@ -11,4 +11,6 @@ if [ ! "$(docker images -q ${DOCKER_IMAGE})" ]; then
     docker build --no-cache -f ${DOCKER_FILE} -t ${DOCKER_IMAGE} .
 fi
 
-rocker --nvidia --network host --privileged --x11 --user --ipc host --ulimit memlock=${MEMLOCK}:${MEMLOCK} --volume $(pwd):$HOME/autoware_carla_launch -- ${DOCKER_IMAGE}
+rocker --nvidia --network host --privileged --x11 --ipc host --ulimit memlock=${MEMLOCK}:${MEMLOCK} \
+    --env HOST_UID=$(id -u) HOST_GID=$(id -g) \
+    --volume $(pwd):/home/aw/autoware_carla_launch -- ${DOCKER_IMAGE}

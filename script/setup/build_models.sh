@@ -30,12 +30,10 @@ ros2 launch autoware_traffic_light_fine_detector traffic_light_fine_detector.lau
 
 # traffic light (car)
 ros2 launch autoware_traffic_light_classifier car_traffic_light_classifier.launch.xml \
-	model_path:=$AUTOWARE_CARLA_ROOT/autoware_data/traffic_light_classifier/traffic_light_classifier_mobilenetv2_batch_6.onnx \
-	label_path:=$AUTOWARE_CARLA_ROOT/autoware_data/traffic_light_classifier/lamp_labels.txt \
+	data_path:=$AUTOWARE_CARLA_ROOT/autoware_data \
 	build_only:=true
 
 # traffic light (pedestrian)
 ros2 launch autoware_traffic_light_classifier pedestrian_traffic_light_classifier.launch.xml \
-	model_path:=$AUTOWARE_CARLA_ROOT/autoware_data/traffic_light_classifier/ped_traffic_light_classifier_mobilenetv2_batch_6.onnx \
-	label_path:=$AUTOWARE_CARLA_ROOT/autoware_data/traffic_light_classifier/lamp_labels_ped.txt \
+	data_path:=$AUTOWARE_CARLA_ROOT/autoware_data \
 	build_only:=true
