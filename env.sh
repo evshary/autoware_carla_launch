@@ -34,9 +34,6 @@ else  # zenoh-bridge-ros2dds & Autoware
         source ${AUTOWARE_CARLA_ROOT}/install/setup.${shell}
     fi
 
-    # Fix: GoalPoseVisualizer not found in mission_planner_universe, use core version instead
-    sudo sed -i 's|autoware_mission_planner_universe)/launch/goal_pose_visualizer|autoware_mission_planner)/launch/goal_pose_visualizer|' /opt/autoware/share/tier4_planning_launch/launch/mission_planning/mission_planning.launch.xml 2>/dev/null
-
     # Export the config of zenoh-bridge-ros2dds
     export ZENOH_BRIDGE_ROS2DDS_CONFIG=${AUTOWARE_CARLA_ROOT}/config/zenoh-bridge-ros2dds-conf.json5
 
@@ -45,7 +42,8 @@ else  # zenoh-bridge-ros2dds & Autoware
     export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
     # Workaround for Cyclone DDS participant limit in Jazzy: https://github.com/autowarefoundation/autoware/issues/6759
     export CYCLONEDDS_URI='<CycloneDDS><Domain><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>1000</MaxAutoParticipantIndex></Discovery></Domain></CycloneDDS>'
-    sudo ip link set lo multicast on  # Enable multicast for DDS
+    # Enable multicast for DDS (done by base image's /docker-entrypoint.sh since 1.8.0)
+    # sudo ip link set lo multicast on
 fi
 
 # Able to access binary after pip install

@@ -5,7 +5,7 @@ MODELS_PATH="autoware_data"
 
 # Declare all models' directories and corresponding download urls
 declare -A models=(
-  ["yabloc_pose_initializer"]="https://s3.ap-northeast-2.wasabisys.com/pinto-model-zoo/136_road-segmentation-adas-0001/resources.tar.gz"
+  ["yabloc_pose_initializer"]="https://autoware-files.s3.us-west-2.amazonaws.com/models/yabloc/136_road-segmentation-adas-0001/resources.tar.gz"
 
   ["bevfusion"]="\
   https://awf.ml.dev.web.auto/perception/models/bevfusion/t4base_120m/v2/bevfusion_lidar.onnx \
@@ -61,25 +61,28 @@ declare -A models=(
   ["tensorrt_rtmdet"]="https://autoware-files.s3.us-west-2.amazonaws.com/models/tensorrt_rtmdet_onnx_models.tar.gz"
 
   ["traffic_light_classifier"]="\
-  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v2/traffic_light_classifier_mobilenetv2_batch_1.onnx \
-  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v2/traffic_light_classifier_mobilenetv2_batch_4.onnx \
-  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v2/traffic_light_classifier_mobilenetv2_batch_6.onnx \
-  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v2/traffic_light_classifier_efficientNet_b1_batch_1.onnx \
-  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v2/traffic_light_classifier_efficientNet_b1_batch_4.onnx \
-  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v2/traffic_light_classifier_efficientNet_b1_batch_6.onnx \
-  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v3/ped_traffic_light_classifier_mobilenetv2_batch_1.onnx \
-  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v3/ped_traffic_light_classifier_mobilenetv2_batch_4.onnx \
-  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v3/ped_traffic_light_classifier_mobilenetv2_batch_6.onnx \
-  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v2/lamp_labels.txt \
-  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v3/lamp_labels_ped.txt"
-
-  ["diffusion_planner/v2.0"]="\
-  https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v2.0/diffusion_planner.onnx \
-  https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v2.0/diffusion_planner.param.json"
+  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v4/traffic_light_classifier_mobilenetv2_batch_1.onnx \
+  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v4/traffic_light_classifier_mobilenetv2_batch_4.onnx \
+  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v4/traffic_light_classifier_mobilenetv2_batch_6.onnx \
+  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v4/ped_traffic_light_classifier_mobilenetv2_batch_1.onnx \
+  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v4/ped_traffic_light_classifier_mobilenetv2_batch_4.onnx \
+  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v4/ped_traffic_light_classifier_mobilenetv2_batch_6.onnx \
+  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v4/traffic_light_lamp_recognizer_comlops.onnx \
+  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v4/lamp_recognizer_ml.param.yaml \
+  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v4/lamp_labels.txt \
+  https://awf.ml.dev.web.auto/perception/models/traffic_light_classifier/v4/lamp_labels_ped.txt"
 
   ["diffusion_planner/v3.0"]="\
   https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v3.0/diffusion_planner.onnx \
   https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v3.0/diffusion_planner.param.json"
+
+  ["diffusion_planner/v3.1"]="\
+  https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v3.1/diffusion_planner.onnx \
+  https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v3.1/diffusion_planner.param.json"
+
+  ["diffusion_planner/v4.0"]="\
+  https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v4.0/diffusion_planner.onnx \
+  https://awf.ml.dev.web.auto/planning/models/diffusion_planner/v4.0/diffusion_planner.param.json"
 
   ["vad/v0.1"]="\
   https://awf.ml.dev.web.auto/planning/models/tensorrt_vad/carla_tiny/v0.1/vad-carla-tiny_backbone.onnx \
@@ -96,16 +99,24 @@ declare -A models=(
   ["simpl_prediction"]="https://awf.ml.dev.web.auto/perception/models/simpl/v0.1.0/simpl.onnx"
 
   ["ptv3"]="\
-  https://awf.ml.dev.web.auto/perception/models/ptv3/v1/ptv3.onnx \
-  https://awf.ml.dev.web.auto/perception/models/ptv3/v1/ml_package_ptv3.param.yaml"
+  https://awf.ml.dev.web.auto/perception/models/ptv3/v2/ptv3.onnx \
+  https://awf.ml.dev.web.auto/perception/models/ptv3/v2/ml_package_ptv3.param.yaml"
 
   ["lidar_frnet"]="\
-  https://awf.ml.dev.web.auto/perception/models/frnet/v1/frnet.onnx \
-  https://awf.ml.dev.web.auto/perception/models/frnet/v1/ml_package_frnet.param.yaml"
+  https://awf.ml.dev.web.auto/perception/models/frnet/v2/frnet_ot128.onnx \
+  https://awf.ml.dev.web.auto/perception/models/frnet/v2/frnet_qt128.onnx \
+  https://awf.ml.dev.web.auto/perception/models/frnet/v2/ml_package_frnet_ot128.param.yaml \
+  https://awf.ml.dev.web.auto/perception/models/frnet/v2/ml_package_frnet_qt128.param.yaml"
 
   ["calibration_status_classifier"]="\
-  https://awf.ml.dev.web.auto/sensing/models/calibration_status_classifier/v1/calibration_status_classifier.onnx \
-  https://awf.ml.dev.web.auto/sensing/models/calibration_status_classifier/v1/ml_package_calibration_status_classifier.param.yaml"
+  https://awf.ml.dev.web.auto/sensing/models/calibration_status_classifier/v2/calibration_status_classifier.onnx \
+  https://awf.ml.dev.web.auto/sensing/models/calibration_status_classifier/v2/ml_package_calibration_status_classifier.param.yaml"
+
+  ["camera_streampetr"]="\
+  https://awf.ml.dev.web.auto/perception/models/streampetr/v1/simplify_extract_img_feat.onnx \
+  https://awf.ml.dev.web.auto/perception/models/streampetr/v1/simplify_position_embedding.onnx \
+  https://awf.ml.dev.web.auto/perception/models/streampetr/v1/simplify_pts_head_memory.onnx \
+  https://awf.ml.dev.web.auto/perception/models/streampetr/v1/ml_package_camera_streampetr.param.yaml"
 )
 
 # Function for download models

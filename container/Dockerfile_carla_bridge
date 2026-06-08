@@ -1,4 +1,4 @@
-FROM ghcr.io/autowarefoundation/autoware:universe-devel-cuda-1.7.1-jazzy-amd64
+FROM ghcr.io/autowarefoundation/autoware:universe-devel-cuda-jazzy-1.8.0
 
 # Download necessary packages
 RUN apt-get update
