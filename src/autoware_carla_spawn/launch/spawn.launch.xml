@@ -1,0 +1,10 @@
+<launch>
+  <arg name="vehicle" default="v1" description="vehicle ros_name (v1/v2); v1 is the tick master"/>
+  <arg name="carla_ip" default="172.17.0.1" description="CARLA RPC host (bridge container reaches host via docker0 gateway)"/>
+
+  <!-- Runs on the system python (carla installed via container/Dockerfile), no venv. -->
+  <node pkg="autoware_carla_spawn" exec="spawn_node.py" name="carla_spawn" output="screen">
+    <env name="CARLA_VEHICLE" value="$(var vehicle)"/>
+    <env name="CARLA_SIMULATOR_IP" value="$(var carla_ip)"/>
+  </node>
+</launch>

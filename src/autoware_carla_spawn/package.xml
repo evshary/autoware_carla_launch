@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>autoware_carla_spawn</name>
+  <version>0.1.0</version>
+  <description>Spawn ego vehicle + sensors in CARLA (native rmw_zenoh) and bridge vehicle status/control for Autoware.</description>
+  <maintainer email="a0979580915@gmail.com">jinwei</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>builtin_interfaces</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>autoware_vehicle_msgs</exec_depend>
+  <exec_depend>tier4_vehicle_msgs</exec_depend>
+  <exec_depend>tier4_control_msgs</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

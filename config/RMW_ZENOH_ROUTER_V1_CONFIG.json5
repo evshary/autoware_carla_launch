@@ -40,8 +40,7 @@
     ///
     /// See https://docs.rs/zenoh/latest/zenoh/config/struct.EndPoint.html
     endpoints: [
-      "tcp/172.17.0.1:7447",  // Bridge
-      "tcp/172.17.0.1:7887"   // FMS
+      "tcp/172.17.0.1:7447"
     ],
 
     /// Global connect configuration,
@@ -492,7 +491,7 @@
 
     "rules": [
       {
-        "id": "allow_topic",
+        "id": "allow_carla",
         "messages": [
            "put", "delete", "declare_subscriber",
            "query", "reply", "declare_queryable",
@@ -501,42 +500,8 @@
         "flows": ["ingress", "egress"],
         "permission": "allow",
         "key_exprs": [
-          "v1/*/control/command/actuation_cmd/**",
-          "v1/*/control/command/control_cmd/**",
-          "v1/*/control/command/gear_cmd/**",
-          "v1/*/control/current_gate_mode/**",
-          "v1/*/control/command/turn_indicators_cmd/**",
-          "v1/*/control/command/hazard_lights_cmd/**",
-          "v1/*/vehicle/status/actuation_status/**",
-          "v1/*/vehicle/status/velocity_status/**",
-          "v1/*/vehicle/status/steering_status/**",
-          "v1/*/vehicle/status/control_mode/**",
-          "v1/*/vehicle/status/gear_status/**",
-          "v1/*/vehicle/status/turn_indicators_status/**",
-          "v1/*/vehicle/status/hazard_lights_status/**",
-          "v1/*/sensing/lidar/**",
-          "v1/*/sensing/imu/**",
-          "v1/*/sensing/gnss/**",
-          "v1/*/sensing/camera/**",
+          "*/carla/v1/**",
           "**/clock/**",
-          "v1/@ros2_lv/**",
-
-          // Used by FMS
-          "v1/*/api/vehicle/kinematics/**", // v2x also
-          "v1/*/api/vehicle/status/**",
-          "v1/*/api/routing/route/**",
-          "v1/*/system/system_monitor/cpu_monitor/cpu_usage/**",
-          "v1/*/external/selected/control_cmd/**",
-          "v1/*/external/selected/gear_cmd/**",
-          "v1/*/control/gate_mode_cmd/**",
-          "v1/*/api/operation_mode/change_to_autonomous/**",
-          "v1/*/api/operation_mode/change_to_remote/**",
-          "v1/*/api/routing/clear_route/**",
-          "v1/*/api/routing/set_route_points/**",
-
-          // Used by v2x (ROS topics via rmw_zenoh)
-          "v1/*/planning/scenario_planning/lane_driving/behavior_planning/path_with_lane_id/**",
-          "v1/*/perception/traffic_light_recognition/traffic_signals/**",
         ]
       },
     ],
@@ -544,13 +509,12 @@
     "subjects": [
       {
         "id": "all",
-        // "interfaces": ["lo", "eth0", "docker0"],
       }
     ],
 
     "policies": [
       {
-        "rules": ["allow_topic"],
+        "rules": ["allow_carla"],
         "subjects": ["all"],
       }
     ],

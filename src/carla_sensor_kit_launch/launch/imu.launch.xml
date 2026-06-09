@@ -13,7 +13,7 @@
       </node>
     </group>
 
-    <arg name="imu_raw_name" default="tamagawa/imu_raw"/>
+    <arg name="imu_raw_name" default="/carla/$(env CARLA_VEHICLE v1)/tamagawa"/>
     <arg name="imu_corrector_param_file" default="$(find-pkg-share sample_sensor_kit_description)/config/imu_corrector.param.yaml"/>
     <include file="$(find-pkg-share autoware_imu_corrector)/launch/imu_corrector.launch.xml">
       <arg name="input_topic" value="$(var imu_raw_name)"/>

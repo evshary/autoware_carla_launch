@@ -2,21 +2,13 @@
 /install/
 /build/
 /log/
-
-# Compile tools
-/rust/
-/pyenv/
-/uv/
-
-# Bridge
-/bridge_log/
 /autoware_log/
 
 # Ignore autoware source code
 /autoware/
 
-# Ignore rmw_zenoh
-/rmw_zenoh_ws
+# CARLA client wheel
+/container/*.whl
 
 # Ignore editor files
 *~

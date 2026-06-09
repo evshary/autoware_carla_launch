@@ -39,8 +39,9 @@
   <arg name="lidar_detection_model" default="$(env LIDAR_DETECTION_MODEL)/$(env CENTERPOINT_MODEL_NAME)"/>
   <!-- Override Autoware defaults to match CARLA sensor setup -->
   <arg name="traffic_light_recognition/camera_namespaces" default="[traffic_light]"/>
-  <arg name="input/pointcloud" default="/sensing/lidar/top/pointcloud_raw_ex"/>  <!-- perception -->
-  <arg name="input_pointcloud" default="/sensing/lidar/top/pointcloud_raw_ex"/>  <!-- localization -->
+  <arg name="input/pointcloud" default="/carla/$(env CARLA_VEHICLE v1)/top/pointcloud_ex"/>  <!-- perception -->
+  <arg name="input_pointcloud" default="/carla/$(env CARLA_VEHICLE v1)/top/pointcloud_ex"/>  <!-- localization -->
+  <arg name="carla_vehicle" default="$(env CARLA_VEHICLE v1)" description="ego vehicle ros_name for CARLA spawn (v1/v2)"/>
 
   <group scoped="false">
     <include file="$(find-pkg-share autoware_launch)/launch/autoware.launch.xml">
@@ -103,4 +104,9 @@
     <node pkg="topic_tools" exec="relay" name="relay_control_cmd" args="external/selected/control_cmd control/command/control_cmd" output="screen"/>
     <node pkg="topic_tools" exec="relay" name="relay_gear_cmd" args="external/selected/gear_cmd control/command/gear_cmd" output="screen"/>
   </group>
+
+  <!-- Spawn ego vehicle + sensors in CARLA (native rmw_zenoh) -->
+  <include file="$(find-pkg-share autoware_carla_spawn)/launch/spawn.launch.xml">
+    <arg name="vehicle" value="$(var carla_vehicle)"/>
+  </include>
 </launch>

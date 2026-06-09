@@ -5,10 +5,13 @@ RUN apt-get update
 # Useful tools
 RUN apt-get install -y wget unzip tmux inetutils-ping curl vim parallel
 RUN printf 'set-option -g default-shell /bin/bash\nset -g default-terminal "tmux-256color"' > /etc/tmux.conf
-# Used by zenoh-bridge-ros2dds
-RUN apt-get install -y llvm-dev libclang-dev cmake
 # Used by Autoware & my ROS packages
 RUN python3 -m pip install --break-system-packages gdown
+
+# Install the custom-built CARLA Python client (matches the self-built CARLA server)
+COPY container/carla-0.9.16-cp312-cp312-linux_x86_64.whl /tmp/
+RUN python3 -m pip install --break-system-packages /tmp/carla-0.9.16-cp312-cp312-linux_x86_64.whl \
+    && rm /tmp/carla-0.9.16-cp312-cp312-linux_x86_64.whl
 RUN apt-get install -y ros-jazzy-moveit-msgs \
                        ros-jazzy-object-recognition-msgs \
                        ros-jazzy-octomap-msgs \
@@ -16,8 +19,4 @@ RUN apt-get install -y ros-jazzy-moveit-msgs \
                        ros-jazzy-xacro \
                        ros-jazzy-topic-tools \
                        ros-jazzy-rviz2
-# Used by zenoh_autoware_v2x
-ENV PATH="/root/.cargo/bin:${PATH}"
-ENV RUSTUP_PERMIT_COPY_RENAME=true
-RUN python3 -m pip install --break-system-packages eclipse-zenoh==1.9.0
 CMD bash

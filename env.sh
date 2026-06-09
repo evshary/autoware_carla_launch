@@ -2,49 +2,19 @@
 ENV_PATH=`realpath ${0//-}` # In tmux, $0 will become -bash, so we need to remove -
 export AUTOWARE_CARLA_ROOT=`dirname ${ENV_PATH}`
 
-# Setup environmental variables for different environments
+# Setup environmental variables
 shell=`cat /proc/$$/cmdline | tr -d '\0' | tr -d '-'`
-if [ -f /opt/zenoh-carla-bridge ]; then   # Python agent & zenoh_carla_bridge
 
-    # Export Carla simulator IP
-    export CARLA_SIMULATOR_IP=127.0.0.1
-
-    # pyenv path (Only needed while using docker)
-    if [ -f /.dockerenv ]; then
-        PYENV_PATH=${AUTOWARE_CARLA_ROOT}/pyenv
-
-        export PYENV_ROOT="${PYENV_PATH}"
-        export PATH="${PYENV_ROOT}/bin:$PATH"
-    fi
-
-    # Environmental variables to build carla-sys
-    export LLVM_CONFIG_PATH=/usr/bin/llvm-config-12
-    export LIBCLANG_PATH=/usr/lib/llvm-12/lib
-    export LIBCLANG_STATIC_PATH=/usr/lib/llvm-12/lib
-    export CLANG_PATH=/usr/bin/clang-12
-
-    # Export the config of zenoh-carla-bridge
-    export ZENOH_CARLA_BRIDGE_CONFIG=${AUTOWARE_CARLA_ROOT}/config/zenoh-carla-bridge-conf.json5
-    export RMW_ZENOH_CARLA_BRIDGE_CONFIG=${AUTOWARE_CARLA_ROOT}/config/rmw-zenoh-carla-bridge-conf.json5
-
-else  # zenoh-bridge-ros2dds & Autoware
-
-    # Source workspace after build
-    if [ -f ${AUTOWARE_CARLA_ROOT}/install/setup.${shell} ]; then
-        source ${AUTOWARE_CARLA_ROOT}/install/setup.${shell}
-    fi
-
-    # Export the config of zenoh-bridge-ros2dds
-    export ZENOH_BRIDGE_ROS2DDS_CONFIG=${AUTOWARE_CARLA_ROOT}/config/zenoh-bridge-ros2dds-conf.json5
-
-    # ROS configuration
-    export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-    export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
-    # Workaround for Cyclone DDS participant limit in Jazzy: https://github.com/autowarefoundation/autoware/issues/6759
-    export CYCLONEDDS_URI='<CycloneDDS><Domain><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>1000</MaxAutoParticipantIndex></Discovery></Domain></CycloneDDS>'
-    # Enable multicast for DDS (done by base image's /docker-entrypoint.sh since 1.8.0)
-    # sudo ip link set lo multicast on
+# Source workspace after build
+if [ -f ${AUTOWARE_CARLA_ROOT}/install/setup.${shell} ]; then
+    source ${AUTOWARE_CARLA_ROOT}/install/setup.${shell}
 fi
+
+# ROS configuration
+export RMW_IMPLEMENTATION=rmw_zenoh_cpp
+export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
+# Enable multicast for DDS (done by base image's /docker-entrypoint.sh since 1.8.0)
+# sudo ip link set lo multicast on
 
 # Able to access binary after pip install
 export PATH="$HOME/.local/bin:$PATH"
@@ -67,14 +37,3 @@ export LIDAR_DETECTION_MODEL="centerpoint"
 # Set centerpoint model ("centerpoint", "centerpoint_tiny")
 # It is used when LIDAR_DETECTION_MODEL is set as "centerpoint"
 export CENTERPOINT_MODEL_NAME="centerpoint_tiny"
-
-# Rust & uv path (Only needed while using docker)
-if [ -f /.dockerenv ]; then
-    RUST_PATH=${AUTOWARE_CARLA_ROOT}/rust
-    UV_PATH=${AUTOWARE_CARLA_ROOT}/uv
-
-    export RUSTUP_HOME=${RUST_PATH}
-    export CARGO_HOME=${RUST_PATH}
-    export UV_INSTALL_DIR=${UV_PATH}/bin
-    export PATH="${RUST_PATH}/bin:${UV_PATH}/bin:$PATH"
-fi
