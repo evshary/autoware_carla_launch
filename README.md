@@ -35,8 +35,9 @@ This downloads the CARLA package from Google Drive and:
 ./container/run-autoware-docker.sh
 
 # --- inside the container ---
-make prepare_autoware     # download map & models, install rosdep deps, prebuild models (first time only)
-make build_autoware       # colcon build the workspace
+source env.sh
+make prepare_autoware
+make build_autoware
 source env.sh
 ```
 
