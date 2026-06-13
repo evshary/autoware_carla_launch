@@ -75,6 +75,24 @@ Run each vehicle in **its own container**. `v1` is the simulation tick master, s
 ./script/autoware_rmw_zenoh/run-autoware-two-vehicles-with-rmw_zenoh.sh v2
 ```
 
+### Traffic light recognition
+
+The traffic-light variants additionally enable Autoware's traffic-light recognition. Single vehicle:
+
+```bash
+./script/autoware_rmw_zenoh/run-autoware-traffic-light-with-rmw_zenoh.sh v1
+```
+
+For multiple vehicles, run each in **its own container**, `v1` first:
+
+```bash
+# container 1
+./script/autoware_rmw_zenoh/run-autoware-two-vehicles-traffic-light-with-rmw_zenoh.sh v1
+
+# container 2
+./script/autoware_rmw_zenoh/run-autoware-two-vehicles-traffic-light-with-rmw_zenoh.sh v2
+```
+
 ## Maintainers
 
 | Avatar | GitHub ID | Name |

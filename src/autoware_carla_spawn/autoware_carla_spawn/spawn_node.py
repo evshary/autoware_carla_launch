@@ -58,7 +58,6 @@ def main(args=None):
     else:
         sp = random.choice(world.get_map().get_spawn_points())
     vehicle = world.spawn_actor(bp, sp)
-    extent = vehicle.bounding_box.extent
 
     # Lidar
     lidar_bp = world.get_blueprint_library().find('sensor.lidar.ray_cast')
@@ -83,7 +82,7 @@ def main(args=None):
     cam_bp.set_attribute('ros_name', 'traffic_light')
     cam_bp.set_attribute('ros_frame_id', 'camera4/camera_link')
     cam_bp.set_attribute('ros_publish_tf', 'false')
-    camera = world.spawn_actor(cam_bp, carla.Transform(carla.Location(x=0.8 * extent.x, z=1.3 * extent.z)), attach_to=vehicle, attachment_type=carla.AttachmentType.Rigid)
+    camera = world.spawn_actor(cam_bp, carla.Transform(carla.Location(x=2.3, z=1.6)), attach_to=vehicle, attachment_type=carla.AttachmentType.Rigid)
     camera.listen(lambda data: None)
 
     # IMU
