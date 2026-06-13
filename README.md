@@ -61,18 +61,18 @@ After `source env.sh`:
 ./script/autoware_rmw_zenoh/run-autoware-with-rmw_zenoh.sh v1
 ```
 
-This spawns vehicle `v1` (ego + sensors) in CARLA and brings up the full Autoware stack with RViz.
+This spawns vehicle `v1` (ego + sensors) at a random spawn point in CARLA and brings up the full Autoware stack with RViz.
 
 ### Multiple vehicles
 
-Run each vehicle in **its own container**. `v1` is the simulation tick master, so start it first:
+Run each vehicle in **its own container**. `v1` is the simulation tick master, so start it first. The two-vehicle script spawns `v1` and `v2` at fixed facing positions so they can see each other:
 
 ```bash
 # container 1
-./script/autoware_rmw_zenoh/run-autoware-with-rmw_zenoh.sh v1
+./script/autoware_rmw_zenoh/run-autoware-two-vehicles-with-rmw_zenoh.sh v1
 
 # container 2
-./script/autoware_rmw_zenoh/run-autoware-with-rmw_zenoh.sh v2
+./script/autoware_rmw_zenoh/run-autoware-two-vehicles-with-rmw_zenoh.sh v2
 ```
 
 ## Maintainers

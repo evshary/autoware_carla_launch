@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import math
 import os
+import random
 import threading
 import time
 
@@ -50,7 +51,12 @@ def main(args=None):
     bp = world.get_blueprint_library().find('vehicle.tesla.model3')
     bp.set_attribute('role_name', 'hero')
     bp.set_attribute('ros_name', VEHICLE)
-    sp = world.get_map().get_spawn_points()[int(VEHICLE[1:])]
+    pos = os.environ.get('CARLA_SPAWN_POSITION')
+    if pos:
+        x, y, z, pitch, yaw, roll = (float(v) for v in pos.split(','))
+        sp = carla.Transform(carla.Location(x, y, z), carla.Rotation(pitch, yaw, roll))
+    else:
+        sp = random.choice(world.get_map().get_spawn_points())
     vehicle = world.spawn_actor(bp, sp)
     extent = vehicle.bounding_box.extent
 
