@@ -58,7 +58,7 @@ CARLA itself acts as the Zenoh router on port `7447`; each Autoware container co
 After `source env.sh`:
 
 ```bash
-./script/autoware_rmw_zenoh/run-autoware-with-rmw_zenoh.sh v1
+./script/autoware_rmw_zenoh/run-autoware-with-rmw_zenoh.sh
 ```
 
 This spawns vehicle `v1` (ego + sensors) at a random spawn point in CARLA and brings up the full Autoware stack with RViz.
@@ -80,7 +80,7 @@ Run each vehicle in **its own container**. `v1` is the simulation tick master, s
 The traffic-light variants additionally enable Autoware's traffic-light recognition. Single vehicle:
 
 ```bash
-./script/autoware_rmw_zenoh/run-autoware-traffic-light-with-rmw_zenoh.sh v1
+./script/autoware_rmw_zenoh/run-autoware-traffic-light-with-rmw_zenoh.sh
 ```
 
 For multiple vehicles, run each in **its own container**, `v1` first:

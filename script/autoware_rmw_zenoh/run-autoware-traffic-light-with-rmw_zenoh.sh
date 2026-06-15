@@ -3,17 +3,14 @@ set -e
 
 export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 
-export VEHICLE_NAME="${1:-v1}"
-export CARLA_VEHICLE="${VEHICLE_NAME}"
-if [[ "$VEHICLE_NAME" == "v1" ]]; then
-    export ZENOH_ROUTER_CONFIG_URI=config/RMW_ZENOH_ROUTER_V1_CONFIG.json5
-elif [[ "$VEHICLE_NAME" == "v2" ]]; then
-    export ZENOH_ROUTER_CONFIG_URI=config/RMW_ZENOH_ROUTER_V2_CONFIG.json5
-fi
+export VEHICLE_NAME=v1
+export CARLA_VEHICLE=v1
+export ZENOH_ROUTER_CONFIG_URI=config/RMW_ZENOH_ROUTER_V1_CONFIG.json5
 export ZENOH_SESSION_CONFIG_URI=config/RMW_ZENOH_SESSION_CONFIG.json5
 
 export CARLA_SIMULATOR_IP=172.17.0.1
 
+# Rename the camera topics in Autoware's traffic-light launch files to CARLA's.
 TL_DIR=/opt/autoware/tier4_perception_launch/share/tier4_perception_launch/launch/traffic_light_recognition
 sudo sed -i \
     -e "s#/sensing/camera/{namespace}/image_raw#/carla/${VEHICLE_NAME}/traffic_light/image#g" \

@@ -3,13 +3,9 @@ set -e
 
 export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 
-export VEHICLE_NAME="${1:-v1}"
-export CARLA_VEHICLE="${VEHICLE_NAME}"
-if [[ "$VEHICLE_NAME" == "v1" ]]; then
-    export ZENOH_ROUTER_CONFIG_URI=config/RMW_ZENOH_ROUTER_V1_CONFIG.json5
-elif [[ "$VEHICLE_NAME" == "v2" ]]; then
-    export ZENOH_ROUTER_CONFIG_URI=config/RMW_ZENOH_ROUTER_V2_CONFIG.json5
-fi
+export VEHICLE_NAME=v1
+export CARLA_VEHICLE=v1
+export ZENOH_ROUTER_CONFIG_URI=config/RMW_ZENOH_ROUTER_V1_CONFIG.json5
 export ZENOH_SESSION_CONFIG_URI=config/RMW_ZENOH_SESSION_CONFIG.json5
 
 export CARLA_SIMULATOR_IP=172.17.0.1

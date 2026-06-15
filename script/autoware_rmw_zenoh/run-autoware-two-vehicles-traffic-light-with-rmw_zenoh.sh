@@ -16,6 +16,7 @@ export ZENOH_SESSION_CONFIG_URI=config/RMW_ZENOH_SESSION_CONFIG.json5
 
 export CARLA_SIMULATOR_IP=172.17.0.1
 
+# Rename the camera topics in Autoware's traffic-light launch files to CARLA's.
 TL_DIR=/opt/autoware/tier4_perception_launch/share/tier4_perception_launch/launch/traffic_light_recognition
 sudo sed -i \
     -e "s#/sensing/camera/{namespace}/image_raw#/carla/${VEHICLE_NAME}/traffic_light/image#g" \
