@@ -45,11 +45,11 @@ FAQ
 5. How to modify and verify the document locally?
 
     We are using ReadTheDocs, and you can use sphinx to check your modification.
+    With ``uv`` you don't need to install anything first:
 
     .. code-block:: bash
 
-        pip install -r docs/requirements.txt
-        sphinx-build -a docs /tmp/mydocs
+        uv run --with-requirements docs/requirements.txt sphinx-build -a docs /tmp/mydocs
         xdg-open /tmp/mydocs/index.html
 
 6. How to change the lidar detection model for object detection?
