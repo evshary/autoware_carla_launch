@@ -38,7 +38,10 @@ def main(args=None):
     client = carla.Client(os.environ.get('CARLA_SIMULATOR_IP', 'localhost'), 2000)
     client.set_timeout(60.0)
     if IS_MASTER:
-        world = client.load_world('Town01')
+        # Load Town01 only if not already on it (reloading destroys all actors).
+        if 'Town01' not in client.get_world().get_map().name:
+            client.load_world('Town01')
+        world = client.get_world()
         settings = world.get_settings()
         settings.synchronous_mode = True
         settings.fixed_delta_seconds = 0.05

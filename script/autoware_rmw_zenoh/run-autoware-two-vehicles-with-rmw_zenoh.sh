@@ -25,6 +25,11 @@ RVIZ_TEMPLATE=${AUTOWARE_CARLA_ROOT}/src/autoware_carla_launch/rviz/autoware.rvi
 RVIZ_CONFIG=${LOG_PATH}/autoware_${VEHICLE_NAME}.rviz
 sed "s#/carla/v[0-9]\+/traffic_light/image#/carla/${VEHICLE_NAME}/traffic_light/image#g" "${RVIZ_TEMPLATE}" > "${RVIZ_CONFIG}"
 
+# Load Town01 up front so the world is ready before Autoware starts.
+if [[ "$VEHICLE_NAME" == "v1" ]]; then
+    python3 ${AUTOWARE_CARLA_ROOT}/script/autoware_rmw_zenoh/load_town01.py ${CARLA_SIMULATOR_IP}
+fi
+
 # Run the program
 parallel --verbose --lb ::: \
     "ros2 launch autoware_carla_launch autoware_zenoh.launch.xml rviz_config:=${RVIZ_CONFIG} \
