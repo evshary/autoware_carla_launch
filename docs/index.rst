@@ -27,4 +27,5 @@ Contents
    prerequisites
    build
    usage
+   upgrade_guide
    faq

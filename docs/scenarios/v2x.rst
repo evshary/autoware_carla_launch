@@ -17,7 +17,7 @@ Map Info
 
 ``map_info.json`` describes the traffic lights at each intersection used by the V2X module. The structure is:
 
-.. code-block:: json
+.. code-block:: text
 
    {
      "intersections": {
