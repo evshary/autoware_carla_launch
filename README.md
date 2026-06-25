@@ -93,6 +93,33 @@ For multiple vehicles, run each in **its own container**, `v1` first:
 ./script/autoware_rmw_zenoh/run-autoware-two-vehicles-traffic-light-with-rmw_zenoh.sh v2
 ```
 
+### V2X
+
+V2X uses two scripts: one runs the road-side side (loads the map and runs the traffic/intersection managers), the other runs Autoware with the `v2x_light` client. Run each in **its own container**, the road-side one first.
+
+Single vehicle:
+
+```bash
+# container 1
+./script/autoware_rmw_zenoh/run-v2x-roadside-with-rmw_zenoh.sh
+
+# container 2
+./script/autoware_rmw_zenoh/run-autoware-v2x-with-rmw_zenoh.sh
+```
+
+For multiple vehicles, run each in **its own container**, road-side first:
+
+```bash
+# container 1
+./script/autoware_rmw_zenoh/run-v2x-roadside-with-rmw_zenoh.sh
+
+# container 2
+./script/autoware_rmw_zenoh/run-autoware-two-vehicles-v2x-with-rmw_zenoh.sh v1
+
+# container 3
+./script/autoware_rmw_zenoh/run-autoware-two-vehicles-v2x-with-rmw_zenoh.sh v2
+```
+
 ## Maintainers
 
 | Avatar | GitHub ID | Name |

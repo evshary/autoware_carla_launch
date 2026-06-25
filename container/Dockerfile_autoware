@@ -12,6 +12,9 @@ RUN python3 -m pip install --break-system-packages gdown
 COPY container/carla-0.9.16-cp312-cp312-linux_x86_64.whl /tmp/
 RUN python3 -m pip install --break-system-packages /tmp/carla-0.9.16-cp312-cp312-linux_x86_64.whl \
     && rm /tmp/carla-0.9.16-cp312-cp312-linux_x86_64.whl
+# Used by zenoh_autoware_v2x
+RUN python3 -m pip install --break-system-packages eclipse-zenoh==1.9.0 \
+    "zenoh-ros-type @ git+https://github.com/evshary/zenoh-ros-type-python.git@main"
 RUN apt-get install -y ros-jazzy-moveit-msgs \
                        ros-jazzy-object-recognition-msgs \
                        ros-jazzy-octomap-msgs \

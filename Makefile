@@ -4,6 +4,8 @@
 		clean
 
 prepare_autoware:
+	# Get code
+	git submodule update --init --recursive
 	# Install necessary ROS package
 	./script/setup/download_map.sh
 	./script/setup/download_models.sh

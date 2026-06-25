@@ -1,0 +1,3 @@
+[submodule "external/zenoh_autoware_v2x"]
+	path = external/zenoh_autoware_v2x
+	url = https://github.com/evshary/zenoh_autoware_v2x.git
