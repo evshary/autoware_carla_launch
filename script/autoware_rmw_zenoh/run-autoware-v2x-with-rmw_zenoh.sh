@@ -31,6 +31,6 @@ parallel --verbose --lb ::: \
     "RUST_LOG=debug ros2 run rmw_zenoh_cpp rmw_zenohd \
     	    2>&1 | tee ${LOG_PATH}/rmw_zenohd.log" \
     "sleep 5 && uv run --project ${V2X_PATH} ${V2X_PATH}/v2x_light/main.py \
-            --rmw_zenoh -v ${VEHICLE_NAME} --map-info ${V2X_PATH}/map_info.json \
+            --mode rmw_zenoh -v ${VEHICLE_NAME} --map-info ${V2X_PATH}/map_info.json \
             -e tcp/127.0.0.1:7447 -e tcp/172.17.0.1:7447 \
             2>&1 | tee ${LOG_PATH}/v2x_light.log"
